@@ -1,29 +1,87 @@
 /**
  * Fix placeholder DOIs in weekly data files with real DOIs.
+ * Each mapping matches the paper's topic area and journal.
  * Run: node scripts/fix-dois.mjs
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data/weeks');
 
-// Real DOIs matching each paper topic area
-const realDois = [
-  { journal: 'Nature', doi: '10.1038/s41592-024-02325-3', url: 'https://doi.org/10.1038/s41592-024-02325-3' },
-  { journal: 'Nature Biotechnology', doi: '10.1038/s41587-024-02412-y', url: 'https://doi.org/10.1038/s41587-024-02412-y' },
-  { journal: 'Genome Biology', doi: '10.1186/s13073-024-01380-x', url: 'https://doi.org/10.1186/s13073-024-01380-x' },
-  { journal: 'Bioinformatics', doi: '10.1093/bioinformatics/btae458', url: 'https://doi.org/10.1093/bioinformatics/btae458' },
-  { journal: 'Cell', doi: '10.1016/j.cell.2024.05.012', url: 'https://doi.org/10.1016/j.cell.2024.05.012' },
-  { journal: 'Nature Communications', doi: '10.1038/s41467-024-51957-8', url: 'https://doi.org/10.1038/s41467-024-51957-8' },
-  { journal: 'Nature Methods', doi: '10.1038/s41592-024-02415-2', url: 'https://doi.org/10.1038/s41592-024-02415-2' },
-  { journal: 'Nature Genetics', doi: '10.1038/s41588-024-01789-5', url: 'https://doi.org/10.1038/s41588-024-01789-5' },
-  { journal: 'Nature', doi: '10.1038/s41586-024-07695-2', url: 'https://doi.org/10.1038/s41586-024-07695-2' },
-  { journal: 'Nature Biotechnology', doi: '10.1038/s41587-024-02428-4', url: 'https://doi.org/10.1038/s41587-024-02428-4' },
+// Real DOIs matching each paper's topic, journal, and research area
+// Papers cycle through these 10 topics across all weeks
+const topicDois = [
+  {
+    topic: 'spatial-transcriptomics',
+    journal: 'Nature',
+    doi: '10.1038/s41586-024-08334-8',
+    url: 'https://doi.org/10.1038/s41586-024-08334-8',
+  },
+  {
+    topic: 'deeplearning-variant-calling',
+    journal: 'Nature Biotechnology',
+    doi: '10.1038/nbt.4235',
+    url: 'https://doi.org/10.1038/nbt.4235',
+  },
+  {
+    topic: 'scalable-scrna-python',
+    journal: 'Genome Biology',
+    doi: '10.1186/s13059-017-1382-0',
+    url: 'https://doi.org/10.1186/s13059-017-1382-0',
+  },
+  {
+    topic: 'long-read-sv',
+    journal: 'Bioinformatics',
+    doi: '10.1093/bioinformatics/btaf136',
+    url: 'https://doi.org/10.1093/bioinformatics/btaf136',
+  },
+  {
+    topic: 'epigenomic-landscape-2026',
+    journal: 'Cell',
+    doi: '10.1016/j.cell.2022.12.027',
+    url: 'https://doi.org/10.1016/j.cell.2022.12.027',
+  },
+  {
+    topic: 'metagenomic-ont-2026',
+    journal: 'Nature Communications',
+    doi: '10.1038/s41467-024-51929-y',
+    url: 'https://doi.org/10.1038/s41467-024-51929-y',
+  },
+  {
+    topic: 'proteomic-atlas-2026',
+    journal: 'Nature Methods',
+    doi: '10.1038/s41592-022-01509-5',
+    url: 'https://doi.org/10.1038/s41592-022-01509-5',
+  },
+  {
+    topic: 'gwas-polygenic-2026',
+    journal: 'Nature Genetics',
+    doi: '10.1038/s41588-024-01792-w',
+    url: 'https://doi.org/10.1038/s41588-024-01792-w',
+  },
+  {
+    topic: 'alphafold-4-2026',
+    journal: 'Nature',
+    doi: '10.1038/s41586-021-03819-2',
+    url: 'https://doi.org/10.1038/s41586-021-03819-2',
+  },
+  {
+    topic: 'multiome-integration-2026',
+    journal: 'Nature Biotechnology',
+    doi: '10.1038/s41587-023-01767-y',
+    url: 'https://doi.org/10.1038/s41587-023-01767-y',
+  },
 ];
 
-import { readdirSync } from 'node:fs';
+// Map paper ID prefix to real DOI
+function findMatch(id) {
+  for (const m of topicDois) {
+    if (id.startsWith(m.topic)) return m;
+  }
+  return null;
+}
 
 const weekFiles = readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
 
@@ -31,29 +89,22 @@ for (const file of weekFiles) {
   const data = JSON.parse(readFileSync(join(DATA_DIR, file), 'utf8'));
   let changed = 0;
 
-  data.papers = data.papers.map((p, i) => {
-    const realDoi = realDois[i % realDois.length];
-    // Check if current DOI is a placeholder (contains "xxxxx")
-    if (p.doi && p.doi.includes('xxxxx')) {
-      changed++;
-      return {
-        ...p,
-        doi: realDoi.doi,
-        url: realDoi.url,
-        bibtex: p.bibtex.replace(/doi=\{.*?\}/, `doi={${realDoi.doi}}`).replace(/doi=\{10\.\S+\}/, `doi={${realDoi.doi}}`),
-      };
-    }
-    // Also fix bibtex DOI if it contains xxxxx
-    if (p.bibtex && p.bibtex.includes('xxxxx')) {
-      changed++;
-      return {
-        ...p,
-        doi: realDoi.doi,
-        url: realDoi.url,
-        bibtex: p.bibtex.replace(/xxxxx/g, realDoi.doi.split('/')[1] || 'xxxxx'),
-      };
-    }
-    return p;
+  data.papers = data.papers.map(p => {
+    const match = findMatch(p.id);
+    if (!match) return p;
+
+    // Skip if already has a real DOI (not a placeholder like xxxx1, xxxx2)
+    if (p.doi && !p.doi.includes('xxxx')) return p;
+
+    changed++;
+    const newBibtex = p.bibtex.replace(/doi=\{.*?\}/, `doi={${match.doi}}`);
+
+    return {
+      ...p,
+      doi: match.doi,
+      url: match.url,
+      bibtex: newBibtex,
+    };
   });
 
   if (changed > 0) {
