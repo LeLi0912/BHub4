@@ -17,7 +17,7 @@
     },
     "papers": {
       "count": 8,
-      "change": 0
+      "change": 8
     },
     "algorithms": {
       "count": 2,
@@ -128,23 +128,265 @@
   ],
   "papers": [
     {
-      "id": "spatial-transcriptomics-2026",
+      "id": "deeplearning-variant-calling",
       "title": {
-        "en": "Spatial transcriptomics reveals tissue architecture in health and disease",
-        "zh": "空间转录组学揭示健康和疾病中的组织结构"
+        "en": "A universal SNP and small-indel variant caller using deep neural networks",
+        "zh": "基于深度神经网络的通用SNP和小插入缺失变异检测工具"
       },
       "authors": [
-        "Zhang L.",
-        "Chen X.",
-        "Wang Y.",
-        "Stein-O'Brien G."
+        "Poplin R.",
+        "Chang P.C.",
+        "Alexander D.",
+        "Schwartz S.",
+        "Colthurst T."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 83,
+      "abstract": {
+        "en": "A deep neural network variant caller that achieves superior accuracy across multiple sequencing platforms.",
+        "zh": "一种深度神经网络变异检测工具，在多种测序平台上实现了卓越的准确性。"
+      },
+      "url": "https://doi.org/10.1038/nbt.4235",
+      "doi": "10.1038/nbt.4235",
+      "domains": [
+        "deep-learning",
+        "genomics"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-12",
+      "tags": [
+        "deep-learning",
+        "variant-calling",
+        "snp-calling"
+      ],
+      "bibtex": "@article{deeplearning_variant_calling,\n  title={A universal SNP and small-indel variant caller using deep neural networks},\n  author={Poplin R. and Chang P.C. and Alexander D. and Schwartz S. and Colthurst T.},\n  journal={Nature Biotechnology},\n  year={2018},\n  doi={10.1038/nbt.4235}\n}"
+    },
+    {
+      "id": "epigenomic-landscape-2026",
+      "title": {
+        "en": "Loss of epigenetic information as a cause of mammalian aging",
+        "zh": "表观遗传信息丢失是哺乳动物衰老的原因之一"
+      },
+      "authors": [
+        "Yang J.H.",
+        "Hayano M.",
+        "Griffin P.T.",
+        "Amorim J.A.",
+        "Bonkowski M.S."
+      ],
+      "journal": "Cell",
+      "impactFactor": 45.5,
+      "citations": 152,
+      "abstract": {
+        "en": "Loss of epigenetic information accelerates aging, and restoration of the epigenome reverses aging hallmarks.",
+        "zh": "表观遗传信息丢失加速衰老，而表观基因组的恢复可逆转衰老标志。"
+      },
+      "url": "https://doi.org/10.1016/j.cell.2022.12.027",
+      "doi": "10.1016/j.cell.2022.12.027",
+      "domains": [
+        "epigenomics",
+        "aging"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-15",
+      "tags": [
+        "epigenetics",
+        "aging",
+        "epigenomic"
+      ],
+      "bibtex": "@article{epigenomic_landscape_2026,\n  title={Loss of epigenetic information as a cause of mammalian aging},\n  author={Yang J.H. and Hayano M. and Griffin P.T. and Amorim J.A. and Bonkowski M.S.},\n  journal={Cell},\n  year={2023},\n  doi={10.1016/j.cell.2022.12.027}\n}"
+    },
+    {
+      "id": "gwas-polygenic-2026",
+      "title": {
+        "en": "Calibrated prediction intervals for polygenic scores across diverse contexts",
+        "zh": "跨不同背景的多基因评分校准预测区间"
+      },
+      "authors": [
+        "Hou K.",
+        "Xu Z.",
+        "Ding Y.",
+        "Mandla R.",
+        "Pasaniuc B."
+      ],
+      "journal": "Nature Genetics",
+      "impactFactor": 31.7,
+      "citations": 205,
+      "abstract": {
+        "en": "Calibrated prediction intervals for polygenic scores improve risk assessment across diverse ancestries.",
+        "zh": "多基因评分的校准预测区间改善了跨不同祖先的风险评估。"
+      },
+      "url": "https://doi.org/10.1038/s41588-024-01792-w",
+      "doi": "10.1038/s41588-024-01792-w",
+      "domains": [
+        "gwas",
+        "statistical-genetics"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-11",
+      "tags": [
+        "gwas",
+        "polygenic-scores",
+        "diversity"
+      ],
+      "bibtex": "@article{gwas_polygenic_2026,\n  title={Calibrated prediction intervals for polygenic scores across diverse contexts},\n  author={Hou K. and Xu Z. and Ding Y. and Mandla R. and Pasaniuc B.},\n  journal={Nature Genetics},\n  year={2024},\n  doi={10.1038/s41588-024-01792-w}\n}"
+    },
+    {
+      "id": "long-read-sv",
+      "title": {
+        "en": "Sawfish: improving long-read structural variant discovery and genotyping with local haplotype modeling",
+        "zh": "Sawfish：利用局部单倍型建模改进长读长结构变异发现和基因分型"
+      },
+      "authors": [
+        "Saunders C.T.",
+        "Holt J.M.",
+        "Baker D.N.",
+        "Lake J.A.",
+        "Belyeu J.R."
+      ],
+      "journal": "Bioinformatics",
+      "impactFactor": 5.8,
+      "citations": 17,
+      "abstract": {
+        "en": "Sawfish improves long-read structural variant discovery using local haplotype modeling.",
+        "zh": "Sawfish利用局部单倍型建模改进了长读长结构变异的发现。"
+      },
+      "url": "https://doi.org/10.1093/bioinformatics/btaf136",
+      "doi": "10.1093/bioinformatics/btaf136",
+      "domains": [
+        "long-read",
+        "genomics"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-14",
+      "tags": [
+        "long-read",
+        "structural-variant",
+        "haplotype"
+      ],
+      "bibtex": "@article{long_read_sv,\n  title={Sawfish: improving long-read structural variant discovery and genotyping with local haplotype modeling},\n  author={Saunders C.T. and Holt J.M. and Baker D.N. and Lake J.A. and Belyeu J.R.},\n  journal={Bioinformatics},\n  year={2025},\n  doi={10.1093/bioinformatics/btaf136}\n}"
+    },
+    {
+      "id": "metagenomic-ont-2026",
+      "title": {
+        "en": "Nanopore R10.4 metagenomic detection of blaCTX-M/blaDHA antimicrobial resistance genes in stool",
+        "zh": "纳米孔R10.4宏基因组检测粪便中blaCTX-M/blaDHA抗菌素耐药基因"
+      },
+      "authors": [
+        "Campos-Madueno E.I.",
+        "Aldeia C.",
+        "Endimiani A."
+      ],
+      "journal": "Nature Communications",
+      "impactFactor": 16.6,
+      "citations": 33,
+      "abstract": {
+        "en": "Nanopore sequencing enables rapid metagenomic detection of antimicrobial resistance genes in clinical stool samples.",
+        "zh": "纳米孔测序实现临床粪便样本中抗菌素耐药基因的快速宏基因组检测。"
+      },
+      "url": "https://doi.org/10.1038/s41467-024-51929-y",
+      "doi": "10.1038/s41467-024-51929-y",
+      "domains": [
+        "metagenomics",
+        "clinical"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-16",
+      "tags": [
+        "metagenomics",
+        "nanopore",
+        "antimicrobial-resistance"
+      ],
+      "bibtex": "@article{metagenomic_ont_2026,\n  title={Nanopore R10.4 metagenomic detection of blaCTX-M/blaDHA antimicrobial resistance genes in stool},\n  author={Campos-Madueno E.I. and Aldeia C. and Endimiani A.},\n  journal={Nature Communications},\n  year={2024},\n  doi={10.1038/s41467-024-51929-y}\n}"
+    },
+    {
+      "id": "proteomic-atlas-2026",
+      "title": {
+        "en": "Spatial single-cell mass spectrometry defines zonation of the hepatocyte proteome",
+        "zh": "空间单细胞质谱技术定义肝细胞蛋白质组分区"
+      },
+      "authors": [
+        "Rosenberger F.A.",
+        "Thielert M.",
+        "Strauss M.T.",
+        "Schweizer L.",
+        "Mann M."
+      ],
+      "journal": "Nature Methods",
+      "impactFactor": 36.1,
+      "citations": 76,
+      "abstract": {
+        "en": "Spatial single-cell proteomics reveals distinct hepatocyte populations along the liver lobule axis.",
+        "zh": "空间单细胞蛋白质组学揭示了沿肝小叶轴的不同肝细胞群体。"
+      },
+      "url": "https://doi.org/10.1038/s41592-022-01509-5",
+      "doi": "10.1038/s41592-022-01509-5",
+      "domains": [
+        "proteomics",
+        "spatial"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-17",
+      "tags": [
+        "proteomics",
+        "spatial",
+        "single-cell"
+      ],
+      "bibtex": "@article{proteomic_atlas_2026,\n  title={Spatial single-cell mass spectrometry defines zonation of the hepatocyte proteome},\n  author={Rosenberger F.A. and Thielert M. and Strauss M.T. and Schweizer L. and Mann M.},\n  journal={Nature Methods},\n  year={2023},\n  doi={10.1038/s41592-022-01509-5}\n}"
+    },
+    {
+      "id": "scalable-scrna-python",
+      "title": {
+        "en": "SCANPY: large-scale single-cell gene expression data analysis",
+        "zh": "SCANPY：大规模单细胞基因表达数据分析"
+      },
+      "authors": [
+        "Wolf F.A.",
+        "Angerer P.",
+        "Theis F.J."
+      ],
+      "journal": "Genome Biology",
+      "impactFactor": 12.3,
+      "citations": 57,
+      "abstract": {
+        "en": "SCANPY is a scalable Python-based toolkit for analyzing single-cell gene expression data.",
+        "zh": "SCANPY是一个基于Python的可扩展工具包，用于分析单细胞基因表达数据。"
+      },
+      "url": "https://doi.org/10.1186/s13059-017-1382-0",
+      "doi": "10.1186/s13059-017-1382-0",
+      "domains": [
+        "single-cell",
+        "bioinformatics"
+      ],
+      "weekAdded": "2026-W20",
+      "dateAdded": "2026-05-13",
+      "tags": [
+        "single-cell",
+        "python",
+        "scanpy"
+      ],
+      "bibtex": "@article{scalable_scrna_python,\n  title={SCANPY: large-scale single-cell gene expression data analysis},\n  author={Wolf F.A. and Angerer P. and Theis F.J.},\n  journal={Genome Biology},\n  year={2018},\n  doi={10.1186/s13059-017-1382-0}\n}"
+    },
+    {
+      "id": "spatial-transcriptomics-2026",
+      "title": {
+        "en": "Spatial transcriptomic clocks reveal cell proximity effects in brain ageing",
+        "zh": "空间转录组时钟揭示大脑衰老中的细胞邻近效应"
+      },
+      "authors": [
+        "Sun E.D.",
+        "Zhou O.Y.",
+        "Hauptschein M.",
+        "Rappoport N.",
+        "Brunet A."
       ],
       "journal": "Nature",
       "impactFactor": 64.8,
       "citations": 133,
       "abstract": {
-        "en": "We present a comprehensive spatial transcriptomics atlas of human tissues, integrating single-cell and spatial data across 12 tissue types.",
-        "zh": "我们提出了一个全面的人类组织空间转录组学图谱，整合了12种组织类型的单细胞和空间数据。"
+        "en": "Spatial transcriptomic clocks reveal cell proximity effects in brain ageing across the mouse lifespan.",
+        "zh": "空间转录组时钟揭示了小鼠寿命期间大脑衰老中的细胞邻近效应。"
       },
       "url": "https://doi.org/10.1038/s41586-024-08334-8",
       "doi": "10.1038/s41586-024-08334-8",
@@ -156,243 +398,10 @@
       "dateAdded": "2026-05-11",
       "tags": [
         "spatial-transcriptomics",
-        "tissue-atlas",
-        "single-cell"
-      ],
-      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-024-08334-8}\n}"
-    },
-    {
-      "id": "deeplearning-variant-calling",
-      "title": {
-        "en": "Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets",
-        "zh": "基于深度学习的癌症基因组变异检测识别新型治疗靶点"
-      },
-      "authors": [
-        "Kumar S.",
-        "Perez A.",
-        "Li M.",
-        "Garraway L. A."
-      ],
-      "journal": "Nature Biotechnology",
-      "impactFactor": 46.9,
-      "citations": 83,
-      "abstract": {
-        "en": "A novel deep learning architecture improves variant detection accuracy in heterogeneous cancer samples by 40% over existing methods.",
-        "zh": "一种新型深度学习架构在异质性癌症样本中变异检测准确率比现有方法提高40%。"
-      },
-      "url": "https://doi.org/10.1038/nbt.4235",
-      "doi": "10.1038/nbt.4235",
-      "domains": [
-        "genomics",
-        "cancer"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-12",
-      "tags": [
-        "deep-learning",
-        "variant-calling",
-        "cancer-genomics"
-      ],
-      "bibtex": "@article{kumar2026deep,\n  title={Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets},\n  author={Kumar, S. and Perez, A. and Li, M. and Garraway, L. A.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/nbt.4235}\n}"
-    },
-    {
-      "id": "scalable-scrna-python",
-      "title": {
-        "en": "Scalable single-cell RNA-seq analysis with Python: a comprehensive framework",
-        "zh": "基于Python的可扩展单细胞RNA-seq分析：一个综合框架"
-      },
-      "authors": [
-        "Wolf F. A.",
-        "Angerer P.",
-        "Theis F. J."
-      ],
-      "journal": "Genome Biology",
-      "impactFactor": 12.3,
-      "citations": 57,
-      "abstract": {
-        "en": "We introduce an updated framework for large-scale single-cell RNA-seq analysis in Python, supporting datasets of over 10 million cells.",
-        "zh": "我们介绍了一个更新的Python大规模单细胞RNA-seq分析框架，支持超过1000万细胞的数据集。"
-      },
-      "url": "https://doi.org/10.1186/s13059-017-1382-0",
-      "doi": "10.1186/s13059-017-1382-0",
-      "domains": [
-        "single-cell",
-        "transcriptomics"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-13",
-      "tags": [
-        "single-cell",
-        "python",
-        "scanpy",
-        "scalable"
-      ],
-      "bibtex": "@article{wolf2026scalable,\n  title={Scalable single-cell RNA-seq analysis with Python: a comprehensive framework},\n  author={Wolf, F. A. and Angerer, P. and Theis, F. J.},\n  journal={Genome Biology},\n  year={2026},\n  doi={10.1186/s13059-017-1382-0}\n}"
-    },
-    {
-      "id": "long-read-sv",
-      "title": {
-        "en": "Long-read sequencing for structural variant detection in rare disease",
-        "zh": "长读长测序在罕见病结构变异检测中的应用"
-      },
-      "authors": [
-        "Miller D. E.",
-        "Sulovari A.",
-        "Wang T.",
-        "Eichler E. E."
-      ],
-      "journal": "Bioinformatics",
-      "impactFactor": 5.8,
-      "citations": 17,
-      "abstract": {
-        "en": "Benchmarking of long-read sequencing platforms for structural variant detection reveals superior sensitivity for SVs > 1kb.",
-        "zh": "长读长测序平台结构变异检测基准测试显示对大于1kb的结构变异具有优越敏感性。"
-      },
-      "url": "https://doi.org/10.1093/bioinformatics/btaf136",
-      "doi": "10.1093/bioinformatics/btaf136",
-      "domains": [
-        "genomics"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-14",
-      "tags": [
-        "long-read",
-        "structural-variants",
-        "sequencing"
-      ],
-      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/btaf136}\n}"
-    },
-    {
-      "id": "epigenomic-landscape-2026",
-      "title": {
-        "en": "Epigenomic landscape of aging across 30 human tissues",
-        "zh": "跨30个人体组织的衰老表观基因组图谱"
-      },
-      "authors": [
-        "Ying K.",
-        "Liu H.",
-        "Tarkhov A. E.",
-        "Gladyshev V. N."
-      ],
-      "journal": "Cell",
-      "impactFactor": 45.5,
-      "citations": 152,
-      "abstract": {
-        "en": "Comprehensive epigenomic profiling across 30 tissues reveals tissue-specific aging signatures and conserved epigenetic clocks.",
-        "zh": "跨30个组织的全面表观基因组分析揭示组织特异性衰老特征和保守的表观遗传时钟。"
-      },
-      "url": "https://doi.org/10.1016/j.cell.2022.12.027",
-      "doi": "10.1016/j.cell.2022.12.027",
-      "domains": [
-        "epigenomics"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-15",
-      "tags": [
-        "epigenomics",
-        "aging",
+        "brain-aging",
         "tissue-atlas"
       ],
-      "bibtex": "@article{ying2026epigenomic,\n  title={Epigenomic landscape of aging across 30 human tissues},\n  author={Ying, K. and Liu, H. and Tarkhov, A. E. and Gladyshev, V. N.},\n  journal={Cell},\n  year={2026},\n  doi={10.1016/j.cell.2022.12.027}\n}"
-    },
-    {
-      "id": "metagenomic-ont-2026",
-      "title": {
-        "en": "Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings",
-        "zh": "临床环境下基于纳米孔测序的实时宏基因组病原体检测"
-      },
-      "authors": [
-        "Charalampous T.",
-        "Kay G. L.",
-        "Richardson H.",
-        "O'Grady J."
-      ],
-      "journal": "Nature Communications",
-      "impactFactor": 16.6,
-      "citations": 33,
-      "abstract": {
-        "en": "A streamlined metagenomic protocol enables pathogen detection within 2 hours of sample collection using nanopore sequencing.",
-        "zh": "优化的宏基因组方案可在样本采集后2小时内通过纳米孔测序检测病原体。"
-      },
-      "url": "https://doi.org/10.1038/s41467-024-51929-y",
-      "doi": "10.1038/s41467-024-51929-y",
-      "domains": [
-        "metagenomics"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-16",
-      "tags": [
-        "metagenomics",
-        "nanopore",
-        "pathogen-detection"
-      ],
-      "bibtex": "@article{charalampous2026real,\n  title={Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings},\n  author={Charalampous, T. and Kay, G. L. and Richardson, H. and O'Grady, J.},\n  journal={Nature Communications},\n  year={2026},\n  doi={10.1038/s41467-024-51929-y}\n}"
-    },
-    {
-      "id": "proteomic-atlas-2026",
-      "title": {
-        "en": "A proteomic atlas of human tissues reveals cell-type-specific protein networks",
-        "zh": "人类组织蛋白质组图谱揭示细胞类型特异性蛋白质网络"
-      },
-      "authors": [
-        "Jiang L.",
-        "Wang M.",
-        "Lin S.",
-        "Pandey A."
-      ],
-      "journal": "Nature Methods",
-      "impactFactor": 36.1,
-      "citations": 76,
-      "abstract": {
-        "en": "Deep proteomic profiling of 40 human cell types identifies over 15,000 proteins with cell-type-specific expression patterns.",
-        "zh": "40种人类细胞类型的深度蛋白质组分析识别了超过15000种具有细胞类型特异性表达模式的蛋白质。"
-      },
-      "url": "https://doi.org/10.1038/s41592-022-01509-5",
-      "doi": "10.1038/s41592-022-01509-5",
-      "domains": [
-        "proteomics"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-17",
-      "tags": [
-        "proteomics",
-        "tissue-atlas",
-        "cell-type"
-      ],
-      "bibtex": "@article{jiang2026proteomic,\n  title={A proteomic atlas of human tissues reveals cell-type-specific protein networks},\n  author={Jiang, L. and Wang, M. and Lin, S. and Pandey, A.},\n  journal={Nature Methods},\n  year={2026},\n  doi={10.1038/s41592-022-01509-5}\n}"
-    },
-    {
-      "id": "gwas-polygenic-2026",
-      "title": {
-        "en": "Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis",
-        "zh": "跨不同人群的多基因风险评分：多祖先GWAS荟萃分析"
-      },
-      "authors": [
-        "Khera A. V.",
-        "Chaffin M.",
-        "Aragam K. G.",
-        "Kathiresan S."
-      ],
-      "journal": "Nature Genetics",
-      "impactFactor": 31.7,
-      "citations": 205,
-      "abstract": {
-        "en": "A multi-ancestry GWAS meta-analysis comprising 2.5 million individuals improves polygenic risk score performance across diverse populations.",
-        "zh": "包含250万人的多祖先GWAS荟萃分析提高了跨不同人群的多基因风险评分性能。"
-      },
-      "url": "https://doi.org/10.1038/s41588-024-01792-w",
-      "doi": "10.1038/s41588-024-01792-w",
-      "domains": [
-        "gwas"
-      ],
-      "weekAdded": "2026-W20",
-      "dateAdded": "2026-05-11",
-      "tags": [
-        "gwas",
-        "polygenic-risk",
-        "diverse-populations"
-      ],
-      "bibtex": "@article{khera2026polygenic,\n  title={Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis},\n  author={Khera, A. V. and Chaffin, M. and Aragam, K. G. and Kathiresan, S.},\n  journal={Nature Genetics},\n  year={2026},\n  doi={10.1038/s41588-024-01792-w}\n}"
+      "bibtex": "@article{spatial_transcriptomics_2026,\n  title={Spatial transcriptomic clocks reveal cell proximity effects in brain ageing},\n  author={Sun E.D. and Zhou O.Y. and Hauptschein M. and Rappoport N. and Brunet A.},\n  journal={Nature},\n  year={2025},\n  doi={10.1038/s41586-024-08334-8}\n}"
     }
   ],
   "algorithms": [

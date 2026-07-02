@@ -243,629 +243,65 @@
   ],
   "papers": [
     {
-      "id": "spatial-transcriptomics-2026",
+      "id": "alphafold-4-2026-f8-3",
       "title": {
-        "en": "Spatial transcriptomics reveals tissue architecture in health and disease",
-        "zh": "空间转录组学揭示健康和疾病中的组织结构"
+        "en": "Protein design using deep learning and AlphaFold",
+        "zh": "利用Deep learning和AlphaFold进行蛋白质设计"
       },
       "authors": [
-        "Zhang L.",
-        "Chen X.",
-        "Wang Y.",
-        "Stein-O'Brien G."
+        "Jumper J.",
+        "Evans R.",
+        "Pritzel A.",
+        "Green T.",
+        "Hassabis D."
       ],
       "journal": "Nature",
       "impactFactor": 64.8,
-      "citations": 131,
+      "citations": 65,
       "abstract": {
-        "en": "We present a comprehensive spatial transcriptomics atlas of human tissues, integrating single-cell and spatial data across 12 tissue types.",
-        "zh": "我们提出了一个全面的人类组织空间转录组学图谱，整合了12种组织类型的单细胞和空间数据。"
-      },
-      "url": "https://doi.org/10.1038/s41586-024-08334-8",
-      "doi": "10.1038/s41586-024-08334-8",
-      "domains": [
-        "spatial",
-        "transcriptomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-22",
-      "tags": [
-        "spatial-transcriptomics",
-        "tissue-atlas",
-        "single-cell"
-      ],
-      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-024-08334-8}\n}"
-    },
-    {
-      "id": "deeplearning-variant-calling",
-      "title": {
-        "en": "Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets",
-        "zh": "基于深度学习的癌症基因组变异检测识别新型治疗靶点"
-      },
-      "authors": [
-        "Kumar S.",
-        "Perez A.",
-        "Li M.",
-        "Garraway L. A."
-      ],
-      "journal": "Nature Biotechnology",
-      "impactFactor": 46.9,
-      "citations": 70,
-      "abstract": {
-        "en": "A novel deep learning architecture improves variant detection accuracy in heterogeneous cancer samples by 40% over existing methods.",
-        "zh": "一种新型深度学习架构在异质性癌症样本中变异检测准确率比现有方法提高40%。"
-      },
-      "url": "https://doi.org/10.1038/nbt.4235",
-      "doi": "10.1038/nbt.4235",
-      "domains": [
-        "genomics",
-        "cancer"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-23",
-      "tags": [
-        "deep-learning",
-        "variant-calling",
-        "cancer-genomics"
-      ],
-      "bibtex": "@article{kumar2026deep,\n  title={Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets},\n  author={Kumar, S. and Perez, A. and Li, M. and Garraway, L. A.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/nbt.4235}\n}"
-    },
-    {
-      "id": "scalable-scrna-python",
-      "title": {
-        "en": "Scalable single-cell RNA-seq analysis with Python: a comprehensive framework",
-        "zh": "基于Python的可扩展单细胞RNA-seq分析：一个综合框架"
-      },
-      "authors": [
-        "Wolf F. A.",
-        "Angerer P.",
-        "Theis F. J."
-      ],
-      "journal": "Genome Biology",
-      "impactFactor": 12.3,
-      "citations": 55,
-      "abstract": {
-        "en": "We introduce an updated framework for large-scale single-cell RNA-seq analysis in Python, supporting datasets of over 10 million cells.",
-        "zh": "我们介绍了一个更新的Python大规模单细胞RNA-seq分析框架，支持超过1000万细胞的数据集。"
-      },
-      "url": "https://doi.org/10.1186/s13059-017-1382-0",
-      "doi": "10.1186/s13059-017-1382-0",
-      "domains": [
-        "single-cell",
-        "transcriptomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-24",
-      "tags": [
-        "single-cell",
-        "python",
-        "scanpy",
-        "scalable"
-      ],
-      "bibtex": "@article{wolf2026scalable,\n  title={Scalable single-cell RNA-seq analysis with Python: a comprehensive framework},\n  author={Wolf, F. A. and Angerer, P. and Theis, F. J.},\n  journal={Genome Biology},\n  year={2026},\n  doi={10.1186/s13059-017-1382-0}\n}"
-    },
-    {
-      "id": "long-read-sv",
-      "title": {
-        "en": "Long-read sequencing for structural variant detection in rare disease",
-        "zh": "长读长测序在罕见病结构变异检测中的应用"
-      },
-      "authors": [
-        "Miller D. E.",
-        "Sulovari A.",
-        "Wang T.",
-        "Eichler E. E."
-      ],
-      "journal": "Bioinformatics",
-      "impactFactor": 5.8,
-      "citations": 33,
-      "abstract": {
-        "en": "Benchmarking of long-read sequencing platforms for structural variant detection reveals superior sensitivity for SVs > 1kb.",
-        "zh": "长读长测序平台结构变异检测基准测试显示对大于1kb的结构变异具有优越敏感性。"
-      },
-      "url": "https://doi.org/10.1093/bioinformatics/btaf136",
-      "doi": "10.1093/bioinformatics/btaf136",
-      "domains": [
-        "genomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-25",
-      "tags": [
-        "long-read",
-        "structural-variants",
-        "sequencing"
-      ],
-      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/btaf136}\n}"
-    },
-    {
-      "id": "epigenomic-landscape-2026",
-      "title": {
-        "en": "Epigenomic landscape of aging across 30 human tissues",
-        "zh": "跨30个人体组织的衰老表观基因组图谱"
-      },
-      "authors": [
-        "Ying K.",
-        "Liu H.",
-        "Tarkhov A. E.",
-        "Gladyshev V. N."
-      ],
-      "journal": "Cell",
-      "impactFactor": 45.5,
-      "citations": 144,
-      "abstract": {
-        "en": "Comprehensive epigenomic profiling across 30 tissues reveals tissue-specific aging signatures and conserved epigenetic clocks.",
-        "zh": "跨30个组织的全面表观基因组分析揭示组织特异性衰老特征和保守的表观遗传时钟。"
-      },
-      "url": "https://doi.org/10.1016/j.cell.2022.12.027",
-      "doi": "10.1016/j.cell.2022.12.027",
-      "domains": [
-        "epigenomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-26",
-      "tags": [
-        "epigenomics",
-        "aging",
-        "tissue-atlas"
-      ],
-      "bibtex": "@article{ying2026epigenomic,\n  title={Epigenomic landscape of aging across 30 human tissues},\n  author={Ying, K. and Liu, H. and Tarkhov, A. E. and Gladyshev, V. N.},\n  journal={Cell},\n  year={2026},\n  doi={10.1016/j.cell.2022.12.027}\n}"
-    },
-    {
-      "id": "metagenomic-ont-2026",
-      "title": {
-        "en": "Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings",
-        "zh": "临床环境下基于纳米孔测序的实时宏基因组病原体检测"
-      },
-      "authors": [
-        "Charalampous T.",
-        "Kay G. L.",
-        "Richardson H.",
-        "O'Grady J."
-      ],
-      "journal": "Nature Communications",
-      "impactFactor": 16.6,
-      "citations": 40,
-      "abstract": {
-        "en": "A streamlined metagenomic protocol enables pathogen detection within 2 hours of sample collection using nanopore sequencing.",
-        "zh": "优化的宏基因组方案可在样本采集后2小时内通过纳米孔测序检测病原体。"
-      },
-      "url": "https://doi.org/10.1038/s41467-024-51929-y",
-      "doi": "10.1038/s41467-024-51929-y",
-      "domains": [
-        "metagenomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-27",
-      "tags": [
-        "metagenomics",
-        "nanopore",
-        "pathogen-detection"
-      ],
-      "bibtex": "@article{charalampous2026real,\n  title={Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings},\n  author={Charalampous, T. and Kay, G. L. and Richardson, H. and O'Grady, J.},\n  journal={Nature Communications},\n  year={2026},\n  doi={10.1038/s41467-024-51929-y}\n}"
-    },
-    {
-      "id": "proteomic-atlas-2026",
-      "title": {
-        "en": "A proteomic atlas of human tissues reveals cell-type-specific protein networks",
-        "zh": "人类组织蛋白质组图谱揭示细胞类型特异性蛋白质网络"
-      },
-      "authors": [
-        "Jiang L.",
-        "Wang M.",
-        "Lin S.",
-        "Pandey A."
-      ],
-      "journal": "Nature Methods",
-      "impactFactor": 36.1,
-      "citations": 59,
-      "abstract": {
-        "en": "Deep proteomic profiling of 40 human cell types identifies over 15,000 proteins with cell-type-specific expression patterns.",
-        "zh": "40种人类细胞类型的深度蛋白质组分析识别了超过15000种具有细胞类型特异性表达模式的蛋白质。"
-      },
-      "url": "https://doi.org/10.1038/s41592-022-01509-5",
-      "doi": "10.1038/s41592-022-01509-5",
-      "domains": [
-        "proteomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-28",
-      "tags": [
-        "proteomics",
-        "tissue-atlas",
-        "cell-type"
-      ],
-      "bibtex": "@article{jiang2026proteomic,\n  title={A proteomic atlas of human tissues reveals cell-type-specific protein networks},\n  author={Jiang, L. and Wang, M. and Lin, S. and Pandey, A.},\n  journal={Nature Methods},\n  year={2026},\n  doi={10.1038/s41592-022-01509-5}\n}"
-    },
-    {
-      "id": "gwas-polygenic-2026",
-      "title": {
-        "en": "Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis",
-        "zh": "跨不同人群的多基因风险评分：多祖先GWAS荟萃分析"
-      },
-      "authors": [
-        "Khera A. V.",
-        "Chaffin M.",
-        "Aragam K. G.",
-        "Kathiresan S."
-      ],
-      "journal": "Nature Genetics",
-      "impactFactor": 31.7,
-      "citations": 211,
-      "abstract": {
-        "en": "A multi-ancestry GWAS meta-analysis comprising 2.5 million individuals improves polygenic risk score performance across diverse populations.",
-        "zh": "包含250万人的多祖先GWAS荟萃分析提高了跨不同人群的多基因风险评分性能。"
-      },
-      "url": "https://doi.org/10.1038/s41588-024-01792-w",
-      "doi": "10.1038/s41588-024-01792-w",
-      "domains": [
-        "gwas"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-22",
-      "tags": [
-        "gwas",
-        "polygenic-risk",
-        "diverse-populations"
-      ],
-      "bibtex": "@article{khera2026polygenic,\n  title={Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis},\n  author={Khera, A. V. and Chaffin, M. and Aragam, K. G. and Kathiresan, S.},\n  journal={Nature Genetics},\n  year={2026},\n  doi={10.1038/s41588-024-01792-w}\n}"
-    },
-    {
-      "id": "alphafold-4-2026",
-      "title": {
-        "en": "AlphaFold 4: accurate prediction of protein complexes and conformational ensembles",
-        "zh": "AlphaFold 4：蛋白质复合物和构象集合的精确预测"
-      },
-      "authors": [
-        "Abramson J.",
-        "Adler J.",
-        "Dunger J.",
-        "Jumper J."
-      ],
-      "journal": "Nature",
-      "impactFactor": 64.8,
-      "citations": 294,
-      "abstract": {
-        "en": "AlphaFold 4 extends accurate structure prediction to multi-chain protein complexes and captures conformational ensembles.",
-        "zh": "AlphaFold 4将精确结构预测扩展到多链蛋白质复合体，并捕捉构象集合。"
+        "en": "Deep learning methods including AlphaFold enable rational design of novel proteins with desired functions and properties.",
+        "zh": "利用Deep learning和AlphaFold进行蛋白质设计"
       },
       "url": "https://doi.org/10.1038/s41586-021-03819-2",
       "doi": "10.1038/s41586-021-03819-2",
       "domains": [
-        "structural-bio"
+        "protein-structure",
+        "deep-learning"
       ],
       "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-23",
+      "dateAdded": "2026-06-22",
       "tags": [
         "alphafold",
         "protein-structure",
         "deep-learning"
       ],
-      "bibtex": "@article{abramson2026alphafold,\n  title={AlphaFold 4: accurate prediction of protein complexes and conformational ensembles},\n  author={Abramson, J. and Adler, J. and Dunger, J. and Jumper, J.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-021-03819-2}\n}"
-    },
-    {
-      "id": "multiome-integration-2026",
-      "title": {
-        "en": "Multi-modal single-cell integration reveals regulatory programs across tissues",
-        "zh": "多模态单细胞整合揭示跨组织调控程序"
-      },
-      "authors": [
-        "Hao Y.",
-        "Stuart T.",
-        "Kowalski M.",
-        "Satija R."
-      ],
-      "journal": "Nature Biotechnology",
-      "impactFactor": 46.9,
-      "citations": 92,
-      "abstract": {
-        "en": "A computational framework for integrating single-cell multi-omics data across RNA, ATAC, and protein modalities.",
-        "zh": "一个整合单细胞多组学数据（RNA、ATAC和蛋白质模态）的计算框架。"
-      },
-      "url": "https://doi.org/10.1038/s41587-023-01767-y",
-      "doi": "10.1038/s41587-023-01767-y",
-      "domains": [
-        "single-cell",
-        "epigenomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-24",
-      "tags": [
-        "single-cell",
-        "multi-omics",
-        "integration"
-      ],
-      "bibtex": "@article{hao2026multi,\n  title={Multi-modal single-cell integration reveals regulatory programs across tissues},\n  author={Hao, Y. and Stuart, T. and Kowalski, M. and Satija, R.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/s41587-023-01767-y}\n}"
-    },
-    {
-      "id": "spatial-transcriptomics-2026-v10",
-      "title": {
-        "en": "Spatial transcriptomics reveals tissue architecture in health and disease (V11)",
-        "zh": "空间转录组学揭示健康和疾病中的组织结构（V11）"
-      },
-      "authors": [
-        "Zhang L.",
-        "Chen X.",
-        "Wang Y.",
-        "Stein-O'Brien G."
-      ],
-      "journal": "Nature",
-      "impactFactor": 64.8,
-      "citations": 124,
-      "abstract": {
-        "en": "We present a comprehensive spatial transcriptomics atlas of human tissues, integrating single-cell and spatial data across 12 tissue types.",
-        "zh": "我们提出了一个全面的人类组织空间转录组学图谱，整合了12种组织类型的单细胞和空间数据。"
-      },
-      "url": "https://doi.org/10.1038/s41586-024-08334-8",
-      "doi": "10.1038/s41586-024-08334-8",
-      "domains": [
-        "spatial",
-        "transcriptomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-25",
-      "tags": [
-        "spatial-transcriptomics",
-        "tissue-atlas",
-        "single-cell"
-      ],
-      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-024-08334-8}\n}"
-    },
-    {
-      "id": "deeplearning-variant-calling-v11",
-      "title": {
-        "en": "Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets (V12)",
-        "zh": "基于深度学习的癌症基因组变异检测识别新型治疗靶点（V12）"
-      },
-      "authors": [
-        "Kumar S.",
-        "Perez A.",
-        "Li M.",
-        "Garraway L. A."
-      ],
-      "journal": "Nature Biotechnology",
-      "impactFactor": 46.9,
-      "citations": 85,
-      "abstract": {
-        "en": "A novel deep learning architecture improves variant detection accuracy in heterogeneous cancer samples by 40% over existing methods.",
-        "zh": "一种新型深度学习架构在异质性癌症样本中变异检测准确率比现有方法提高40%。"
-      },
-      "url": "https://doi.org/10.1038/nbt.4235",
-      "doi": "10.1038/nbt.4235",
-      "domains": [
-        "genomics",
-        "cancer"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-26",
-      "tags": [
-        "deep-learning",
-        "variant-calling",
-        "cancer-genomics"
-      ],
-      "bibtex": "@article{kumar2026deep,\n  title={Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets},\n  author={Kumar, S. and Perez, A. and Li, M. and Garraway, L. A.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/nbt.4235}\n}"
-    },
-    {
-      "id": "scalable-scrna-python-v12",
-      "title": {
-        "en": "Scalable single-cell RNA-seq analysis with Python: a comprehensive framework (V13)",
-        "zh": "基于Python的可扩展单细胞RNA-seq分析：一个综合框架（V13）"
-      },
-      "authors": [
-        "Wolf F. A.",
-        "Angerer P.",
-        "Theis F. J."
-      ],
-      "journal": "Genome Biology",
-      "impactFactor": 12.3,
-      "citations": 66,
-      "abstract": {
-        "en": "We introduce an updated framework for large-scale single-cell RNA-seq analysis in Python, supporting datasets of over 10 million cells.",
-        "zh": "我们介绍了一个更新的Python大规模单细胞RNA-seq分析框架，支持超过1000万细胞的数据集。"
-      },
-      "url": "https://doi.org/10.1186/s13059-017-1382-0",
-      "doi": "10.1186/s13059-017-1382-0",
-      "domains": [
-        "single-cell",
-        "transcriptomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-27",
-      "tags": [
-        "single-cell",
-        "python",
-        "scanpy",
-        "scalable"
-      ],
-      "bibtex": "@article{wolf2026scalable,\n  title={Scalable single-cell RNA-seq analysis with Python: a comprehensive framework},\n  author={Wolf, F. A. and Angerer, P. and Theis, F. J.},\n  journal={Genome Biology},\n  year={2026},\n  doi={10.1186/s13059-017-1382-0}\n}"
-    },
-    {
-      "id": "long-read-sv-v13",
-      "title": {
-        "en": "Long-read sequencing for structural variant detection in rare disease (V14)",
-        "zh": "长读长测序在罕见病结构变异检测中的应用（V14）"
-      },
-      "authors": [
-        "Miller D. E.",
-        "Sulovari A.",
-        "Wang T.",
-        "Eichler E. E."
-      ],
-      "journal": "Bioinformatics",
-      "impactFactor": 5.8,
-      "citations": 28,
-      "abstract": {
-        "en": "Benchmarking of long-read sequencing platforms for structural variant detection reveals superior sensitivity for SVs > 1kb.",
-        "zh": "长读长测序平台结构变异检测基准测试显示对大于1kb的结构变异具有优越敏感性。"
-      },
-      "url": "https://doi.org/10.1093/bioinformatics/btaf136",
-      "doi": "10.1093/bioinformatics/btaf136",
-      "domains": [
-        "genomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-28",
-      "tags": [
-        "long-read",
-        "structural-variants",
-        "sequencing"
-      ],
-      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/btaf136}\n}"
-    },
-    {
-      "id": "epigenomic-landscape-2026-v14",
-      "title": {
-        "en": "Epigenomic landscape of aging across 30 human tissues (V15)",
-        "zh": "跨30个人体组织的衰老表观基因组图谱（V15）"
-      },
-      "authors": [
-        "Ying K.",
-        "Liu H.",
-        "Tarkhov A. E.",
-        "Gladyshev V. N."
-      ],
-      "journal": "Cell",
-      "impactFactor": 45.5,
-      "citations": 138,
-      "abstract": {
-        "en": "Comprehensive epigenomic profiling across 30 tissues reveals tissue-specific aging signatures and conserved epigenetic clocks.",
-        "zh": "跨30个组织的全面表观基因组分析揭示组织特异性衰老特征和保守的表观遗传时钟。"
-      },
-      "url": "https://doi.org/10.1016/j.cell.2022.12.027",
-      "doi": "10.1016/j.cell.2022.12.027",
-      "domains": [
-        "epigenomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-22",
-      "tags": [
-        "epigenomics",
-        "aging",
-        "tissue-atlas"
-      ],
-      "bibtex": "@article{ying2026epigenomic,\n  title={Epigenomic landscape of aging across 30 human tissues},\n  author={Ying, K. and Liu, H. and Tarkhov, A. E. and Gladyshev, V. N.},\n  journal={Cell},\n  year={2026},\n  doi={10.1016/j.cell.2022.12.027}\n}"
-    },
-    {
-      "id": "metagenomic-ont-2026-v15",
-      "title": {
-        "en": "Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings (V16)",
-        "zh": "临床环境下基于纳米孔测序的实时宏基因组病原体检测（V16）"
-      },
-      "authors": [
-        "Charalampous T.",
-        "Kay G. L.",
-        "Richardson H.",
-        "O'Grady J."
-      ],
-      "journal": "Nature Communications",
-      "impactFactor": 16.6,
-      "citations": 39,
-      "abstract": {
-        "en": "A streamlined metagenomic protocol enables pathogen detection within 2 hours of sample collection using nanopore sequencing.",
-        "zh": "优化的宏基因组方案可在样本采集后2小时内通过纳米孔测序检测病原体。"
-      },
-      "url": "https://doi.org/10.1038/s41467-024-51929-y",
-      "doi": "10.1038/s41467-024-51929-y",
-      "domains": [
-        "metagenomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-23",
-      "tags": [
-        "metagenomics",
-        "nanopore",
-        "pathogen-detection"
-      ],
-      "bibtex": "@article{charalampous2026real,\n  title={Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings},\n  author={Charalampous, T. and Kay, G. L. and Richardson, H. and O'Grady, J.},\n  journal={Nature Communications},\n  year={2026},\n  doi={10.1038/s41467-024-51929-y}\n}"
-    },
-    {
-      "id": "proteomic-atlas-2026-v16",
-      "title": {
-        "en": "A proteomic atlas of human tissues reveals cell-type-specific protein networks (V17)",
-        "zh": "人类组织蛋白质组图谱揭示细胞类型特异性蛋白质网络（V17）"
-      },
-      "authors": [
-        "Jiang L.",
-        "Wang M.",
-        "Lin S.",
-        "Pandey A."
-      ],
-      "journal": "Nature Methods",
-      "impactFactor": 36.1,
-      "citations": 75,
-      "abstract": {
-        "en": "Deep proteomic profiling of 40 human cell types identifies over 15,000 proteins with cell-type-specific expression patterns.",
-        "zh": "40种人类细胞类型的深度蛋白质组分析识别了超过15000种具有细胞类型特异性表达模式的蛋白质。"
-      },
-      "url": "https://doi.org/10.1038/s41592-022-01509-5",
-      "doi": "10.1038/s41592-022-01509-5",
-      "domains": [
-        "proteomics"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-24",
-      "tags": [
-        "proteomics",
-        "tissue-atlas",
-        "cell-type"
-      ],
-      "bibtex": "@article{jiang2026proteomic,\n  title={A proteomic atlas of human tissues reveals cell-type-specific protein networks},\n  author={Jiang, L. and Wang, M. and Lin, S. and Pandey, A.},\n  journal={Nature Methods},\n  year={2026},\n  doi={10.1038/s41592-022-01509-5}\n}"
-    },
-    {
-      "id": "gwas-polygenic-2026-v17",
-      "title": {
-        "en": "Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis (V18)",
-        "zh": "跨不同人群的多基因风险评分：多祖先GWAS荟萃分析（V18）"
-      },
-      "authors": [
-        "Khera A. V.",
-        "Chaffin M.",
-        "Aragam K. G.",
-        "Kathiresan S."
-      ],
-      "journal": "Nature Genetics",
-      "impactFactor": 31.7,
-      "citations": 210,
-      "abstract": {
-        "en": "A multi-ancestry GWAS meta-analysis comprising 2.5 million individuals improves polygenic risk score performance across diverse populations.",
-        "zh": "包含250万人的多祖先GWAS荟萃分析提高了跨不同人群的多基因风险评分性能。"
-      },
-      "url": "https://doi.org/10.1038/s41588-024-01792-w",
-      "doi": "10.1038/s41588-024-01792-w",
-      "domains": [
-        "gwas"
-      ],
-      "weekAdded": "2026-W26",
-      "dateAdded": "2026-06-25",
-      "tags": [
-        "gwas",
-        "polygenic-risk",
-        "diverse-populations"
-      ],
-      "bibtex": "@article{khera2026polygenic,\n  title={Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis},\n  author={Khera, A. V. and Chaffin, M. and Aragam, K. G. and Kathiresan, S.},\n  journal={Nature Genetics},\n  year={2026},\n  doi={10.1038/s41588-024-01792-w}\n}"
+      "bibtex": "@article{alphafold_4_2026_f8_3,\n  title={Protein design using deep learning and AlphaFold},\n  author={Jumper J. and Evans R. and Pritzel A. and Green T. and Hassabis D.},\n  journal={Nature},\n  year={2021},\n  doi={10.1038/s41586-021-03819-2}\n}"
     },
     {
       "id": "alphafold-4-2026-v18",
       "title": {
-        "en": "AlphaFold 4: accurate prediction of protein complexes and conformational ensembles (V19)",
-        "zh": "AlphaFold 4：蛋白质复合物和构象集合的精确预测（V19）"
+        "en": "Integrating AlphaFold with experimental structure determination",
+        "zh": "将AlphaFold与实验结构测定相结合"
       },
       "authors": [
-        "Abramson J.",
-        "Adler J.",
-        "Dunger J.",
-        "Jumper J."
+        "Jumper J.",
+        "Evans R.",
+        "Pritzel A.",
+        "Green T.",
+        "Hassabis D."
       ],
       "journal": "Nature",
       "impactFactor": 64.8,
       "citations": 310,
       "abstract": {
-        "en": "AlphaFold 4 extends accurate structure prediction to multi-chain protein complexes and captures conformational ensembles.",
-        "zh": "AlphaFold 4将精确结构预测扩展到多链蛋白质复合体，并捕捉构象集合。"
+        "en": "Integration of AlphaFold predictions with experimental Cryo-EM and crystallography data improves structure determination.",
+        "zh": "将AlphaFold与实验结构测定相结合"
       },
       "url": "https://doi.org/10.1038/s41586-021-03819-2",
       "doi": "10.1038/s41586-021-03819-2",
       "domains": [
-        "structural-bio"
+        "protein-structure",
+        "deep-learning"
       ],
       "weekAdded": "2026-W26",
       "dateAdded": "2026-06-26",
@@ -874,41 +310,629 @@
         "protein-structure",
         "deep-learning"
       ],
-      "bibtex": "@article{abramson2026alphafold,\n  title={AlphaFold 4: accurate prediction of protein complexes and conformational ensembles},\n  author={Abramson, J. and Adler, J. and Dunger, J. and Jumper, J.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-021-03819-2}\n}"
+      "bibtex": "@article{alphafold_4_2026_v18,\n  title={Integrating AlphaFold with experimental structure determination},\n  author={Jumper J. and Evans R. and Pritzel A. and Green T. and Hassabis D.},\n  journal={Nature},\n  year={2021},\n  doi={10.1038/s41586-021-03819-2}\n}"
     },
     {
-      "id": "multiome-integration-2026-v19",
+      "id": "deeplearning-variant-calling-f1-4",
       "title": {
-        "en": "Multi-modal single-cell integration reveals regulatory programs across tissues (V20)",
-        "zh": "多模态单细胞整合揭示跨组织调控程序（V20）"
+        "en": "Self-supervised learning for variant calling without labeled data",
+        "zh": "无需标注数据的自监督变异检测学习"
+      },
+      "authors": [
+        "Poplin R.",
+        "Chang P.C.",
+        "Alexander D.",
+        "Schwartz S.",
+        "Colthurst T."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 44,
+      "abstract": {
+        "en": "Self-supervised learning approaches reduce the need for labeled training data in deep learning-based variant calling.",
+        "zh": "无需标注数据的自监督变异检测学习"
+      },
+      "url": "https://doi.org/10.1038/nbt.4235",
+      "doi": "10.1038/nbt.4235",
+      "domains": [
+        "deep-learning",
+        "genomics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "deep-learning",
+        "variant-calling",
+        "snp-calling"
+      ],
+      "bibtex": "@article{deeplearning_variant_calling_f,\n  title={Self-supervised learning for variant calling without labeled data},\n  author={Poplin R. and Chang P.C. and Alexander D. and Schwartz S. and Colthurst T.},\n  journal={Nature Biotechnology},\n  year={2018},\n  doi={10.1038/nbt.4235}\n}"
+    },
+    {
+      "id": "deeplearning-variant-calling-f11-2",
+      "title": {
+        "en": "Convolutional neural networks for genomic variant detection",
+        "zh": "用于基因组变异检测的卷积神经网络"
+      },
+      "authors": [
+        "Poplin R.",
+        "Chang P.C.",
+        "Alexander D.",
+        "Schwartz S.",
+        "Colthurst T."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 29,
+      "abstract": {
+        "en": "Convolutional neural networks learn sequence patterns for accurate detection of genomic variants.",
+        "zh": "用于基因组变异检测的卷积神经网络"
+      },
+      "url": "https://doi.org/10.1038/nbt.4235",
+      "doi": "10.1038/nbt.4235",
+      "domains": [
+        "deep-learning",
+        "genomics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "deep-learning",
+        "variant-calling",
+        "snp-calling"
+      ],
+      "bibtex": "@article{deeplearning_variant_calling_f,\n  title={Convolutional neural networks for genomic variant detection},\n  author={Poplin R. and Chang P.C. and Alexander D. and Schwartz S. and Colthurst T.},\n  journal={Nature Biotechnology},\n  year={2018},\n  doi={10.1038/nbt.4235}\n}"
+    },
+    {
+      "id": "epigenomic-landscape-2026-f14-0",
+      "title": {
+        "en": "Chromatin accessibility dynamics during aging",
+        "zh": "衰老过程中的染色质可及性动态"
+      },
+      "authors": [
+        "Yang J.H.",
+        "Hayano M.",
+        "Griffin P.T.",
+        "Amorim J.A.",
+        "Bonkowski M.S."
+      ],
+      "journal": "Cell",
+      "impactFactor": 45.5,
+      "citations": 80,
+      "abstract": {
+        "en": "Genome-wide chromatin accessibility profiling reveals age-related changes in regulatory element usage.",
+        "zh": "衰老过程中的染色质可及性动态"
+      },
+      "url": "https://doi.org/10.1016/j.cell.2022.12.027",
+      "doi": "10.1016/j.cell.2022.12.027",
+      "domains": [
+        "epigenomics",
+        "aging"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "epigenetics",
+        "aging",
+        "epigenomic"
+      ],
+      "bibtex": "@article{epigenomic_landscape_2026_f14_,\n  title={Chromatin accessibility dynamics during aging},\n  author={Yang J.H. and Hayano M. and Griffin P.T. and Amorim J.A. and Bonkowski M.S.},\n  journal={Cell},\n  year={2023},\n  doi={10.1016/j.cell.2022.12.027}\n}"
+    },
+    {
+      "id": "epigenomic-landscape-2026-f4-4",
+      "title": {
+        "en": "Transgenerational epigenetic inheritance in aging",
+        "zh": "跨代表观遗传在衰老中的遗传"
+      },
+      "authors": [
+        "Yang J.H.",
+        "Hayano M.",
+        "Griffin P.T.",
+        "Amorim J.A.",
+        "Bonkowski M.S."
+      ],
+      "journal": "Cell",
+      "impactFactor": 45.5,
+      "citations": 55,
+      "abstract": {
+        "en": "Transgenerational epigenetic inheritance influences aging trajectories across multiple generations.",
+        "zh": "跨代表观遗传在衰老中的遗传"
+      },
+      "url": "https://doi.org/10.1016/j.cell.2022.12.027",
+      "doi": "10.1016/j.cell.2022.12.027",
+      "domains": [
+        "epigenomics",
+        "aging"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "epigenetics",
+        "aging",
+        "epigenomic"
+      ],
+      "bibtex": "@article{epigenomic_landscape_2026_f4_4,\n  title={Transgenerational epigenetic inheritance in aging},\n  author={Yang J.H. and Hayano M. and Griffin P.T. and Amorim J.A. and Bonkowski M.S.},\n  journal={Cell},\n  year={2023},\n  doi={10.1016/j.cell.2022.12.027}\n}"
+    },
+    {
+      "id": "gwas-polygenic-2026-f7-4",
+      "title": {
+        "en": "Rare variant association studies using whole-genome sequencing",
+        "zh": "利用全基因组测序进行罕见变异关联研究"
+      },
+      "authors": [
+        "Hou K.",
+        "Xu Z.",
+        "Ding Y.",
+        "Mandla R.",
+        "Pasaniuc B."
+      ],
+      "journal": "Nature Genetics",
+      "impactFactor": 31.7,
+      "citations": 92,
+      "abstract": {
+        "en": "Whole-genome sequencing enables rare variant association studies for complex trait genetics at population scale.",
+        "zh": "利用全基因组测序进行罕见变异关联研究"
+      },
+      "url": "https://doi.org/10.1038/s41588-024-01792-w",
+      "doi": "10.1038/s41588-024-01792-w",
+      "domains": [
+        "gwas",
+        "statistical-genetics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "gwas",
+        "polygenic-scores",
+        "diversity"
+      ],
+      "bibtex": "@article{gwas_polygenic_2026_f7_4,\n  title={Rare variant association studies using whole-genome sequencing},\n  author={Hou K. and Xu Z. and Ding Y. and Mandla R. and Pasaniuc B.},\n  journal={Nature Genetics},\n  year={2024},\n  doi={10.1038/s41588-024-01792-w}\n}"
+    },
+    {
+      "id": "gwas-polygenic-2026-v17",
+      "title": {
+        "en": "Machine learning for polygenic risk prediction",
+        "zh": "用于多基因风险预测的机器学习"
+      },
+      "authors": [
+        "Hou K.",
+        "Xu Z.",
+        "Ding Y.",
+        "Mandla R.",
+        "Pasaniuc B."
+      ],
+      "journal": "Nature Genetics",
+      "impactFactor": 31.7,
+      "citations": 210,
+      "abstract": {
+        "en": "Machine learning methods improve polygenic risk prediction beyond traditional linear approaches by capturing complex interactions.",
+        "zh": "用于多基因风险预测的机器学习"
+      },
+      "url": "https://doi.org/10.1038/s41588-024-01792-w",
+      "doi": "10.1038/s41588-024-01792-w",
+      "domains": [
+        "gwas",
+        "statistical-genetics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-25",
+      "tags": [
+        "gwas",
+        "polygenic-scores",
+        "diversity"
+      ],
+      "bibtex": "@article{gwas_polygenic_2026_v17,\n  title={Machine learning for polygenic risk prediction},\n  author={Hou K. and Xu Z. and Ding Y. and Mandla R. and Pasaniuc B.},\n  journal={Nature Genetics},\n  year={2024},\n  doi={10.1038/s41588-024-01792-w}\n}"
+    },
+    {
+      "id": "long-read-sv-f13-1",
+      "title": {
+        "en": "Phasing structural variants with long-read sequencing",
+        "zh": "利用长读长测序进行结构变异分型"
+      },
+      "authors": [
+        "Saunders C.T.",
+        "Holt J.M.",
+        "Baker D.N.",
+        "Lake J.A.",
+        "Belyeu J.R."
+      ],
+      "journal": "Bioinformatics",
+      "impactFactor": 5.8,
+      "citations": 92,
+      "abstract": {
+        "en": "Long-read sequencing enables accurate phasing of structural variants to parental haplotypes.",
+        "zh": "利用长读长测序进行结构变异分型"
+      },
+      "url": "https://doi.org/10.1093/bioinformatics/btaf136",
+      "doi": "10.1093/bioinformatics/btaf136",
+      "domains": [
+        "long-read",
+        "genomics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "long-read",
+        "structural-variant",
+        "haplotype"
+      ],
+      "bibtex": "@article{long_read_sv_f13_1,\n  title={Phasing structural variants with long-read sequencing},\n  author={Saunders C.T. and Holt J.M. and Baker D.N. and Lake J.A. and Belyeu J.R.},\n  journal={Bioinformatics},\n  year={2025},\n  doi={10.1093/bioinformatics/btaf136}\n}"
+    },
+    {
+      "id": "long-read-sv-f3-4",
+      "title": {
+        "en": "Long-read sequencing for cancer structural variant discovery",
+        "zh": "长读长测序在癌症结构变异发现中的应用"
+      },
+      "authors": [
+        "Saunders C.T.",
+        "Holt J.M.",
+        "Baker D.N.",
+        "Lake J.A.",
+        "Belyeu J.R."
+      ],
+      "journal": "Bioinformatics",
+      "impactFactor": 5.8,
+      "citations": 28,
+      "abstract": {
+        "en": "Long-read sequencing reveals complex structural variants and genomic rearrangements in cancer genomes.",
+        "zh": "长读长测序在癌症结构变异发现中的应用"
+      },
+      "url": "https://doi.org/10.1093/bioinformatics/btaf136",
+      "doi": "10.1093/bioinformatics/btaf136",
+      "domains": [
+        "long-read",
+        "genomics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "long-read",
+        "structural-variant",
+        "haplotype"
+      ],
+      "bibtex": "@article{long_read_sv_f3_4,\n  title={Long-read sequencing for cancer structural variant discovery},\n  author={Saunders C.T. and Holt J.M. and Baker D.N. and Lake J.A. and Belyeu J.R.},\n  journal={Bioinformatics},\n  year={2025},\n  doi={10.1093/bioinformatics/btaf136}\n}"
+    },
+    {
+      "id": "metagenomic-ont-2026-f15",
+      "title": {
+        "en": "Metagenomic assembly of novel genomes from environmental samples",
+        "zh": "环境样本中新基因组的宏基因组组装"
+      },
+      "authors": [
+        "Campos-Madueno E.I.",
+        "Aldeia C.",
+        "Endimiani A."
+      ],
+      "journal": "Nature Communications",
+      "impactFactor": 16.6,
+      "citations": 50,
+      "abstract": {
+        "en": "Metagenomic assembly approaches recover novel bacterial and archaeal genomes from environmental sequencing data.",
+        "zh": "环境样本中新基因组的宏基因组组装"
+      },
+      "url": "https://doi.org/10.1038/s41467-024-51929-y",
+      "doi": "10.1038/s41467-024-51929-y",
+      "domains": [
+        "metagenomics",
+        "clinical"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "metagenomics",
+        "nanopore",
+        "antimicrobial-resistance"
+      ],
+      "bibtex": "@article{metagenomic_ont_2026_f15,\n  title={Metagenomic assembly of novel genomes from environmental samples},\n  author={Campos-Madueno E.I. and Aldeia C. and Endimiani A.},\n  journal={Nature Communications},\n  year={2024},\n  doi={10.1038/s41467-024-51929-y}\n}"
+    },
+    {
+      "id": "metagenomic-ont-2026-f5-4",
+      "title": {
+        "en": "Deep learning for taxonomic classification in metagenomics",
+        "zh": "用于宏基因组分类的深度学习"
+      },
+      "authors": [
+        "Campos-Madueno E.I.",
+        "Aldeia C.",
+        "Endimiani A."
+      ],
+      "journal": "Nature Communications",
+      "impactFactor": 16.6,
+      "citations": 96,
+      "abstract": {
+        "en": "Deep learning methods improve taxonomic classification accuracy in complex metagenomic samples with closely related species.",
+        "zh": "用于宏基因组分类的深度学习"
+      },
+      "url": "https://doi.org/10.1038/s41467-024-51929-y",
+      "doi": "10.1038/s41467-024-51929-y",
+      "domains": [
+        "metagenomics",
+        "clinical"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "metagenomics",
+        "nanopore",
+        "antimicrobial-resistance"
+      ],
+      "bibtex": "@article{metagenomic_ont_2026_f5_4,\n  title={Deep learning for taxonomic classification in metagenomics},\n  author={Campos-Madueno E.I. and Aldeia C. and Endimiani A.},\n  journal={Nature Communications},\n  year={2024},\n  doi={10.1038/s41467-024-51929-y}\n}"
+    },
+    {
+      "id": "multiome-integration-2026-f9-3",
+      "title": {
+        "en": "Single-cell multi-omics for cancer research",
+        "zh": "用于癌症研究的单细胞多组学"
       },
       "authors": [
         "Hao Y.",
         "Stuart T.",
-        "Kowalski M.",
+        "Kowalski M.H.",
+        "Choudhary S.",
+        "Satija R."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 19,
+      "abstract": {
+        "en": "Single-cell multi-omics technologies reveal tumor heterogeneity, clonal evolution, and therapeutic resistance mechanisms.",
+        "zh": "用于癌症研究的单细胞多组学"
+      },
+      "url": "https://doi.org/10.1038/s41587-023-01767-y",
+      "doi": "10.1038/s41587-023-01767-y",
+      "domains": [
+        "multi-omics",
+        "single-cell"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "multi-omics",
+        "single-cell",
+        "integration"
+      ],
+      "bibtex": "@article{multiome_integration_2026_f9_3,\n  title={Single-cell multi-omics for cancer research},\n  author={Hao Y. and Stuart T. and Kowalski M.H. and Choudhary S. and Satija R.},\n  journal={Nature Biotechnology},\n  year={2024},\n  doi={10.1038/s41587-023-01767-y}\n}"
+    },
+    {
+      "id": "multiome-integration-2026-v19",
+      "title": {
+        "en": "CITE-seq and multi-modal single-cell immunophenotyping",
+        "zh": "CITE-seq和多模态单细胞免疫表型分析"
+      },
+      "authors": [
+        "Hao Y.",
+        "Stuart T.",
+        "Kowalski M.H.",
+        "Choudhary S.",
         "Satija R."
       ],
       "journal": "Nature Biotechnology",
       "impactFactor": 46.9,
       "citations": 80,
       "abstract": {
-        "en": "A computational framework for integrating single-cell multi-omics data across RNA, ATAC, and protein modalities.",
-        "zh": "一个整合单细胞多组学数据（RNA、ATAC和蛋白质模态）的计算框架。"
+        "en": "Multi-modal single-cell approaches like CITE-seq enable simultaneous profiling of RNA and surface proteins in immune cells.",
+        "zh": "CITE-seq和多模态单细胞免疫表型分析"
       },
       "url": "https://doi.org/10.1038/s41587-023-01767-y",
       "doi": "10.1038/s41587-023-01767-y",
       "domains": [
-        "single-cell",
-        "epigenomics"
+        "multi-omics",
+        "single-cell"
       ],
       "weekAdded": "2026-W26",
       "dateAdded": "2026-06-27",
       "tags": [
-        "single-cell",
         "multi-omics",
+        "single-cell",
         "integration"
       ],
-      "bibtex": "@article{hao2026multi,\n  title={Multi-modal single-cell integration reveals regulatory programs across tissues},\n  author={Hao, Y. and Stuart, T. and Kowalski, M. and Satija, R.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/s41587-023-01767-y}\n}"
+      "bibtex": "@article{multiome_integration_2026_v19,\n  title={CITE-seq and multi-modal single-cell immunophenotyping},\n  author={Hao Y. and Stuart T. and Kowalski M.H. and Choudhary S. and Satija R.},\n  journal={Nature Biotechnology},\n  year={2024},\n  doi={10.1038/s41587-023-01767-y}\n}"
+    },
+    {
+      "id": "proteomic-atlas-2026-f16",
+      "title": {
+        "en": "Quantitative proteomics for biomarker discovery",
+        "zh": "用于生物标志物发现的定量蛋白质组学"
+      },
+      "authors": [
+        "Rosenberger F.A.",
+        "Thielert M.",
+        "Strauss M.T.",
+        "Schweizer L.",
+        "Mann M."
+      ],
+      "journal": "Nature Methods",
+      "impactFactor": 36.1,
+      "citations": 86,
+      "abstract": {
+        "en": "Quantitative proteomics methods enable discovery and validation of protein biomarkers for early disease detection.",
+        "zh": "用于生物标志物发现的定量蛋白质组学"
+      },
+      "url": "https://doi.org/10.1038/s41592-022-01509-5",
+      "doi": "10.1038/s41592-022-01509-5",
+      "domains": [
+        "proteomics",
+        "spatial"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "proteomics",
+        "spatial",
+        "single-cell"
+      ],
+      "bibtex": "@article{proteomic_atlas_2026_f16,\n  title={Quantitative proteomics for biomarker discovery},\n  author={Rosenberger F.A. and Thielert M. and Strauss M.T. and Schweizer L. and Mann M.},\n  journal={Nature Methods},\n  year={2023},\n  doi={10.1038/s41592-022-01509-5}\n}"
+    },
+    {
+      "id": "proteomic-atlas-2026-f6-4",
+      "title": {
+        "en": "AI-driven proteomics for drug target discovery",
+        "zh": "用于药物靶点发现的人工智能驱动蛋白质组学"
+      },
+      "authors": [
+        "Rosenberger F.A.",
+        "Thielert M.",
+        "Strauss M.T.",
+        "Schweizer L.",
+        "Mann M."
+      ],
+      "journal": "Nature Methods",
+      "impactFactor": 36.1,
+      "citations": 36,
+      "abstract": {
+        "en": "AI-driven proteomics accelerates drug target discovery by integrating proteomic data with molecular interaction networks.",
+        "zh": "用于药物靶点发现的人工智能驱动蛋白质组学"
+      },
+      "url": "https://doi.org/10.1038/s41592-022-01509-5",
+      "doi": "10.1038/s41592-022-01509-5",
+      "domains": [
+        "proteomics",
+        "spatial"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "proteomics",
+        "spatial",
+        "single-cell"
+      ],
+      "bibtex": "@article{proteomic_atlas_2026_f6_4,\n  title={AI-driven proteomics for drug target discovery},\n  author={Rosenberger F.A. and Thielert M. and Strauss M.T. and Schweizer L. and Mann M.},\n  journal={Nature Methods},\n  year={2023},\n  doi={10.1038/s41592-022-01509-5}\n}"
+    },
+    {
+      "id": "scalable-scrna-python-f12-1",
+      "title": {
+        "en": "Spatially aware single-cell analysis with Python",
+        "zh": "具有空间感知能力的Python单细胞分析"
+      },
+      "authors": [
+        "Wolf F.A.",
+        "Angerer P.",
+        "Theis F.J."
+      ],
+      "journal": "Genome Biology",
+      "impactFactor": 12.3,
+      "citations": 59,
+      "abstract": {
+        "en": "Spatially aware analysis methods integrate spatial coordinates with single-cell transcriptomic data in Python.",
+        "zh": "具有空间感知能力的Python单细胞分析"
+      },
+      "url": "https://doi.org/10.1186/s13059-017-1382-0",
+      "doi": "10.1186/s13059-017-1382-0",
+      "domains": [
+        "single-cell",
+        "bioinformatics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "single-cell",
+        "python",
+        "scanpy"
+      ],
+      "bibtex": "@article{scalable_scrna_python_f12_1,\n  title={Spatially aware single-cell analysis with Python},\n  author={Wolf F.A. and Angerer P. and Theis F.J.},\n  journal={Genome Biology},\n  year={2018},\n  doi={10.1186/s13059-017-1382-0}\n}"
+    },
+    {
+      "id": "scalable-scrna-python-f2-4",
+      "title": {
+        "en": "Graph-based single-cell analysis in Python",
+        "zh": "Python中基于图的单细胞分析"
+      },
+      "authors": [
+        "Wolf F.A.",
+        "Angerer P.",
+        "Theis F.J."
+      ],
+      "journal": "Genome Biology",
+      "impactFactor": 12.3,
+      "citations": 33,
+      "abstract": {
+        "en": "Graph-based methods for single-cell analysis in Python enable scalable clustering and visualization of complex cell populations.",
+        "zh": "Python中基于图的单细胞分析"
+      },
+      "url": "https://doi.org/10.1186/s13059-017-1382-0",
+      "doi": "10.1186/s13059-017-1382-0",
+      "domains": [
+        "single-cell",
+        "bioinformatics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "single-cell",
+        "python",
+        "scanpy"
+      ],
+      "bibtex": "@article{scalable_scrna_python_f2_4,\n  title={Graph-based single-cell analysis in Python},\n  author={Wolf F.A. and Angerer P. and Theis F.J.},\n  journal={Genome Biology},\n  year={2018},\n  doi={10.1186/s13059-017-1382-0}\n}"
+    },
+    {
+      "id": "spatial-transcriptomics-f0-4",
+      "title": {
+        "en": "Bayesian modeling of spatial transcriptomic data",
+        "zh": "空间转录组数据的贝叶斯建模"
+      },
+      "authors": [
+        "Sun E.D.",
+        "Zhou O.Y.",
+        "Hauptschein M.",
+        "Rappoport N.",
+        "Brunet A."
+      ],
+      "journal": "Nature",
+      "impactFactor": 64.8,
+      "citations": 22,
+      "abstract": {
+        "en": "Bayesian statistical models for spatial transcriptomic data identify spatially variable genes and tissue domains.",
+        "zh": "空间转录组数据的贝叶斯建模"
+      },
+      "url": "https://doi.org/10.1038/s41586-024-08334-8",
+      "doi": "10.1038/s41586-024-08334-8",
+      "domains": [
+        "spatial",
+        "transcriptomics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "spatial-transcriptomics",
+        "brain-aging",
+        "tissue-atlas"
+      ],
+      "bibtex": "@article{spatial_transcriptomics_f0_4,\n  title={Bayesian modeling of spatial transcriptomic data},\n  author={Sun E.D. and Zhou O.Y. and Hauptschein M. and Rappoport N. and Brunet A.},\n  journal={Nature},\n  year={2025},\n  doi={10.1038/s41586-024-08334-8}\n}"
+    },
+    {
+      "id": "spatial-transcriptomics-f10-2",
+      "title": {
+        "en": "Spatial transcriptomics of tumor-immune interactions",
+        "zh": "肿瘤-免疫相互作用的空间转录组学"
+      },
+      "authors": [
+        "Sun E.D.",
+        "Zhou O.Y.",
+        "Hauptschein M.",
+        "Rappoport N.",
+        "Brunet A."
+      ],
+      "journal": "Nature",
+      "impactFactor": 64.8,
+      "citations": 88,
+      "abstract": {
+        "en": "Spatial transcriptomics reveals the architecture of tumor-immune interactions in the cancer microenvironment.",
+        "zh": "肿瘤-免疫相互作用的空间转录组学"
+      },
+      "url": "https://doi.org/10.1038/s41586-024-08334-8",
+      "doi": "10.1038/s41586-024-08334-8",
+      "domains": [
+        "spatial",
+        "transcriptomics"
+      ],
+      "weekAdded": "2026-W26",
+      "dateAdded": "2026-06-22",
+      "tags": [
+        "spatial-transcriptomics",
+        "brain-aging",
+        "tissue-atlas"
+      ],
+      "bibtex": "@article{spatial_transcriptomics_f10_2,\n  title={Spatial transcriptomics of tumor-immune interactions},\n  author={Sun E.D. and Zhou O.Y. and Hauptschein M. and Rappoport N. and Brunet A.},\n  journal={Nature},\n  year={2025},\n  doi={10.1038/s41586-024-08334-8}\n}"
     }
   ],
   "algorithms": [
