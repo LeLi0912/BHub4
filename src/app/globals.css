@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --primary: #1E40AF;
+  --primary-light: #3B82F6;
+  --accent: #D97706;
+  --success: #059669;
+  --bg: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --fg: #1E293B;
+  --border: #E2E8F0;
+  --muted: #94A3B8;
+}
+
+[data-theme="dark"],
+.dark {
+  --primary: #60A5FA;
+  --primary-light: #93C5FD;
+  --accent: #FBBF24;
+  --success: #34D399;
+  --bg: #0F172A;
+  --bg-card: #1E293B;
+  --fg: #F1F5F9;
+  --border: #334155;
+  --muted: #64748B;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.font-heading {
+  font-family: 'Crimson Pro', serif;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.anim-in-d1 { animation: fadeInUp 0.5s ease-out both; }
+.anim-in-d2 { animation: fadeInUp 0.5s ease-out 0.1s both; }
+.anim-in-d3 { animation: fadeInUp 0.5s ease-out 0.2s both; }
+.anim-in-d4 { animation: fadeInUp 0.5s ease-out 0.3s both; }
+
+/* Table styles */
+.table-base {
+  @apply w-full text-sm;
+}
+
+.table-base th {
+  @apply px-3 py-3 text-left font-semibold text-sm border-b cursor-pointer select-none;
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.table-base td {
+  @apply px-3 py-3 border-b align-middle;
+  border-color: var(--border);
+}
+
+.table-base tbody tr {
+  @apply transition-colors duration-150;
+}
+
+.table-base tbody tr:hover {
+  background-color: color-mix(in srgb, var(--primary) 5%, transparent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }

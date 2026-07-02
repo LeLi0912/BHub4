@@ -1,0 +1,100 @@
+{
+  "weeks": [
+    {
+      "week": "2026-W27",
+      "label": { "en": "Week 27, 2026", "zh": "2026 年第 27 周" },
+      "dateRange": { "start": "2026-06-29", "end": "2026-07-05" },
+      "stats": {
+        "tools": 12,
+        "papers": 28,
+        "algorithms": 6,
+        "hotTopic": { "en": "Single Cell", "zh": "单细胞" },
+        "hotTopicCount": 12
+      }
+    },
+    {
+      "week": "2026-W26",
+      "label": { "en": "Week 26, 2026", "zh": "2026 年第 26 周" },
+      "dateRange": { "start": "2026-06-22", "end": "2026-06-28" },
+      "stats": {
+        "tools": 9,
+        "papers": 20,
+        "algorithms": 5,
+        "hotTopic": { "en": "Transcriptomics", "zh": "转录组学" },
+        "hotTopicCount": 8
+      }
+    },
+    {
+      "week": "2026-W25",
+      "label": { "en": "Week 25, 2026", "zh": "2026 年第 25 周" },
+      "dateRange": { "start": "2026-06-15", "end": "2026-06-21" },
+      "stats": {
+        "tools": 7,
+        "papers": 17,
+        "algorithms": 4,
+        "hotTopic": { "en": "Genomics", "zh": "基因组学" },
+        "hotTopicCount": 10
+      }
+    },
+    {
+      "week": "2026-W24",
+      "label": { "en": "Week 24, 2026", "zh": "2026 年第 24 周" },
+      "dateRange": { "start": "2026-06-08", "end": "2026-06-14" },
+      "stats": {
+        "tools": 8,
+        "papers": 15,
+        "algorithms": 3,
+        "hotTopic": { "en": "Single Cell", "zh": "单细胞" },
+        "hotTopicCount": 7
+      }
+    },
+    {
+      "week": "2026-W23",
+      "label": { "en": "Week 23, 2026", "zh": "2026 年第 23 周" },
+      "dateRange": { "start": "2026-06-01", "end": "2026-06-07" },
+      "stats": {
+        "tools": 6,
+        "papers": 14,
+        "algorithms": 4,
+        "hotTopic": { "en": "Epigenomics", "zh": "表观基因组学" },
+        "hotTopicCount": 6
+      }
+    },
+    {
+      "week": "2026-W22",
+      "label": { "en": "Week 22, 2026", "zh": "2026 年第 22 周" },
+      "dateRange": { "start": "2026-05-25", "end": "2026-05-31" },
+      "stats": {
+        "tools": 5,
+        "papers": 12,
+        "algorithms": 2,
+        "hotTopic": { "en": "Genomics", "zh": "基因组学" },
+        "hotTopicCount": 5
+      }
+    },
+    {
+      "week": "2026-W21",
+      "label": { "en": "Week 21, 2026", "zh": "2026 年第 21 周" },
+      "dateRange": { "start": "2026-05-18", "end": "2026-05-24" },
+      "stats": {
+        "tools": 6,
+        "papers": 10,
+        "algorithms": 3,
+        "hotTopic": { "en": "Transcriptomics", "zh": "转录组学" },
+        "hotTopicCount": 5
+      }
+    },
+    {
+      "week": "2026-W20",
+      "label": { "en": "Week 20, 2026", "zh": "2026 年第 20 周" },
+      "dateRange": { "start": "2026-05-11", "end": "2026-05-17" },
+      "stats": {
+        "tools": 4,
+        "papers": 8,
+        "algorithms": 2,
+        "hotTopic": { "en": "Single Cell", "zh": "单细胞" },
+        "hotTopicCount": 4
+      }
+    }
+  ]
+}

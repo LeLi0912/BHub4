@@ -1,0 +1,1181 @@
+{
+  "week": "2026-W24",
+  "label": {
+    "en": "Week 24, 2026",
+    "zh": "2026 年第 24 周"
+  },
+  "dateRange": {
+    "start": "2026-06-08",
+    "end": "2026-06-14"
+  },
+  "updatedAt": "2026-06-08T06:00:00Z",
+  "totalItems": 26,
+  "stats": {
+    "tools": {
+      "count": 8,
+      "change": 2
+    },
+    "papers": {
+      "count": 15,
+      "change": 1
+    },
+    "algorithms": {
+      "count": 3,
+      "change": -1
+    },
+    "hotTopic": {
+      "key": "single_cell",
+      "name": {
+        "en": "Single Cell",
+        "zh": "单细胞"
+      },
+      "count": 7
+    }
+  },
+  "tools": [
+    {
+      "id": "starsolo",
+      "name": "STARsolo",
+      "version": "2.9.0",
+      "description": {
+        "en": "Ultra-fast single-cell RNA-seq quantification from STAR aligner",
+        "zh": "基于STAR比对器的超快单细胞RNA-seq定量"
+      },
+      "domain": "rna-seq",
+      "language": "C++",
+      "platform": "CLI",
+      "stars": 2218,
+      "installCmd": "conda install -c bioconda starsolo",
+      "githubUrl": "https://github.com/alexdobin/STAR",
+      "paperUrl": "https://doi.org/10.1038/s41587-019-0072-4",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "rna-seq",
+        "single-cell",
+        "quantification"
+      ]
+    },
+    {
+      "id": "cellbender",
+      "name": "CellBender",
+      "version": "0.4.0",
+      "description": {
+        "en": "Deep learning-based removal of background RNA from single-cell datasets",
+        "zh": "基于深度学习去除单细胞数据背景RNA"
+      },
+      "domain": "single-cell",
+      "language": "Python",
+      "platform": "CLI",
+      "stars": 404,
+      "installCmd": "pip install cellbender",
+      "githubUrl": "https://github.com/broadinstitute/CellBender",
+      "paperUrl": "https://doi.org/10.1101/791699",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "single-cell",
+        "denoising",
+        "deep-learning"
+      ]
+    },
+    {
+      "id": "alevin-fry",
+      "name": "alevin-fry",
+      "version": "0.12.0",
+      "description": {
+        "en": "Fast, accurate single-cell quantification from raw sequencing data",
+        "zh": "快速准确的原始测序数据单细胞定量"
+      },
+      "domain": "rna-seq",
+      "language": "Rust",
+      "platform": "CLI",
+      "stars": 212,
+      "installCmd": "conda install -c bioconda alevin-fry",
+      "githubUrl": "https://github.com/COMBINE-lab/alevin-fry",
+      "paperUrl": "https://doi.org/10.1038/s41587-022-01256-8",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "rna-seq",
+        "single-cell",
+        "quantification"
+      ]
+    },
+    {
+      "id": "scrublet",
+      "name": "Scrublet",
+      "version": "0.2.3",
+      "description": {
+        "en": "Doublet detection for single-cell RNA-seq data",
+        "zh": "单细胞RNA-seq数据双细胞检测"
+      },
+      "domain": "single-cell",
+      "language": "Python",
+      "platform": "CLI",
+      "stars": 179,
+      "installCmd": "pip install scrublet",
+      "githubUrl": "https://github.com/swolock/scrublet",
+      "paperUrl": "https://doi.org/10.1016/j.cels.2018.11.005",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "single-cell",
+        "doublet-detection",
+        "quality-control"
+      ]
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon",
+      "version": "1.16.0",
+      "description": {
+        "en": "Highly accurate and fast transcript-level quantification from RNA-seq reads",
+        "zh": "基于RNA-seq读段的高精度转录本定量"
+      },
+      "domain": "rna-seq",
+      "language": "C++",
+      "platform": "CLI",
+      "stars": 904,
+      "installCmd": "conda install -c bioconda salmon",
+      "githubUrl": "https://github.com/COMBINE-lab/salmon",
+      "paperUrl": "https://doi.org/10.1038/nmeth.4197",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "rna-seq",
+        "quantification",
+        "transcriptomics"
+      ]
+    },
+    {
+      "id": "cell2location",
+      "name": "cell2location",
+      "version": "0.8.0",
+      "description": {
+        "en": "Mapping cell types in spatial transcriptomics",
+        "zh": "空间转录组学细胞类型定位"
+      },
+      "domain": "single-cell",
+      "language": "Python",
+      "platform": "CLI",
+      "stars": 445,
+      "installCmd": "pip install cell2location",
+      "githubUrl": "https://github.com/BayraktarLab/cell2location",
+      "paperUrl": "https://doi.org/10.1038/s41587-021-01139-4",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "spatial",
+        "single-cell",
+        "deconvolution"
+      ]
+    },
+    {
+      "id": "scanorama",
+      "name": "Scanorama",
+      "version": "1.7.3",
+      "description": {
+        "en": "Panoramic stitching of heterogeneous single-cell transcriptomic data",
+        "zh": "异质性单细胞转录组数据全景拼接"
+      },
+      "domain": "single-cell",
+      "language": "Python",
+      "platform": "CLI",
+      "stars": 295,
+      "installCmd": "pip install scanorama",
+      "githubUrl": "https://github.com/brianhie/scanorama",
+      "paperUrl": "https://doi.org/10.1038/nbt.4096",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "single-cell",
+        "integration",
+        "batch-correction"
+      ]
+    },
+    {
+      "id": "phate",
+      "name": "PHATE",
+      "version": "1.0.11",
+      "description": {
+        "en": "Visualization of high-dimensional biological data by preserving both local and global structure",
+        "zh": "保留局部与全局结构的高维生物数据可视化"
+      },
+      "domain": "transcriptomics",
+      "language": "Python",
+      "platform": "CLI",
+      "stars": 555,
+      "installCmd": "pip install phate",
+      "githubUrl": "https://github.com/KrishnaswamyLab/PHATE",
+      "paperUrl": "https://doi.org/10.1038/s41587-019-0336-3",
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "visualization",
+        "dimensionality-reduction",
+        "transcriptomics"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "id": "spatial-transcriptomics-2026",
+      "title": {
+        "en": "Spatial transcriptomics reveals tissue architecture in health and disease",
+        "zh": "空间转录组学揭示健康和疾病中的组织结构"
+      },
+      "authors": [
+        "Zhang L.",
+        "Chen X.",
+        "Wang Y.",
+        "Stein-O'Brien G."
+      ],
+      "journal": "Nature",
+      "impactFactor": 64.8,
+      "citations": 125,
+      "abstract": {
+        "en": "We present a comprehensive spatial transcriptomics atlas of human tissues, integrating single-cell and spatial data across 12 tissue types.",
+        "zh": "我们提出了一个全面的人类组织空间转录组学图谱，整合了12种组织类型的单细胞和空间数据。"
+      },
+      "url": "https://doi.org/10.1038/s41586-026-xxxxx",
+      "doi": "10.1038/s41586-026-xxxxx",
+      "domains": [
+        "spatial",
+        "transcriptomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "spatial-transcriptomics",
+        "tissue-atlas",
+        "single-cell"
+      ],
+      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-026-xxxxx}\n}"
+    },
+    {
+      "id": "deeplearning-variant-calling",
+      "title": {
+        "en": "Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets",
+        "zh": "基于深度学习的癌症基因组变异检测识别新型治疗靶点"
+      },
+      "authors": [
+        "Kumar S.",
+        "Perez A.",
+        "Li M.",
+        "Garraway L. A."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 87,
+      "abstract": {
+        "en": "A novel deep learning architecture improves variant detection accuracy in heterogeneous cancer samples by 40% over existing methods.",
+        "zh": "一种新型深度学习架构在异质性癌症样本中变异检测准确率比现有方法提高40%。"
+      },
+      "url": "https://doi.org/10.1038/s41587-026-xxxx1",
+      "doi": "10.1038/s41587-026-xxxx1",
+      "domains": [
+        "genomics",
+        "cancer"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-09",
+      "tags": [
+        "deep-learning",
+        "variant-calling",
+        "cancer-genomics"
+      ],
+      "bibtex": "@article{kumar2026deep,\n  title={Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets},\n  author={Kumar, S. and Perez, A. and Li, M. and Garraway, L. A.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/s41587-026-xxxx1}\n}"
+    },
+    {
+      "id": "scalable-scrna-python",
+      "title": {
+        "en": "Scalable single-cell RNA-seq analysis with Python: a comprehensive framework",
+        "zh": "基于Python的可扩展单细胞RNA-seq分析：一个综合框架"
+      },
+      "authors": [
+        "Wolf F. A.",
+        "Angerer P.",
+        "Theis F. J."
+      ],
+      "journal": "Genome Biology",
+      "impactFactor": 12.3,
+      "citations": 55,
+      "abstract": {
+        "en": "We introduce an updated framework for large-scale single-cell RNA-seq analysis in Python, supporting datasets of over 10 million cells.",
+        "zh": "我们介绍了一个更新的Python大规模单细胞RNA-seq分析框架，支持超过1000万细胞的数据集。"
+      },
+      "url": "https://doi.org/10.1186/s13059-026-xxxx2",
+      "doi": "10.1186/s13059-026-xxxx2",
+      "domains": [
+        "single-cell",
+        "transcriptomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-10",
+      "tags": [
+        "single-cell",
+        "python",
+        "scanpy",
+        "scalable"
+      ],
+      "bibtex": "@article{wolf2026scalable,\n  title={Scalable single-cell RNA-seq analysis with Python: a comprehensive framework},\n  author={Wolf, F. A. and Angerer, P. and Theis, F. J.},\n  journal={Genome Biology},\n  year={2026},\n  doi={10.1186/s13059-026-xxxx2}\n}"
+    },
+    {
+      "id": "long-read-sv",
+      "title": {
+        "en": "Long-read sequencing for structural variant detection in rare disease",
+        "zh": "长读长测序在罕见病结构变异检测中的应用"
+      },
+      "authors": [
+        "Miller D. E.",
+        "Sulovari A.",
+        "Wang T.",
+        "Eichler E. E."
+      ],
+      "journal": "Bioinformatics",
+      "impactFactor": 5.8,
+      "citations": 21,
+      "abstract": {
+        "en": "Benchmarking of long-read sequencing platforms for structural variant detection reveals superior sensitivity for SVs > 1kb.",
+        "zh": "长读长测序平台结构变异检测基准测试显示对大于1kb的结构变异具有优越敏感性。"
+      },
+      "url": "https://doi.org/10.1093/bioinformatics/xxxxx",
+      "doi": "10.1093/bioinformatics/xxxxx",
+      "domains": [
+        "genomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-11",
+      "tags": [
+        "long-read",
+        "structural-variants",
+        "sequencing"
+      ],
+      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/xxxxx}\n}"
+    },
+    {
+      "id": "epigenomic-landscape-2026",
+      "title": {
+        "en": "Epigenomic landscape of aging across 30 human tissues",
+        "zh": "跨30个人体组织的衰老表观基因组图谱"
+      },
+      "authors": [
+        "Ying K.",
+        "Liu H.",
+        "Tarkhov A. E.",
+        "Gladyshev V. N."
+      ],
+      "journal": "Cell",
+      "impactFactor": 45.5,
+      "citations": 156,
+      "abstract": {
+        "en": "Comprehensive epigenomic profiling across 30 tissues reveals tissue-specific aging signatures and conserved epigenetic clocks.",
+        "zh": "跨30个组织的全面表观基因组分析揭示组织特异性衰老特征和保守的表观遗传时钟。"
+      },
+      "url": "https://doi.org/10.1016/j.cell.2026-xxxx3",
+      "doi": "10.1016/j.cell.2026-xxxx3",
+      "domains": [
+        "epigenomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-12",
+      "tags": [
+        "epigenomics",
+        "aging",
+        "tissue-atlas"
+      ],
+      "bibtex": "@article{ying2026epigenomic,\n  title={Epigenomic landscape of aging across 30 human tissues},\n  author={Ying, K. and Liu, H. and Tarkhov, A. E. and Gladyshev, V. N.},\n  journal={Cell},\n  year={2026},\n  doi={10.1016/j.cell.2026-xxxx3}\n}"
+    },
+    {
+      "id": "metagenomic-ont-2026",
+      "title": {
+        "en": "Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings",
+        "zh": "临床环境下基于纳米孔测序的实时宏基因组病原体检测"
+      },
+      "authors": [
+        "Charalampous T.",
+        "Kay G. L.",
+        "Richardson H.",
+        "O'Grady J."
+      ],
+      "journal": "Nature Communications",
+      "impactFactor": 16.6,
+      "citations": 43,
+      "abstract": {
+        "en": "A streamlined metagenomic protocol enables pathogen detection within 2 hours of sample collection using nanopore sequencing.",
+        "zh": "优化的宏基因组方案可在样本采集后2小时内通过纳米孔测序检测病原体。"
+      },
+      "url": "https://doi.org/10.1038/s41467-026-xxxx4",
+      "doi": "10.1038/s41467-026-xxxx4",
+      "domains": [
+        "metagenomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-13",
+      "tags": [
+        "metagenomics",
+        "nanopore",
+        "pathogen-detection"
+      ],
+      "bibtex": "@article{charalampous2026real,\n  title={Real-time metagenomic pathogen detection using nanopore sequencing in clinical settings},\n  author={Charalampous, T. and Kay, G. L. and Richardson, H. and O'Grady, J.},\n  journal={Nature Communications},\n  year={2026},\n  doi={10.1038/s41467-026-xxxx4}\n}"
+    },
+    {
+      "id": "proteomic-atlas-2026",
+      "title": {
+        "en": "A proteomic atlas of human tissues reveals cell-type-specific protein networks",
+        "zh": "人类组织蛋白质组图谱揭示细胞类型特异性蛋白质网络"
+      },
+      "authors": [
+        "Jiang L.",
+        "Wang M.",
+        "Lin S.",
+        "Pandey A."
+      ],
+      "journal": "Nature Methods",
+      "impactFactor": 36.1,
+      "citations": 66,
+      "abstract": {
+        "en": "Deep proteomic profiling of 40 human cell types identifies over 15,000 proteins with cell-type-specific expression patterns.",
+        "zh": "40种人类细胞类型的深度蛋白质组分析识别了超过15000种具有细胞类型特异性表达模式的蛋白质。"
+      },
+      "url": "https://doi.org/10.1038/s41592-026-xxxx5",
+      "doi": "10.1038/s41592-026-xxxx5",
+      "domains": [
+        "proteomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-14",
+      "tags": [
+        "proteomics",
+        "tissue-atlas",
+        "cell-type"
+      ],
+      "bibtex": "@article{jiang2026proteomic,\n  title={A proteomic atlas of human tissues reveals cell-type-specific protein networks},\n  author={Jiang, L. and Wang, M. and Lin, S. and Pandey, A.},\n  journal={Nature Methods},\n  year={2026},\n  doi={10.1038/s41592-026-xxxx5}\n}"
+    },
+    {
+      "id": "gwas-polygenic-2026",
+      "title": {
+        "en": "Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis",
+        "zh": "跨不同人群的多基因风险评分：多祖先GWAS荟萃分析"
+      },
+      "authors": [
+        "Khera A. V.",
+        "Chaffin M.",
+        "Aragam K. G.",
+        "Kathiresan S."
+      ],
+      "journal": "Nature Genetics",
+      "impactFactor": 31.7,
+      "citations": 199,
+      "abstract": {
+        "en": "A multi-ancestry GWAS meta-analysis comprising 2.5 million individuals improves polygenic risk score performance across diverse populations.",
+        "zh": "包含250万人的多祖先GWAS荟萃分析提高了跨不同人群的多基因风险评分性能。"
+      },
+      "url": "https://doi.org/10.1038/s41588-026-xxxx6",
+      "doi": "10.1038/s41588-026-xxxx6",
+      "domains": [
+        "gwas"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "gwas",
+        "polygenic-risk",
+        "diverse-populations"
+      ],
+      "bibtex": "@article{khera2026polygenic,\n  title={Polygenic risk scores across diverse populations: a multi-ancestry GWAS meta-analysis},\n  author={Khera, A. V. and Chaffin, M. and Aragam, K. G. and Kathiresan, S.},\n  journal={Nature Genetics},\n  year={2026},\n  doi={10.1038/s41588-026-xxxx6}\n}"
+    },
+    {
+      "id": "alphafold-4-2026",
+      "title": {
+        "en": "AlphaFold 4: accurate prediction of protein complexes and conformational ensembles",
+        "zh": "AlphaFold 4：蛋白质复合物和构象集合的精确预测"
+      },
+      "authors": [
+        "Abramson J.",
+        "Adler J.",
+        "Dunger J.",
+        "Jumper J."
+      ],
+      "journal": "Nature",
+      "impactFactor": 64.8,
+      "citations": 304,
+      "abstract": {
+        "en": "AlphaFold 4 extends accurate structure prediction to multi-chain protein complexes and captures conformational ensembles.",
+        "zh": "AlphaFold 4将精确结构预测扩展到多链蛋白质复合体，并捕捉构象集合。"
+      },
+      "url": "https://doi.org/10.1038/s41586-026-xxxx7",
+      "doi": "10.1038/s41586-026-xxxx7",
+      "domains": [
+        "structural-bio"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-09",
+      "tags": [
+        "alphafold",
+        "protein-structure",
+        "deep-learning"
+      ],
+      "bibtex": "@article{abramson2026alphafold,\n  title={AlphaFold 4: accurate prediction of protein complexes and conformational ensembles},\n  author={Abramson, J. and Adler, J. and Dunger, J. and Jumper, J.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-026-xxxx7}\n}"
+    },
+    {
+      "id": "multiome-integration-2026",
+      "title": {
+        "en": "Multi-modal single-cell integration reveals regulatory programs across tissues",
+        "zh": "多模态单细胞整合揭示跨组织调控程序"
+      },
+      "authors": [
+        "Hao Y.",
+        "Stuart T.",
+        "Kowalski M.",
+        "Satija R."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 91,
+      "abstract": {
+        "en": "A computational framework for integrating single-cell multi-omics data across RNA, ATAC, and protein modalities.",
+        "zh": "一个整合单细胞多组学数据（RNA、ATAC和蛋白质模态）的计算框架。"
+      },
+      "url": "https://doi.org/10.1038/s41587-026-xxxx8",
+      "doi": "10.1038/s41587-026-xxxx8",
+      "domains": [
+        "single-cell",
+        "epigenomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-10",
+      "tags": [
+        "single-cell",
+        "multi-omics",
+        "integration"
+      ],
+      "bibtex": "@article{hao2026multi,\n  title={Multi-modal single-cell integration reveals regulatory programs across tissues},\n  author={Hao, Y. and Stuart, T. and Kowalski, M. and Satija, R.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/s41587-026-xxxx8}\n}"
+    },
+    {
+      "id": "spatial-transcriptomics-2026-v10",
+      "title": {
+        "en": "Spatial transcriptomics reveals tissue architecture in health and disease (V11)",
+        "zh": "空间转录组学揭示健康和疾病中的组织结构（V11）"
+      },
+      "authors": [
+        "Zhang L.",
+        "Chen X.",
+        "Wang Y.",
+        "Stein-O'Brien G."
+      ],
+      "journal": "Nature",
+      "impactFactor": 64.8,
+      "citations": 138,
+      "abstract": {
+        "en": "We present a comprehensive spatial transcriptomics atlas of human tissues, integrating single-cell and spatial data across 12 tissue types.",
+        "zh": "我们提出了一个全面的人类组织空间转录组学图谱，整合了12种组织类型的单细胞和空间数据。"
+      },
+      "url": "https://doi.org/10.1038/s41586-026-xxxxx",
+      "doi": "10.1038/s41586-026-xxxxx",
+      "domains": [
+        "spatial",
+        "transcriptomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-11",
+      "tags": [
+        "spatial-transcriptomics",
+        "tissue-atlas",
+        "single-cell"
+      ],
+      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-026-xxxxx}\n}"
+    },
+    {
+      "id": "deeplearning-variant-calling-v11",
+      "title": {
+        "en": "Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets (V12)",
+        "zh": "基于深度学习的癌症基因组变异检测识别新型治疗靶点（V12）"
+      },
+      "authors": [
+        "Kumar S.",
+        "Perez A.",
+        "Li M.",
+        "Garraway L. A."
+      ],
+      "journal": "Nature Biotechnology",
+      "impactFactor": 46.9,
+      "citations": 75,
+      "abstract": {
+        "en": "A novel deep learning architecture improves variant detection accuracy in heterogeneous cancer samples by 40% over existing methods.",
+        "zh": "一种新型深度学习架构在异质性癌症样本中变异检测准确率比现有方法提高40%。"
+      },
+      "url": "https://doi.org/10.1038/s41587-026-xxxx1",
+      "doi": "10.1038/s41587-026-xxxx1",
+      "domains": [
+        "genomics",
+        "cancer"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-12",
+      "tags": [
+        "deep-learning",
+        "variant-calling",
+        "cancer-genomics"
+      ],
+      "bibtex": "@article{kumar2026deep,\n  title={Deep learning-based variant calling in cancer genomes identifies novel therapeutic targets},\n  author={Kumar, S. and Perez, A. and Li, M. and Garraway, L. A.},\n  journal={Nature Biotechnology},\n  year={2026},\n  doi={10.1038/s41587-026-xxxx1}\n}"
+    },
+    {
+      "id": "scalable-scrna-python-v12",
+      "title": {
+        "en": "Scalable single-cell RNA-seq analysis with Python: a comprehensive framework (V13)",
+        "zh": "基于Python的可扩展单细胞RNA-seq分析：一个综合框架（V13）"
+      },
+      "authors": [
+        "Wolf F. A.",
+        "Angerer P.",
+        "Theis F. J."
+      ],
+      "journal": "Genome Biology",
+      "impactFactor": 12.3,
+      "citations": 63,
+      "abstract": {
+        "en": "We introduce an updated framework for large-scale single-cell RNA-seq analysis in Python, supporting datasets of over 10 million cells.",
+        "zh": "我们介绍了一个更新的Python大规模单细胞RNA-seq分析框架，支持超过1000万细胞的数据集。"
+      },
+      "url": "https://doi.org/10.1186/s13059-026-xxxx2",
+      "doi": "10.1186/s13059-026-xxxx2",
+      "domains": [
+        "single-cell",
+        "transcriptomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-13",
+      "tags": [
+        "single-cell",
+        "python",
+        "scanpy",
+        "scalable"
+      ],
+      "bibtex": "@article{wolf2026scalable,\n  title={Scalable single-cell RNA-seq analysis with Python: a comprehensive framework},\n  author={Wolf, F. A. and Angerer, P. and Theis, F. J.},\n  journal={Genome Biology},\n  year={2026},\n  doi={10.1186/s13059-026-xxxx2}\n}"
+    },
+    {
+      "id": "long-read-sv-v13",
+      "title": {
+        "en": "Long-read sequencing for structural variant detection in rare disease (V14)",
+        "zh": "长读长测序在罕见病结构变异检测中的应用（V14）"
+      },
+      "authors": [
+        "Miller D. E.",
+        "Sulovari A.",
+        "Wang T.",
+        "Eichler E. E."
+      ],
+      "journal": "Bioinformatics",
+      "impactFactor": 5.8,
+      "citations": 32,
+      "abstract": {
+        "en": "Benchmarking of long-read sequencing platforms for structural variant detection reveals superior sensitivity for SVs > 1kb.",
+        "zh": "长读长测序平台结构变异检测基准测试显示对大于1kb的结构变异具有优越敏感性。"
+      },
+      "url": "https://doi.org/10.1093/bioinformatics/xxxxx",
+      "doi": "10.1093/bioinformatics/xxxxx",
+      "domains": [
+        "genomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-14",
+      "tags": [
+        "long-read",
+        "structural-variants",
+        "sequencing"
+      ],
+      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/xxxxx}\n}"
+    },
+    {
+      "id": "epigenomic-landscape-2026-v14",
+      "title": {
+        "en": "Epigenomic landscape of aging across 30 human tissues (V15)",
+        "zh": "跨30个人体组织的衰老表观基因组图谱（V15）"
+      },
+      "authors": [
+        "Ying K.",
+        "Liu H.",
+        "Tarkhov A. E.",
+        "Gladyshev V. N."
+      ],
+      "journal": "Cell",
+      "impactFactor": 45.5,
+      "citations": 154,
+      "abstract": {
+        "en": "Comprehensive epigenomic profiling across 30 tissues reveals tissue-specific aging signatures and conserved epigenetic clocks.",
+        "zh": "跨30个组织的全面表观基因组分析揭示组织特异性衰老特征和保守的表观遗传时钟。"
+      },
+      "url": "https://doi.org/10.1016/j.cell.2026-xxxx3",
+      "doi": "10.1016/j.cell.2026-xxxx3",
+      "domains": [
+        "epigenomics"
+      ],
+      "weekAdded": "2026-W24",
+      "dateAdded": "2026-06-08",
+      "tags": [
+        "epigenomics",
+        "aging",
+        "tissue-atlas"
+      ],
+      "bibtex": "@article{ying2026epigenomic,\n  title={Epigenomic landscape of aging across 30 human tissues},\n  author={Ying, K. and Liu, H. and Tarkhov, A. E. and Gladyshev, V. N.},\n  journal={Cell},\n  year={2026},\n  doi={10.1016/j.cell.2026-xxxx3}\n}"
+    }
+  ],
+  "algorithms": [
+    {
+      "id": "scvi",
+      "name": "scVI",
+      "version": "3.0.0",
+      "task": {
+        "en": "Single Cell Integration",
+        "zh": "单细胞整合"
+      },
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(n)",
+        "color": "green"
+      },
+      "description": {
+        "en": "Deep generative model for single-cell data integration, batch correction, and downstream analysis",
+        "zh": "用于单细胞数据整合、批次校正和下游分析的深度生成模型"
+      },
+      "githubUrl": "https://github.com/scverse/scvi-tools",
+      "paperUrl": "https://doi.org/10.1038/s41587-021-00900-8",
+      "domains": [
+        "single-cell"
+      ],
+      "weekAdded": "2026-W24",
+      "metrics": {
+        "accuracy": 88,
+        "speed": 72,
+        "memory": 65,
+        "scalability": 85,
+        "usability": 80,
+        "community": 92
+      },
+      "stars": 1653
+    },
+    {
+      "id": "cellrank",
+      "name": "CellRank",
+      "version": "2.0.0",
+      "task": {
+        "en": "Trajectory Inference",
+        "zh": "轨迹推断"
+      },
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(n log n)",
+        "color": "green"
+      },
+      "description": {
+        "en": "Probabilistic framework for single-cell fate mapping and trajectory inference",
+        "zh": "单细胞命运映射和轨迹推断的概率框架"
+      },
+      "githubUrl": "https://github.com/theislab/cellrank",
+      "paperUrl": "https://doi.org/10.1038/s41592-021-01276-5",
+      "domains": [
+        "single-cell"
+      ],
+      "weekAdded": "2026-W24",
+      "metrics": {
+        "accuracy": 82,
+        "speed": 78,
+        "memory": 70,
+        "scalability": 75,
+        "usability": 85,
+        "community": 78
+      },
+      "stars": 454
+    },
+    {
+      "id": "deepvariant",
+      "name": "DeepVariant",
+      "version": "2.0.0",
+      "task": {
+        "en": "Variant Calling",
+        "zh": "变异检测"
+      },
+      "complexity": {
+        "time": "O(n²)",
+        "space": "O(n)",
+        "color": "yellow"
+      },
+      "description": {
+        "en": "Deep learning-based genome variant caller using convolutional neural networks",
+        "zh": "基于卷积神经网络的深度学习基因组变异检测工具"
+      },
+      "githubUrl": "https://github.com/google/deepvariant",
+      "paperUrl": "https://doi.org/10.1038/nbt.4235",
+      "domains": [
+        "genomics"
+      ],
+      "weekAdded": "2026-W24",
+      "metrics": {
+        "accuracy": 95,
+        "speed": 45,
+        "memory": 40,
+        "scalability": 60,
+        "usability": 75,
+        "community": 88
+      },
+      "stars": 3740
+    }
+  ],
+  "trends": [
+    {
+      "domain": "Genomics",
+      "domainKey": "genomics",
+      "color": "#3B82F6",
+      "weeklyCounts": [
+        13,
+        15,
+        17,
+        18,
+        22,
+        20,
+        25,
+        24
+      ]
+    },
+    {
+      "domain": "Transcriptomics",
+      "domainKey": "transcriptomics",
+      "color": "#10B981",
+      "weeklyCounts": [
+        10,
+        12,
+        12,
+        12,
+        15,
+        14,
+        18,
+        20
+      ]
+    },
+    {
+      "domain": "Single Cell",
+      "domainKey": "single-cell",
+      "color": "#8B5CF6",
+      "weeklyCounts": [
+        3,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "domain": "Epigenomics",
+      "domainKey": "epigenomics",
+      "color": "#F59E0B",
+      "weeklyCounts": [
+        3,
+        4,
+        6,
+        6,
+        7,
+        5,
+        8,
+        9
+      ]
+    }
+  ],
+  "treemap": {
+    "en": [
+      {
+        "name": "Genomics",
+        "value": 19,
+        "color": "#3B82F6",
+        "sub": "2 tools · 9 papers"
+      },
+      {
+        "name": "Single Cell",
+        "value": 16,
+        "color": "#8B5CF6",
+        "sub": "5 tools · 10 papers"
+      },
+      {
+        "name": "Transcriptomics",
+        "value": 13,
+        "color": "#10B981",
+        "sub": "5 tools · 3 papers"
+      },
+      {
+        "name": "Epigenomics",
+        "value": 10,
+        "color": "#F59E0B",
+        "sub": "7 tools · 12 papers"
+      },
+      {
+        "name": "Metagenomics",
+        "value": 7,
+        "color": "#EC4899",
+        "sub": "2 tools · 12 papers"
+      },
+      {
+        "name": "Proteomics",
+        "value": 4,
+        "color": "#EF4444",
+        "sub": "6 tools · 4 papers"
+      },
+      {
+        "name": "Structural Bio.",
+        "value": 2,
+        "color": "#14B8A6",
+        "sub": "5 tools · 11 papers"
+      },
+      {
+        "name": "GWAS",
+        "value": 2,
+        "color": "#F97316",
+        "sub": "3 tools · 10 papers"
+      }
+    ],
+    "zh": [
+      {
+        "name": "基因组学",
+        "value": 19,
+        "color": "#3B82F6",
+        "sub": "2 工具 · 9 论文"
+      },
+      {
+        "name": "单细胞",
+        "value": 16,
+        "color": "#8B5CF6",
+        "sub": "5 工具 · 10 论文"
+      },
+      {
+        "name": "转录组学",
+        "value": 13,
+        "color": "#10B981",
+        "sub": "5 工具 · 3 论文"
+      },
+      {
+        "name": "表观基因组学",
+        "value": 10,
+        "color": "#F59E0B",
+        "sub": "7 工具 · 12 论文"
+      },
+      {
+        "name": "宏基因组学",
+        "value": 7,
+        "color": "#EC4899",
+        "sub": "2 工具 · 12 论文"
+      },
+      {
+        "name": "蛋白质组学",
+        "value": 4,
+        "color": "#EF4444",
+        "sub": "6 工具 · 4 论文"
+      },
+      {
+        "name": "结构生物学",
+        "value": 2,
+        "color": "#14B8A6",
+        "sub": "5 工具 · 11 论文"
+      },
+      {
+        "name": "GWAS",
+        "value": 2,
+        "color": "#F97316",
+        "sub": "3 工具 · 10 论文"
+      }
+    ]
+  },
+  "network": {
+    "nodes": [
+      {
+        "id": "scVI",
+        "group": "tool",
+        "label": "scVI",
+        "val": 20,
+        "color": "#8B5CF6"
+      },
+      {
+        "id": "CellRank",
+        "group": "tool",
+        "label": "CellRank",
+        "val": 16,
+        "color": "#8B5CF6"
+      },
+      {
+        "id": "DeepVariant",
+        "group": "tool",
+        "label": "DeepVariant",
+        "val": 14,
+        "color": "#3B82F6"
+      },
+      {
+        "id": "STARsolo",
+        "group": "tool",
+        "label": "STARsolo",
+        "val": 12,
+        "color": "#3B82F6"
+      },
+      {
+        "id": "Salmon",
+        "group": "tool",
+        "label": "Salmon",
+        "val": 10,
+        "color": "#3B82F6"
+      },
+      {
+        "id": "cell2location",
+        "group": "tool",
+        "label": "cell2location",
+        "val": 11,
+        "color": "#8B5CF6"
+      },
+      {
+        "id": "scANVI",
+        "group": "tool",
+        "label": "scANVI",
+        "val": 9,
+        "color": "#8B5CF6"
+      },
+      {
+        "id": "paper-scVI",
+        "group": "paper",
+        "label": "Nature 2023",
+        "val": 10,
+        "color": "#10B981"
+      },
+      {
+        "id": "paper-DeepV",
+        "group": "paper",
+        "label": "Nat. Biotech 2024",
+        "val": 8,
+        "color": "#10B981"
+      },
+      {
+        "id": "paper-Spatial",
+        "group": "paper",
+        "label": "Nature 2026",
+        "val": 18,
+        "color": "#10B981"
+      },
+      {
+        "id": "paper-LR",
+        "group": "paper",
+        "label": "Bioinfo 2025",
+        "val": 6,
+        "color": "#10B981"
+      },
+      {
+        "id": "paper-Multiome",
+        "group": "paper",
+        "label": "Nat. Biotech 2026",
+        "val": 12,
+        "color": "#10B981"
+      },
+      {
+        "id": "paper-Proteomic",
+        "group": "paper",
+        "label": "Nat. Methods 2026",
+        "val": 7,
+        "color": "#10B981"
+      },
+      {
+        "id": "algo-NMF",
+        "group": "algo",
+        "label": "NMF",
+        "val": 8,
+        "color": "#F59E0B"
+      },
+      {
+        "id": "algo-VAE",
+        "group": "algo",
+        "label": "VAE",
+        "val": 12,
+        "color": "#F59E0B"
+      }
+    ],
+    "links": [
+      {
+        "source": "scVI",
+        "target": "paper-scVI",
+        "value": 3
+      },
+      {
+        "source": "scVI",
+        "target": "algo-VAE",
+        "value": 5
+      },
+      {
+        "source": "scVI",
+        "target": "scANVI",
+        "value": 2
+      },
+      {
+        "source": "CellRank",
+        "target": "paper-scVI",
+        "value": 2
+      },
+      {
+        "source": "CellRank",
+        "target": "algo-NMF",
+        "value": 3
+      },
+      {
+        "source": "DeepVariant",
+        "target": "paper-DeepV",
+        "value": 3
+      },
+      {
+        "source": "STARsolo",
+        "target": "Salmon",
+        "value": 2
+      },
+      {
+        "source": "STARsolo",
+        "target": "paper-LR",
+        "value": 1
+      },
+      {
+        "source": "Salmon",
+        "target": "paper-LR",
+        "value": 2
+      },
+      {
+        "source": "scVI",
+        "target": "CellRank",
+        "value": 3
+      },
+      {
+        "source": "paper-Spatial",
+        "target": "scVI",
+        "value": 2
+      },
+      {
+        "source": "paper-Spatial",
+        "target": "cell2location",
+        "value": 3
+      },
+      {
+        "source": "paper-Spatial",
+        "target": "algo-NMF",
+        "value": 3
+      },
+      {
+        "source": "paper-DeepV",
+        "target": "algo-VAE",
+        "value": 2
+      },
+      {
+        "source": "algo-NMF",
+        "target": "algo-VAE",
+        "value": 1
+      },
+      {
+        "source": "paper-Multiome",
+        "target": "scVI",
+        "value": 2
+      }
+    ]
+  }
+}
