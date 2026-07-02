@@ -1,1367 +1,690 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BioinfoHub — 每周生物信息情报 / Weekly Bioinformatics Intelligence</title>
+<title>BioinfoHub — 生物信息前沿技术汇总</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #1E40AF;
-    --primary-light: #3B82F6;
-    --primary-dark: #1E3A8A;
-    --accent: #D97706;
-    --accent-light: #FBBF24;
-    --success: #059669;
-    --success-light: #34D399;
-    --purple: #7C3AED;
-    --purple-light: #A78BFA;
-    --bg: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --bg-muted: #F1F5F9;
-    --fg: #1E293B;
-    --fg-secondary: #64748B;
-    --fg-muted: #94A3B8;
-    --border: #E2E8F0;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.05);
-    --radius: 12px;
-    --radius-lg: 20px;
-    --font-heading: 'Crimson Pro', Georgia, serif;
-    --font-body: 'Atkinson Hyperlegible', -apple-system, sans-serif;
-    --chart-grid: #E2E8F0;
-    --chart-text: #64748B;
-    --network-bg: #F8FAFC;
-  }
-  [data-theme="dark"] {
-    --primary: #60A5FA;
-    --primary-light: #93C5FD;
-    --accent: #FBBF24;
-    --success: #34D399;
-    --purple: #A78BFA;
-    --bg: #0F172A;
-    --bg-card: #1E293B;
-    --bg-muted: #334155;
-    --fg: #F1F5F9;
-    --fg-secondary: #94A3B8;
-    --fg-muted: #64748B;
-    --border: #334155;
-    --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.3);
-    --chart-grid: #334155;
-    --chart-text: #94A3B8;
-    --network-bg: #1E293B;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: var(--font-body);
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.6;
-    transition: background 0.3s, color 0.3s;
-  }
-  h1,h2,h3,h4 { font-family: var(--font-heading); font-weight: 600; line-height: 1.25; }
+:root {
+  --bg: #f8fafc; --bg-card: #ffffff; --fg: #1e293b; --muted: #64748b;
+  --border: #e2e8f0; --accent: #3B82F6; --accent-hover: #2563eb;
+  --header-bg: rgba(255,255,255,0.85); --shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --bg: #0f172a; --bg-card: #1e293b; --fg: #f1f5f9; --muted: #94a3b8;
+  --border: #334155; --accent: #60a5fa; --accent-hover: #93bbfd;
+  --header-bg: rgba(15,23,42,0.9); --shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background: var(--bg); color: var(--fg); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-  .header {
-    position: sticky; top: 0; z-index: 100;
-    background: color-mix(in srgb, var(--bg) 85%, transparent);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 32px;
-    transition: background 0.3s;
-  }
-  .header-inner {
-    max-width: 1400px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .logo { font-family: var(--font-heading); font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-  .logo-icon {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 16px;
-  }
-  .logo span { color: var(--primary); }
-  .header-right { display: flex; align-items: center; gap: 12px; }
+/* Header */
+.header { position: sticky; top: 0; z-index: 50;
+  background: var(--header-bg); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border); padding: 0 24px; }
+.header-inner { max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; height: 56px; gap: 16px; }
+.header h1 { font-size: 18px; font-weight: 700; white-space: nowrap; }
+.nav { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
+.nav button { padding: 4px 12px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg-card); color: var(--fg); cursor: pointer; font-size: 13px; }
+.nav button:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.nav button:disabled { opacity: 0.3; cursor: default; }
+.nav span { font-size: 14px; font-weight: 600; min-width: 120px; text-align: center; }
+.controls { display: flex; gap: 6px; }
+.controls button { padding: 4px 8px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg-card); color: var(--fg); cursor: pointer; font-size: 12px;
+  transition: all .15s; }
+.controls button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-  .week-nav {
-    display: flex; align-items: center; gap: 12px;
-    background: var(--bg-muted); border-radius: 8px; padding: 4px 12px;
-  }
-  .week-nav button {
-    background: none; border: none; cursor: pointer;
-    color: var(--fg-secondary); font-size: 18px; padding: 4px;
-    transition: color 0.2s;
-  }
-  .week-nav button:hover { color: var(--primary); }
-  .week-nav .week-label {
-    font-size: 14px; font-weight: 600; color: var(--fg);
-    min-width: 110px; text-align: center;
-  }
+.container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
 
-  .btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    cursor: pointer; border: none; transition: all 0.2s;
-    font-family: var(--font-body);
-  }
-  .btn-primary { background: var(--primary); color: white; }
-  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent; border: 1px solid var(--border); color: var(--fg-secondary);
-  }
-  .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-  .btn-sm { padding: 6px 14px; font-size: 12px; }
-  .btn-ghost { background: transparent; border: none; color: var(--fg-secondary); padding: 8px; }
-  .btn-ghost:hover { color: var(--primary); background: var(--bg-muted); border-radius: 8px; }
+/* Hero */
+.hero { margin-bottom: 24px; }
+.hero h2 { font-size: clamp(24px,3vw,36px); font-weight: 700; }
+.hero .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
 
-  .theme-toggle, .lang-toggle {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: var(--bg-muted); border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 700; transition: all 0.2s;
-  }
-  .theme-toggle:hover, .lang-toggle:hover { background: color-mix(in srgb, var(--bg-muted) 80%, var(--primary)); }
-  .lang-toggle { width: 44px; color: var(--primary); letter-spacing: 0.02em; }
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; transition: transform .15s, box-shadow .15s; cursor: default; }
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.stat-card .icon { font-size: 24px; }
+.stat-card .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.stat-card .count { font-size: 28px; font-weight: 700; }
+.stat-card .change { font-size: 12px; display: inline-block; padding: 1px 6px;
+  border-radius: 10px; margin-left: 6px; }
+.stat-card .change.up { background: #dcfce7; color: #16a34a; }
+.stat-card .change.down { background: #fce4ec; color: #d32f2f; }
+.stat-card .extra { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px 32px 60px; }
+/* Section */
+.section { margin-bottom: 28px; }
+.section-title { display: flex; align-items: center; gap: 8px; font-size: 18px;
+  font-weight: 600; margin-bottom: 12px; }
+.section-title .count { font-size: 12px; color: var(--muted); font-weight: 400; }
+.card { background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; }
 
-  .hero { margin-bottom: 32px; }
-  .hero h1 {
-    font-size: clamp(28px, 3.5vw, 42px); font-weight: 700;
-    background: linear-gradient(135deg, var(--fg), var(--primary));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero p { color: var(--fg-secondary); font-size: 16px; margin-top: 4px; }
-  .hero-meta { display: flex; gap: 24px; margin-top: 12px; font-size: 14px; color: var(--fg-muted); }
-  .hero-meta span { display: flex; align-items: center; gap: 4px; }
+/* Table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 8px 10px; border-bottom: 2px solid var(--border);
+  color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase;
+  cursor: pointer; user-select: none; white-space: nowrap; }
+th:hover { color: var(--fg); }
+td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.badge { display: inline-block; padding: 1px 6px; border-radius: 4px;
+  font-size: 11px; font-weight: 500; }
+.toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.toolbar input { padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg); color: var(--fg); font-size: 13px; flex: 1; min-width: 150px; }
+.toolbar input:focus { outline: none; border-color: var(--accent); }
+.toolbar select { padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg); color: var(--fg); font-size: 12px; }
 
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
-  .stat-card {
-    background: var(--bg-card); border-radius: var(--radius);
-    padding: 20px 24px; border: 1px solid var(--border);
-    box-shadow: var(--shadow); transition: all 0.2s;
-  }
-  .stat-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-  .stat-card .label { font-size: 13px; color: var(--fg-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; }
-  .stat-card .value { font-size: 32px; font-weight: 700; margin: 4px 0; font-family: var(--font-heading); }
-  .stat-card .change { font-size: 13px; display: flex; align-items: center; gap: 4px; }
-  .stat-card .change.up { color: var(--success); }
-  .stat-card .change.down { color: #DC2626; }
-  .stat-card .icon { font-size: 24px; opacity: 0.7; }
+/* Chart containers */
+.chart-box { height: 280px; position: relative; }
+.chart-box canvas { width: 100% !important; height: 100% !important; }
+.chart-row { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+@media (max-width:768px) { .chart-row { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2,1fr); } }
 
-  .section { margin-bottom: 32px; }
-  .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px;
-  }
-  .section-header h2 { font-size: 22px; }
-  .section-header .badge {
-    background: var(--primary); color: white; font-size: 12px;
-    padding: 2px 10px; border-radius: 20px; font-weight: 600;
-  }
-  .section-actions { display: flex; gap: 8px; align-items: center; }
+/* Circle Packing */
+.circle-box { height: 300px; position: relative; }
+.circle-box svg { width: 100%; height: 100%; }
+.circle-label { pointer-events: none; font-size: 10px; font-weight: 600;
+  text-anchor: middle; dominant-baseline: central; }
 
-  .chart-card {
-    background: var(--bg-card); border-radius: var(--radius-lg);
-    border: 1px solid var(--border); box-shadow: var(--shadow);
-    padding: 24px; overflow: hidden;
-  }
-  .chart-card .chart-title {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 16px;
-  }
-  .chart-card .chart-title h3 { font-size: 16px; }
-  .chart-card .chart-title .legend {
-    display: flex; gap: 16px; font-size: 12px; color: var(--fg-secondary); flex-wrap: wrap;
-  }
-  .chart-card .chart-title .legend-dot {
-    width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px;
-  }
-  .chart-wrapper { position: relative; width: 100%; height: 300px; }
+/* Network */
+.network-box { height: 380px; position: relative; }
+.network-box svg { width: 100%; height: 100%; }
 
-  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+/* Footer */
+.footer { border-top: 1px solid var(--border); padding: 24px 16px;
+  background: var(--bg-card); margin-top: 40px; }
+.footer-inner { max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.footer h4 { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.footer p, .footer a { font-size: 12px; color: var(--muted); line-height: 1.8; }
+@media (max-width:640px) { .footer-inner { grid-template-columns: repeat(2,1fr); } }
 
-  .treemap-container { width: 100%; height: 360px; position: relative; }
-  .treemap-container svg { width: 100%; height: 100%; }
-  .treemap-tile { cursor: pointer; transition: opacity 0.2s; stroke: var(--bg-card); stroke-width: 2; }
-  .treemap-tile:hover { opacity: 0.8; }
-  .treemap-label { font-size: 11px; fill: white; font-weight: 600; pointer-events: none; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
-  .treemap-sub { font-size: 10px; fill: rgba(255,255,255,0.8); pointer-events: none; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 100; display: flex; align-items: center; justify-content: center; }
+.modal { background: var(--bg-card); border-radius: 12px; padding: 24px;
+  max-width: 600px; width: 90%; max-height: 80vh; overflow: auto; }
+.modal h3 { margin-bottom: 12px; }
+.modal-close { float: right; border: none; background: none; color: var(--muted);
+  cursor: pointer; font-size: 20px; }
+.modal-close:hover { color: var(--fg); }
 
-  .table-card {
-    background: var(--bg-card); border-radius: var(--radius-lg);
-    border: 1px solid var(--border); box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-  .table-toolbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 20px; border-bottom: 1px solid var(--border);
-    gap: 12px; flex-wrap: wrap;
-  }
-  .table-toolbar .left { display: flex; gap: 8px; align-items: center; }
-  .table-toolbar .right { display: flex; gap: 8px; align-items: center; }
+/* Checkbox label */
+.cb-label { display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px;
+  cursor: pointer; font-size: 12px; }
+.cb-label input { margin: 0; }
 
-  .search-box {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--bg-muted); border-radius: 8px; padding: 0 12px;
-    border: 1px solid transparent; transition: border 0.2s;
-  }
-  .search-box:focus-within { border-color: var(--primary); }
-  .search-box input {
-    background: none; border: none; padding: 8px 0; font-size: 13px;
-    color: var(--fg); outline: none; width: 180px;
-    font-family: var(--font-body);
-  }
-  .search-box input::placeholder { color: var(--fg-muted); }
-
-  .filter-tabs { display: flex; gap: 4px; }
-  .filter-tab {
-    padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 500;
-    cursor: pointer; border: none; background: transparent; color: var(--fg-secondary);
-    transition: all 0.2s; font-family: var(--font-body);
-  }
-  .filter-tab:hover { background: var(--bg-muted); }
-  .filter-tab.active { background: var(--primary); color: white; }
-
-  table { width: 100%; border-collapse: collapse; }
-  thead th {
-    padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.04em;
-    color: var(--fg-secondary); border-bottom: 1px solid var(--border);
-    cursor: pointer; user-select: none; white-space: nowrap;
-    transition: color 0.2s;
-  }
-  thead th:hover { color: var(--primary); }
-  thead th .sort-icon { opacity: 0.3; margin-left: 4px; }
-  thead th:hover .sort-icon { opacity: 0.6; }
-  tbody tr { transition: background 0.15s; border-bottom: 1px solid var(--border); }
-  tbody tr:hover { background: var(--bg-muted); }
-  tbody tr:last-child { border-bottom: none; }
-  tbody td { padding: 14px 16px; font-size: 14px; vertical-align: middle; }
-
-  .tag {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500;
-  }
-  .tag-blue { background: #DBEAFE; color: #1E40AF; }
-  .tag-green { background: #D1FAE5; color: #065F46; }
-  .tag-purple { background: #EDE9FE; color: #6D28D9; }
-  .tag-orange { background: #FEF3C7; color: #92400E; }
-  .tag-red { background: #FEE2E2; color: #991B1B; }
-  .tag-teal { background: #CCFBF1; color: #115E59; }
-  .tag-pink { background: #FCE7F3; color: #9D174D; }
-  [data-theme="dark"] .tag-blue { background: #1E3A5F; color: #93C5FD; }
-  [data-theme="dark"] .tag-green { background: #064E3B; color: #6EE7B7; }
-  [data-theme="dark"] .tag-purple { background: #3B0764; color: #C4B5FD; }
-  [data-theme="dark"] .tag-orange { background: #451A03; color: #FCD34D; }
-  [data-theme="dark"] .tag-red { background: #450A0A; color: #FCA5A5; }
-  [data-theme="dark"] .tag-teal { background: #134E4A; color: #5EEAD4; }
-  [data-theme="dark"] .tag-pink { background: #4A0E4E; color: #F9A8D4; }
-
-  .star-rating { color: var(--accent); font-size: 13px; letter-spacing: 0.05em; }
-  .if-bar { display: inline-block; height: 6px; border-radius: 3px; }
-  .if-bar.high { background: var(--success); width: 40px; }
-  .if-bar.med { background: var(--primary-light); width: 24px; }
-  .if-bar.low { background: var(--fg-muted); width: 12px; }
-
-  .action-btns { display: flex; gap: 4px; }
-  .action-btn {
-    width: 28px; height: 28px; border-radius: 6px;
-    border: none; background: transparent; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; color: var(--fg-muted); transition: all 0.15s;
-  }
-  .action-btn:hover { background: var(--bg-muted); color: var(--primary); }
-
-  .checkbox-cell { width: 36px; }
-  .checkbox-cell input { width: 16px; height: 16px; cursor: pointer; accent-color: var(--primary); }
-
-  .network-card {
-    background: var(--bg-card); border-radius: var(--radius-lg);
-    border: 1px solid var(--border); box-shadow: var(--shadow);
-    padding: 24px; overflow: hidden;
-  }
-  .network-card .network-title {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
-  }
-  .network-card .network-title h3 { font-size: 16px; }
-  .network-container { width: 100%; height: 400px; position: relative; }
-  .network-container svg { width: 100%; height: 100%; }
-  .link { stroke-opacity: 0.2; }
-  .node circle { cursor: grab; transition: r 0.2s; }
-  .node circle:hover { stroke-width: 3px; }
-  .node.highlighted circle { stroke: var(--accent); stroke-width: 3px; }
-  .node-label { font-size: 10px; pointer-events: none; fill: var(--fg-secondary); }
-
-  .footer {
-    border-top: 1px solid var(--border);
-    padding: 40px 32px; margin-top: 16px;
-  }
-  .footer-inner {
-    max-width: 1400px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-  }
-  .footer h4 { font-size: 14px; margin-bottom: 12px; }
-  .footer p, .footer a { font-size: 13px; color: var(--fg-secondary); }
-  .footer a { text-decoration: none; display: block; margin-bottom: 6px; }
-  .footer a:hover { color: var(--primary); }
-  .footer-sub { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--fg-muted); }
-
-  .pagination { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--fg-secondary); }
-  .pagination .pages { display: flex; gap: 4px; }
-  .pagination .page-btn {
-    width: 28px; height: 28px; border-radius: 6px; border: none; background: transparent; cursor: pointer; font-size: 12px; color: var(--fg-secondary); transition: all 0.15s;
-  }
-  .pagination .page-btn:hover { background: var(--bg-muted); }
-  .pagination .page-btn.active { background: var(--primary); color: white; }
-
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
-    align-items: center; justify-content: center;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--bg-card); border-radius: var(--radius-lg);
-    padding: 32px; max-width: 700px; width: 90%;
-    border: 1px solid var(--border); box-shadow: var(--shadow-lg);
-    max-height: 80vh; overflow-y: auto;
-  }
-  .modal h3 { font-size: 20px; margin-bottom: 20px; }
-  .modal-close { float: right; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--fg-secondary); }
-  .modal-close:hover { color: var(--fg); }
-
-  @media (max-width: 1024px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .two-col { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 640px) {
-    .container { padding: 16px; }
-    .header { padding: 0 16px; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .week-nav .week-label { font-size: 12px; min-width: 80px; }
-    .header-right .btn span { display: none; }
-    .hero-meta { flex-wrap: wrap; gap: 12px; }
-    .footer-inner { grid-template-columns: 1fr; }
-  }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .anim-in { animation: fadeInUp 0.4s ease-out both; }
-  .anim-in-d1 { animation-delay: 0.05s; }
-  .anim-in-d2 { animation-delay: 0.1s; }
-  .anim-in-d3 { animation-delay: 0.15s; }
-  .anim-in-d4 { animation-delay: 0.2s; }
-
-  .empty-state { text-align: center; padding: 40px 20px; color: var(--fg-muted); }
-  .empty-state .icon { font-size: 40px; margin-bottom: 8px; }
-  .empty-state p { font-size: 14px; }
-
-  .toast {
-    position: fixed; bottom: 24px; right: 24px; z-index: 300;
-    background: var(--fg); color: var(--bg); padding: 12px 20px;
-    border-radius: 10px; font-size: 14px; font-weight: 500;
-    box-shadow: var(--shadow-lg); transform: translateY(100px);
-    opacity: 0; transition: all 0.3s;
-  }
-  .toast.show { transform: translateY(0); opacity: 1; }
+/* Anim */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); } }
+.anim { animation: fadeIn .4s ease both; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.1s; }
+.d3 { animation-delay: 0.15s; } .d4 { animation-delay: 0.2s; }
+.d5 { animation-delay: 0.25s; }
 </style>
 </head>
 <body>
 
+<div id="app">
 <!-- Header -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo">
-      <div class="logo-icon">🧬</div>
-      <span>Bioinfo</span>Hub
+    <h1>🧬 BioinfoHub</h1>
+    <div class="nav">
+      <button id="prevWeek" disabled>◀</button>
+      <span id="weekLabel">2026 年第 27 周</span>
+      <button id="nextWeek" disabled>▶</button>
     </div>
-    <div class="header-right">
-      <div class="week-nav">
-        <button onclick="changeWeek(-1)" data-i18n-title="prev_week" title="上一周">‹</button>
-        <span class="week-label" id="weekLabel">Week 27, 2026</span>
-        <button onclick="changeWeek(1)" data-i18n-title="next_week" title="下一周">›</button>
-      </div>
-      <button class="btn btn-outline btn-sm" onclick="showToast(t('rss_copied'))" data-i18n="rss">RSS</button>
-      <button class="btn btn-primary btn-sm" onclick="showToast(t('subscribed'))"><span>📬</span> <span data-i18n="subscribe">Subscribe</span></button>
-      <button class="lang-toggle" onclick="toggleLang()" id="langBtn">中/EN</button>
-      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">🌙</button>
+    <div class="controls">
+      <button id="btnLang" class="active">中/EN</button>
+      <button id="btnTheme">🌙</button>
     </div>
   </div>
 </header>
 
-<!-- Main -->
 <div class="container">
-
   <!-- Hero -->
-  <div class="hero anim-in">
-    <h1 data-i18n="hero_title">Weekly Bioinformatics Intelligence</h1>
-    <p data-i18n="hero_sub">Curated tools, papers, and algorithms — delivered every week.</p>
-    <div class="hero-meta">
-      <span>📅 <span id="dateRange">Jun 29 – Jul 5, 2026</span></span>
-      <span>📄 <span id="totalCount">46</span> <span data-i18n="items_curated">items curated</span></span>
-      <span>⏱ <span data-i18n="updated_2h">Updated 2 hours ago</span></span>
-    </div>
+  <div class="hero anim d1">
+    <h2 id="heroTitle">🧬 BioinfoHub — 每周生物信息前沿技术汇总</h2>
+    <p class="sub" id="heroSub">2026-06-29 ~ 2026-07-05 · 本周共收录 46 条动态</p>
   </div>
 
   <!-- Stats -->
-  <div class="stats-grid anim-in anim-in-d1">
-    <div class="stat-card">
-      <div class="icon">🔧</div>
-      <div class="label" data-i18n="tools">Tools</div>
-      <div class="value" id="statTools">12</div>
-      <div class="change up"><span data-i18n="vs_last_week_1">↑ 3 vs last week</span></div>
-    </div>
-    <div class="stat-card">
-      <div class="icon">📄</div>
-      <div class="label" data-i18n="papers">Papers</div>
-      <div class="value" id="statPapers">28</div>
-      <div class="change up"><span data-i18n="vs_last_week_2">↑ 8 vs last week</span></div>
-    </div>
-    <div class="stat-card">
-      <div class="icon">⚙️</div>
-      <div class="label" data-i18n="algorithms">Algorithms</div>
-      <div class="value" id="statAlgos">6</div>
-      <div class="change up"><span data-i18n="vs_last_week_3">↑ 1 vs last week</span></div>
-    </div>
-    <div class="stat-card" style="border-left: 3px solid var(--accent);">
-      <div class="icon">🔥</div>
-      <div class="label" data-i18n="hot_topic">Hot Topic</div>
-      <div class="value" style="color: var(--accent);">Single Cell</div>
-      <div class="change up"><span data-i18n="hot_topic_change">↑ 12 papers this week</span></div>
+  <div class="stats anim d2" id="stats"></div>
+
+  <!-- Trend + CirclePacking -->
+  <div class="section anim d3">
+    <div class="section-title">📈 <span id="sectTrend">领域趋势</span></div>
+    <div class="chart-row">
+      <div class="card chart-box"><canvas id="trendChart"></canvas></div>
+      <div class="card circle-box"><div id="circlePacking"></div></div>
     </div>
   </div>
 
-  <!-- Trend Chart -->
-  <div class="section anim-in anim-in-d2">
-    <div class="section-header">
-      <h2>📈 <span data-i18n="weekly_trends">Weekly Trends</span></h2>
-      <div class="section-actions">
-        <button class="btn btn-outline btn-sm" onclick="showToast(t('export_csv'))" data-i18n="export">Export</button>
-        <button class="btn btn-outline btn-sm">8W</button>
+  <!-- Tools -->
+  <div class="section anim d4">
+    <div class="section-title">🔧 <span id="sectTools">工具</span> <span class="count" id="toolsCount">(12)</span></div>
+    <div class="card">
+      <div class="toolbar">
+        <input id="toolsSearch" placeholder="搜索工具...">
+        <select id="toolsDomain"><option value="">全部领域</option></select>
       </div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">
-        <h3 data-i18n="pub_by_domain">Publications by domain</h3>
-        <div class="legend">
-          <span><span class="legend-dot" style="background:#3B82F6;"></span>Genomics</span>
-          <span><span class="legend-dot" style="background:#10B981;"></span>Transcriptomics</span>
-          <span><span class="legend-dot" style="background:#8B5CF6;"></span>Single Cell</span>
-          <span><span class="legend-dot" style="background:#F59E0B;"></span>Epigenomics</span>
-        </div>
-      </div>
-      <div class="chart-wrapper">
-        <canvas id="trendChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tools + Treemap -->
-  <div class="section anim-in anim-in-d2">
-    <div class="section-header">
-      <h2>🔧 <span data-i18n="tools">Tools</span> <span class="badge">12 new</span></h2>
-      <div class="section-actions">
-        <span style="font-size:13px; color:var(--fg-muted);" data-i18n="showing_5of12">Showing 5 of 12</span>
-      </div>
-    </div>
-    <div class="two-col">
-
-      <!-- Tools Table -->
-      <div class="table-card">
-        <div class="table-toolbar">
-          <div class="left">
-            <div class="search-box">
-              <span>🔍</span>
-              <input type="text" data-i18n-placeholder="search_tools" placeholder="Search tools..." oninput="filterTable('tools-table', this.value)">
-            </div>
-            <div class="filter-tabs">
-              <button class="filter-tab active" onclick="switchFilter(this,'tools-table','all')" data-i18n="all">All</button>
-              <button class="filter-tab" onclick="switchFilter(this,'tools-table','rna')">RNA-seq</button>
-              <button class="filter-tab" onclick="switchFilter(this,'tools-table','single')" data-i18n="single_cell">Single Cell</button>
-            </div>
-          </div>
-        </div>
-        <div style="overflow-x:auto;">
-          <table id="tools-table">
-            <thead>
-              <tr>
-                <th class="checkbox-cell"><input type="checkbox"></th>
-                <th onclick="sortTable('tools-table',1)" data-i18n="name">Name <span class="sort-icon">↕</span></th>
-                <th onclick="sortTable('tools-table',2)" data-i18n="domain">Domain <span class="sort-icon">↕</span></th>
-                <th onclick="sortTable('tools-table',3)" data-i18n="rating">Rating <span class="sort-icon">↕</span></th>
-                <th data-i18n="actions">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-filter="rna">
-                <td><input type="checkbox"></td>
-                <td><strong>STARsolo</strong><br><span style="font-size:12px;color:var(--fg-muted);"><span data-i18n="version">v2.9.0</span> · <span data-i18n="days_ago_1">3 days ago</span></span></td>
-                <td><span class="tag tag-blue">RNA-seq</span></td>
-                <td><span class="star-rating">★★★★<span style="color:var(--fg-muted);">☆</span></span> 4.2</td>
-                <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('cmd_copied'))">📋</button><button class="action-btn" onclick="showToast(t('bookmarked'))">⭐</button></div></td>
-              </tr>
-              <tr data-filter="single">
-                <td><input type="checkbox"></td>
-                <td><strong>CellBender</strong><br><span style="font-size:12px;color:var(--fg-muted);"><span data-i18n="version2">v0.4.0</span> · <span data-i18n="days_ago_2">5 days ago</span></span></td>
-                <td><span class="tag tag-purple" data-i18n="single_cell_tag">Single Cell</span></td>
-                <td><span class="star-rating">★★★★<span style="color:var(--fg-muted);">☆</span></span> 3.8</td>
-                <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('cmd_copied'))">📋</button><button class="action-btn" onclick="showToast(t('bookmarked'))">⭐</button></div></td>
-              </tr>
-              <tr data-filter="rna">
-                <td><input type="checkbox"></td>
-                <td><strong>alevin-fry</strong><br><span style="font-size:12px;color:var(--fg-muted);"><span data-i18n="version3">v0.12.0</span> · <span data-i18n="week_ago">1 week ago</span></span></td>
-                <td><span class="tag tag-blue">RNA-seq</span></td>
-                <td><span class="star-rating">★★★<span style="color:var(--fg-muted);">★★</span></span> 3.5</td>
-                <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('cmd_copied'))">📋</button><button class="action-btn" onclick="showToast(t('bookmarked'))">⭐</button></div></td>
-              </tr>
-              <tr data-filter="single">
-                <td><input type="checkbox"></td>
-                <td><strong>Scrublet</strong><br><span style="font-size:12px;color:var(--fg-muted);"><span data-i18n="version4">v0.2.3</span> · <span data-i18n="weeks_ago">2 weeks ago</span></span></td>
-                <td><span class="tag tag-purple" data-i18n="single_cell_tag">Single Cell</span></td>
-                <td><span class="star-rating">★★★<span style="color:var(--fg-muted);">★★</span></span> 3.2</td>
-                <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('cmd_copied'))">📋</button><button class="action-btn" onclick="showToast(t('bookmarked'))">⭐</button></div></td>
-              </tr>
-              <tr data-filter="rna">
-                <td><input type="checkbox"></td>
-                <td><strong>Salmon</strong><br><span style="font-size:12px;color:var(--fg-muted);"><span data-i18n="version5">v1.16.0</span> · <span data-i18n="weeks_ago2">2 weeks ago</span></span></td>
-                <td><span class="tag tag-blue">RNA-seq</span></td>
-                <td><span class="star-rating">★★★★★</span> 4.8</td>
-                <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('cmd_copied'))">📋</button><button class="action-btn" onclick="showToast(t('bookmarked'))">⭐</button></div></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="pagination">
-          <span data-i18n="pagination_1">1–5 of 12</span>
-          <div class="pages">
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Treemap -->
-      <div class="chart-card">
-        <div class="chart-title">
-          <h3>🔥 <span data-i18n="domain_heatmap">Domain Heatmap</span></h3>
-          <span style="font-size:12px;color:var(--fg-muted);" data-i18n="click_tile">Click tile to filter</span>
-        </div>
-        <div class="treemap-container" id="treemap"></div>
-      </div>
+      <div class="table-wrap"><table id="toolsTable"><thead><tr>
+        <th data-key="name">名称</th><th data-key="domain">领域</th><th data-key="stars">⭐ Stars</th>
+        <th data-key="language">语言</th><th data-key="platform">平台</th>
+      </tr></thead><tbody></tbody></table></div>
     </div>
   </div>
 
   <!-- Papers -->
-  <div class="section anim-in anim-in-d3">
-    <div class="section-header">
-      <h2>📄 <span data-i18n="papers">Papers</span> <span class="badge">28 new</span></h2>
-      <div class="section-actions">
-        <button class="btn btn-outline btn-sm" onclick="showToast(t('export_bibtex'))" data-i18n="export_bibtex">Export BibTeX</button>
+  <div class="section anim d5">
+    <div class="section-title">📄 <span id="sectPapers">论文</span> <span class="count" id="papersCount">(28)</span></div>
+    <div class="card">
+      <div class="toolbar">
+        <input id="papersSearch" placeholder="搜索论文...">
+        <select id="papersDomain"><option value="">全部领域</option></select>
       </div>
-    </div>
-    <div class="table-card">
-      <div class="table-toolbar">
-        <div class="left">
-          <div class="search-box">
-            <span>🔍</span>
-            <input type="text" data-i18n-placeholder="search_papers" placeholder="Search papers..." oninput="filterTable('papers-table', this.value)">
-          </div>
-        </div>
-        <div class="right">
-          <span style="font-size:12px;color:var(--fg-muted);" data-i18n="num_selected">0 selected</span>
-          <button class="btn btn-outline btn-sm" onclick="showToast(t('bookmarked_papers'))">📚 <span data-i18n="bookmark">Bookmark</span></button>
-        </div>
-      </div>
-      <div style="overflow-x:auto;">
-        <table id="papers-table">
-          <thead>
-            <tr>
-              <th class="checkbox-cell"><input type="checkbox"></th>
-              <th onclick="sortTable('papers-table',1)" data-i18n="title">Title <span class="sort-icon">↕</span></th>
-              <th onclick="sortTable('papers-table',2)" data-i18n="journal">Journal <span class="sort-icon">↕</span></th>
-              <th onclick="sortTable('papers-table',3)">IF <span class="sort-icon">↕</span></th>
-              <th onclick="sortTable('papers-table',4)" data-i18n="citations">Citations <span class="sort-icon">↕</span></th>
-              <th data-i18n="actions">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox"></td>
-              <td>
-                <strong data-i18n="paper_title_1">Spatial transcriptomics reveals tissue architecture</strong>
-                <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
-                  <span class="tag tag-purple">Spatial</span>
-                  <span class="tag tag-green" data-i18n="transcriptomics">Transcriptomics</span>
-                </div>
-              </td>
-              <td><span style="font-size:13px;">Nature</span></td>
-              <td><div class="if-bar high"></div> 64.8</td>
-              <td><strong>142</strong></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('pdf_preview'))">📄</button><button class="action-btn" onclick="showToast(t('bibtex_copied'))">📋</button><button class="action-btn" onclick="showToast(t('link_saved'))">🔗</button></div></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox"></td>
-              <td>
-                <strong data-i18n="paper_title_2">Deep learning-based variant calling in cancer genomes</strong>
-                <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
-                  <span class="tag tag-blue">Genomics</span>
-                  <span class="tag tag-orange">ML</span>
-                </div>
-              </td>
-              <td><span style="font-size:13px;">Nat. Biotech.</span></td>
-              <td><div class="if-bar high"></div> 46.9</td>
-              <td><strong>89</strong></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('pdf_preview'))">📄</button><button class="action-btn" onclick="showToast(t('bibtex_copied'))">📋</button><button class="action-btn" onclick="showToast(t('link_saved'))">🔗</button></div></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox"></td>
-              <td>
-                <strong data-i18n="paper_title_3">Scalable single-cell RNA-seq analysis with Python</strong>
-                <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
-                  <span class="tag tag-purple" data-i18n="single_cell_tag">Single Cell</span>
-                  <span class="tag tag-teal">Python</span>
-                </div>
-              </td>
-              <td><span style="font-size:13px;">Genome Biol.</span></td>
-              <td><div class="if-bar med"></div> 12.3</td>
-              <td><strong>67</strong></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('pdf_preview'))">📄</button><button class="action-btn" onclick="showToast(t('bibtex_copied'))">📋</button><button class="action-btn" onclick="showToast(t('link_saved'))">🔗</button></div></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox"></td>
-              <td>
-                <strong data-i18n="paper_title_4">Long-read sequencing for structural variant detection</strong>
-                <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
-                  <span class="tag tag-blue">Genomics</span>
-                  <span class="tag tag-red">Long-read</span>
-                </div>
-              </td>
-              <td><span style="font-size:13px;">Bioinformatics</span></td>
-              <td><div class="if-bar med"></div> 5.8</td>
-              <td><strong>34</strong></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('pdf_preview'))">📄</button><button class="action-btn" onclick="showToast(t('bibtex_copied'))">📋</button><button class="action-btn" onclick="showToast(t('link_saved'))">🔗</button></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="pagination">
-        <span data-i18n="pagination_2">1–4 of 28</span>
-        <div class="pages">
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">3</button>
-          <button class="page-btn">…</button>
-          <button class="page-btn">7</button>
-        </div>
-      </div>
+      <div class="table-wrap"><table id="papersTable"><thead><tr>
+        <th data-key="title">标题</th><th data-key="journal">期刊</th>
+        <th data-key="impactFactor">IF</th><th data-key="citations">引用</th><th data-key="doi">DOI</th>
+      </tr></thead><tbody></tbody></table></div>
     </div>
   </div>
 
-  <!-- Algorithms + Compare -->
-  <div class="section anim-in anim-in-d3">
-    <div class="section-header">
-      <h2>⚙️ <span data-i18n="algorithms">Algorithms</span> <span class="badge">6 new</span></h2>
-      <div class="section-actions">
-        <button class="btn btn-primary btn-sm" onclick="openCompare()">📊 <span data-i18n="compare_selected">Compare Selected</span></button>
-      </div>
+  <!-- Algorithms -->
+  <div class="section anim d5">
+    <div class="section-title">⚙️ <span id="sectAlgos">算法</span> <span class="count" id="algosCount">(6)</span>
+      <button id="compareBtn" style="margin-left:auto;padding:4px 12px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);color:var(--fg);cursor:pointer;font-size:12px;">📊 对比 (2-4)</button>
     </div>
-    <div class="table-card">
-      <div class="table-toolbar">
-        <div class="left">
-          <div class="search-box">
-            <span>🔍</span>
-            <input type="text" data-i18n-placeholder="search_algorithms" placeholder="Search algorithms..." oninput="filterTable('algo-table', this.value)">
-          </div>
-        </div>
-        <div class="right">
-          <span style="font-size:12px;color:var(--fg-muted);" data-i18n="select_compare">Select 2-4 to compare</span>
-        </div>
-      </div>
-      <div style="overflow-x:auto;">
-        <table id="algo-table">
-          <thead>
-            <tr>
-              <th class="checkbox-cell"><input type="checkbox" onchange="toggleAllCheckbox(this,'algo-table')"></th>
-              <th onclick="sortTable('algo-table',1)" data-i18n="algorithm">Algorithm <span class="sort-icon">↕</span></th>
-              <th onclick="sortTable('algo-table',2)" data-i18n="task">Task <span class="sort-icon">↕</span></th>
-              <th data-i18n="complexity">Complexity</th>
-              <th data-i18n="links">Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="algo-check" value="scVI"></td>
-              <td><strong>scVI v3</strong></td>
-              <td><span class="tag tag-purple" data-i18n="sc_integration">Single Cell Integration</span></td>
-              <td><span class="tag tag-green">O(n) 🟢</span></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('opening_github'))">🐙</button><button class="action-btn" onclick="showToast(t('opening_paper'))">📄</button></div></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="algo-check" value="CellRank"></td>
-              <td><strong>CellRank 2</strong></td>
-              <td><span class="tag tag-purple" data-i18n="trajectory">Trajectory Inference</span></td>
-              <td><span class="tag tag-green">O(n) 🟢</span></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('opening_github'))">🐙</button><button class="action-btn" onclick="showToast(t('opening_paper'))">📄</button></div></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="algo-check" value="DeepVariant"></td>
-              <td><strong>DeepVariant 2.0</strong></td>
-              <td><span class="tag tag-blue" data-i18n="variant_calling">Variant Calling</span></td>
-              <td><span class="tag tag-orange">O(n²) 🟡</span></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('opening_github'))">🐙</button><button class="action-btn" onclick="showToast(t('opening_paper'))">📄</button></div></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="algo-check" value="SPRINT"></td>
-              <td><strong>SPRINT</strong></td>
-              <td><span class="tag tag-teal">Metagenomics</span></td>
-              <td><span class="tag tag-green">O(n log n) 🟢</span></td>
-              <td><div class="action-btns"><button class="action-btn" onclick="showToast(t('opening_github'))">🐙</button><button class="action-btn" onclick="showToast(t('opening_paper'))">📄</button></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="pagination">
-        <span data-i18n="pagination_3">1–4 of 6</span>
-        <div class="pages">
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-        </div>
-      </div>
+    <div class="card">
+      <div class="table-wrap"><table id="algosTable"><thead><tr>
+        <th style="width:32px"><input type="checkbox" id="algoSelectAll"></th>
+        <th data-key="name">名称</th><th data-key="task">任务</th><th data-key="complexity.time">复杂度</th>
+        <th data-key="metrics.accuracy">准确率</th><th data-key="metrics.speed">速度</th>
+        <th data-key="metrics.scalability">可扩展性</th>
+      </tr></thead><tbody></tbody></table></div>
     </div>
   </div>
 
-  <!-- Network Graph -->
-  <div class="section anim-in anim-in-d4">
-    <div class="section-header">
-      <h2>🔗 <span data-i18n="methodology_network">Methodology Network</span></h2>
-      <div class="section-actions">
-        <button class="btn btn-outline btn-sm" onclick="showToast(t('export_network'))" data-i18n="export">Export</button>
-      </div>
-    </div>
-    <div class="network-card">
-      <div class="network-title">
-        <h3 data-i18n="network_title">Tool → Paper → Algorithm citation relationships</h3>
-        <span style="font-size:12px;color:var(--fg-muted);" data-i18n="network_hint">Drag nodes · Hover to explore</span>
-      </div>
-      <div class="network-container" id="network"></div>
-    </div>
+  <!-- Network -->
+  <div class="section anim d5">
+    <div class="section-title">🔗 <span id="sectNetwork">关联网络</span></div>
+    <div class="card network-box"><div id="networkGraph"></div></div>
   </div>
-
 </div>
 
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-inner">
-    <div>
-      <div class="logo" style="margin-bottom:12px;"><div class="logo-icon">🧬</div><span>Bioinfo</span>Hub</div>
-      <p data-i18n="footer_desc">Your weekly bioinformatics intelligence digest. Curated by researchers, for researchers.</p>
-      <div style="display:flex;gap:12px;margin-top:16px;font-size:20px;">
-        <a href="#" onclick="showToast(t('twitter'))">🐦</a>
-        <a href="#" onclick="showToast(t('github'))">💻</a>
-        <a href="#" onclick="showToast(t('email'))">📧</a>
-      </div>
-    </div>
-    <div>
-      <h4 data-i18n="content">Content</h4>
-      <a href="#" onclick="showToast(t('filtering_tools'))" data-i18n="tools">Tools</a>
-      <a href="#" onclick="showToast(t('filtering_papers'))" data-i18n="papers">Papers</a>
-      <a href="#" onclick="showToast(t('filtering_algos'))" data-i18n="algorithms">Algorithms</a>
-      <a href="#" onclick="showToast(t('viewing_archive'))" data-i18n="archive">Archive</a>
-    </div>
-    <div>
-      <h4 data-i18n="about">About</h4>
-      <a href="#" onclick="showToast(t('about_bioinfo'))" data-i18n="about_us">About</a>
-      <a href="#" onclick="showToast(t('curators'))" data-i18n="curators">Curators</a>
-      <a href="#" onclick="showToast(t('contribute'))" data-i18n="contribute">Contribute</a>
-      <a href="#" onclick="showToast(t('advertise'))" data-i18n="advertise">Advertise</a>
-    </div>
-    <div>
-      <h4 data-i18n="support">Support</h4>
-      <a href="#" onclick="showToast(t('faq'))" data-i18n="faq">FAQ</a>
-      <a href="#" onclick="showToast(t('feedback'))" data-i18n="feedback">Feedback</a>
-      <a href="#" onclick="showToast(t('api_docs'))">API</a>
-      <a href="#" onclick="showToast(t('status'))" data-i18n="status">Status</a>
-    </div>
-  </div>
-  <div class="footer-sub" style="max-width:1400px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);">
-    <span>© 2026 BioinfoHub. <span data-i18n="rights">All rights reserved.</span></span>
-    <span data-i18n="built_with">Built with ❤️ for the bioinformatics community</span>
+    <div><h4>🧬 BioinfoHub</h4><p>每周生物信息前沿技术汇总，面向研究人员和计算生物学家提供最新工具、论文和算法。</p></div>
+    <div><h4 id="footNav">导航</h4><p><a href="#" id="footHome">首页</a><br><a href="#" id="footArch">往期回顾</a><br><a href="#" id="footAbout">关于</a></p></div>
+    <div><h4 id="footTech">技术栈</h4><p>Next.js · TypeScript · Tailwind CSS<br>D3.js · Recharts · TanStack Table<br>GitHub Pages · SSG</p></div>
+    <div><h4 id="footContact">关于</h4><p>数据每周一更新。<br>内容由 AI 辅助策展。<br>© 2026 BioinfoHub</p></div>
   </div>
 </footer>
+</div>
 
 <!-- Compare Modal -->
-<div class="modal-overlay" id="compareModal">
+<div id="compareModal" class="modal-overlay" style="display:none">
   <div class="modal">
-    <button class="modal-close" onclick="closeCompare()">×</button>
-    <h3>📊 <span data-i18n="algo_comparison">Algorithm Comparison</span></h3>
-    <canvas id="radarChart" style="max-height:350px;"></canvas>
-    <div style="margin-top:20px;text-align:center;font-size:13px;color:var(--fg-muted);">
-      <span data-i18n="comparing">Comparing</span>: <span id="compareNames" style="font-weight:600;color:var(--fg);"></span>
-    </div>
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h3>📊 <span id="modalTitle">算法对比</span></h3>
+    <div style="height:300px"><canvas id="radarChart"></canvas></div>
   </div>
 </div>
 
-<!-- Toast -->
-<div class="toast" id="toast"></div>
-
 <script>
-// ============================================
-// i18n — 中文/English Dictionary
-// ============================================
-const dict = {
-  hero_title:       { en: "Weekly Bioinformatics Intelligence", zh: "每周生物信息情报" },
-  hero_sub:         { en: "Curated tools, papers, and algorithms — delivered every week.", zh: "精选工具、论文与算法 — 每周准时送达。" },
-  items_curated:    { en: "items curated", zh: "条精选内容" },
-  updated_2h:       { en: "Updated 2 hours ago", zh: "2小时前更新" },
-  tools:            { en: "Tools", zh: "工具" },
-  papers:           { en: "Papers", zh: "论文" },
-  algorithms:       { en: "Algorithms", zh: "算法" },
-  hot_topic:        { en: "Hot Topic", zh: "热门领域" },
-  vs_last_week_1:   { en: "↑ 3 vs last week", zh: "↑ 较上周 +3" },
-  vs_last_week_2:   { en: "↑ 8 vs last week", zh: "↑ 较上周 +8" },
-  vs_last_week_3:   { en: "↑ 1 vs last week", zh: "↑ 较上周 +1" },
-  hot_topic_change: { en: "↑ 12 papers this week", zh: "↑ 本周 12 篇论文" },
-  weekly_trends:    { en: "Weekly Trends", zh: "每周趋势" },
-  export:           { en: "Export", zh: "导出" },
-  pub_by_domain:    { en: "Publications by domain", zh: "各领域发文趋势" },
-  showing_5of12:    { en: "Showing 5 of 12", zh: "显示 5 / 12" },
-  search_tools:     { en: "Search tools...", zh: "搜索工具..." },
-  all:              { en: "All", zh: "全部" },
-  single_cell:      { en: "Single Cell", zh: "单细胞" },
-  name:             { en: "Name", zh: "名称" },
-  domain:           { en: "Domain", zh: "领域" },
-  rating:           { en: "Rating", zh: "评分" },
-  actions:          { en: "Actions", zh: "操作" },
-  domain_heatmap:   { en: "Domain Heatmap", zh: "领域热力图" },
-  click_tile:       { en: "Click tile to filter", zh: "点击色块筛选" },
-  export_bibtex:    { en: "Export BibTeX", zh: "导出 BibTeX" },
-  search_papers:    { en: "Search papers...", zh: "搜索论文..." },
-  num_selected:     { en: "0 selected", zh: "已选 0 篇" },
-  bookmark:         { en: "Bookmark", zh: "收藏" },
-  title:            { en: "Title", zh: "标题" },
-  journal:          { en: "Journal", zh: "期刊" },
-  citations:        { en: "Citations", zh: "引用" },
-  compare_selected: { en: "Compare Selected", zh: "对比选中项" },
-  search_algorithms:{ en: "Search algorithms...", zh: "搜索算法..." },
-  select_compare:   { en: "Select 2-4 to compare", zh: "选择 2-4 项进行对比" },
-  algorithm:        { en: "Algorithm", zh: "算法" },
-  task:             { en: "Task", zh: "任务" },
-  complexity:       { en: "Complexity", zh: "复杂度" },
-  links:            { en: "Links", zh: "链接" },
-  methodology_network:{ en: "Methodology Network", zh: "方法论关联网络" },
-  network_title:    { en: "Tool → Paper → Algorithm citation relationships", zh: "工具 → 论文 → 算法引用关系" },
-  network_hint:     { en: "Drag nodes · Hover to explore", zh: "拖拽节点 · 悬停探索" },
-  sc_integration:   { en: "Single Cell Integration", zh: "单细胞整合" },
-  trajectory:       { en: "Trajectory Inference", zh: "轨迹推断" },
-  variant_calling:  { en: "Variant Calling", zh: "变异检测" },
-  algo_comparison:  { en: "Algorithm Comparison", zh: "算法对比" },
-  comparing:        { en: "Comparing", zh: "对比中" },
-  rss:              { en: "RSS", zh: "RSS" },
-  subscribe:        { en: "Subscribe", zh: "订阅" },
-  prev_week:        { en: "Previous week", zh: "上一周" },
-  next_week:        { en: "Next week", zh: "下一周" },
-  content:          { en: "Content", zh: "内容" },
-  about:            { en: "About", zh: "关于" },
-  about_us:         { en: "About", zh: "关于我们" },
-  support:          { en: "Support", zh: "支持" },
-  archive:          { en: "Archive", zh: "往期回顾" },
-  curators:         { en: "Curators", zh: "策展团队" },
-  contribute:       { en: "Contribute", zh: "投稿" },
-  advertise:        { en: "Advertise", zh: "广告合作" },
-  faq:              { en: "FAQ", zh: "常见问题" },
-  feedback:         { en: "Feedback", zh: "反馈" },
-  api_docs:         { en: "API", zh: "API 文档" },
-  status:           { en: "Status", zh: "运行状态" },
-  rights:           { en: "All rights reserved.", zh: "保留所有权利。" },
-  built_with:       { en: "Built with ❤️ for the bioinformatics community", zh: "用 ❤️ 为生物信息社区构建" },
-  footer_desc:      { en: "Your weekly bioinformatics intelligence digest. Curated by researchers, for researchers.", zh: "您的每周生物信息情报摘要。由研究者策展，为研究者服务。" },
-  // Toasts
-  rss_copied:       { en: "📡 RSS feed copied!", zh: "📡 RSS 订阅链接已复制！" },
-  subscribed:       { en: "✅ Subscribed to weekly digest!", zh: "✅ 已订阅每周摘要！" },
-  export_csv:       { en: "📊 Export CSV", zh: "📊 导出 CSV" },
-  cmd_copied:       { en: "📋 Install command copied", zh: "📋 安装命令已复制" },
-  bookmarked:       { en: "⭐ Bookmarked", zh: "⭐ 已收藏" },
-  bookmarked_papers:{ en: "📚 Papers bookmarked", zh: "📚 论文已收藏" },
-  pdf_preview:      { en: "📄 PDF preview", zh: "📄 PDF 预览" },
-  bibtex_copied:    { en: "📋 BibTeX copied", zh: "📋 BibTeX 已复制" },
-  link_saved:       { en: "🔗 Link saved", zh: "🔗 链接已保存" },
-  opening_github:   { en: "🔗 Opening GitHub", zh: "🔗 打开 GitHub" },
-  opening_paper:    { en: "📄 Opening paper", zh: "📄 打开论文" },
-  export_network:   { en: "📸 Export network as PNG", zh: "📸 导出网络图为 PNG" },
-  sw_week:          { en: "📅 Switched to Week", zh: "📅 已切换到第" },
-  filter_treemap:   { en: "📊 Filtering", zh: "📊 筛选" },
-  select_two:       { en: "⚠️ Please select at least 2 algorithms to compare", zh: "⚠️ 请至少选择 2 个算法进行对比" },
-  twitter:          { en: "Twitter", zh: "推特" },
-  github:           { en: "GitHub", zh: "GitHub" },
-  email:            { en: "Email", zh: "邮箱" },
-  filtering_tools:  { en: "Filtering Tools", zh: "筛选工具" },
-  filtering_papers: { en: "Filtering Papers", zh: "筛选论文" },
-  filtering_algos:  { en: "Filtering Algorithms", zh: "筛选算法" },
-  viewing_archive:  { en: "Viewing Archive", zh: "查看往期" },
-  about_bioinfo:    { en: "About BioinfoHub", zh: "关于 BioinfoHub" },
-  // Tags
-  single_cell_tag:  { en: "Single Cell", zh: "单细胞" },
-  transcriptomics:  { en: "Transcriptomics", zh: "转录组学" },
-  // Versions / time
-  version:          { en: "v2.9.0", zh: "v2.9.0" },
-  version2:         { en: "v0.4.0", zh: "v0.4.0" },
-  version3:         { en: "v0.12.0", zh: "v0.12.0" },
-  version4:         { en: "v0.2.3", zh: "v0.2.3" },
-  version5:         { en: "v1.16.0", zh: "v1.16.0" },
-  days_ago_1:       { en: "3 days ago", zh: "3 天前" },
-  days_ago_2:       { en: "5 days ago", zh: "5 天前" },
-  week_ago:         { en: "1 week ago", zh: "1 周前" },
-  weeks_ago:        { en: "2 weeks ago", zh: "2 周前" },
-  weeks_ago2:       { en: "2 weeks ago", zh: "2 周前" },
-  // Treemap subtexts
-  tm_tools_papers:  { en: "tools · papers", zh: "工具 · 论文" },
-  // Pagination
-  pagination_1:     { en: "1–5 of 12", zh: "1–5 / 共 12" },
-  pagination_2:     { en: "1–4 of 28", zh: "1–4 / 共 28" },
-  pagination_3:     { en: "1–4 of 6", zh: "1–4 / 共 6" },
-  // Radar labels
-  radar_accuracy:   { en: "Accuracy", zh: "准确度" },
-  radar_speed:      { en: "Speed", zh: "速度" },
-  radar_memory:     { en: "Memory", zh: "内存" },
-  radar_scalability:{ en: "Scalability", zh: "可扩展性" },
-  radar_usability:  { en: "Usability", zh: "易用性" },
-  radar_community:  { en: "Community", zh: "社区活跃度" },
-};
-const treemapData = {
-  en: [
-    { name: "Genomics", value: 28, color: "#3B82F6", sub: "12 tools · 16 papers" },
-    { name: "Single Cell", value: 24, color: "#8B5CF6", sub: "8 tools · 16 papers" },
-    { name: "Transcriptomics", value: 18, color: "#10B981", sub: "6 tools · 12 papers" },
-    { name: "Epigenomics", value: 12, color: "#F59E0B", sub: "3 tools · 9 papers" },
-    { name: "Metagenomics", value: 10, color: "#EC4899", sub: "4 tools · 6 papers" },
-    { name: "Proteomics", value: 8, color: "#EF4444", sub: "3 tools · 5 papers" },
-    { name: "Structural Bio.", value: 6, color: "#14B8A6", sub: "2 tools · 4 papers" },
-    { name: "GWAS", value: 4, color: "#F97316", sub: "1 tool · 3 papers" }
-  ],
-  zh: [
-    { name: "基因组学", value: 28, color: "#3B82F6", sub: "12 工具 · 16 论文" },
-    { name: "单细胞", value: 24, color: "#8B5CF6", sub: "8 工具 · 16 论文" },
-    { name: "转录组学", value: 18, color: "#10B981", sub: "6 工具 · 12 论文" },
-    { name: "表观基因组学", value: 12, color: "#F59E0B", sub: "3 工具 · 9 论文" },
-    { name: "宏基因组学", value: 10, color: "#EC4899", sub: "4 工具 · 6 论文" },
-    { name: "蛋白质组学", value: 8, color: "#EF4444", sub: "3 工具 · 5 论文" },
-    { name: "结构生物学", value: 6, color: "#14B8A6", sub: "2 工具 · 4 论文" },
-    { name: "GWAS", value: 4, color: "#F97316", sub: "1 工具 · 3 论文" }
-  ]
-};
-
-// ============================================
-// LANGUAGE STATE
-// ============================================
-let lang = localStorage.getItem('lang') || 'zh';
-function t(key) { return dict[key] ? dict[key][lang] : key; }
-
-function applyLanguage() {
-  // data-i18n elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = t(key);
-  });
-  // data-i18n-placeholder
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    el.placeholder = t(key);
-  });
-  // data-i18n-title
-  document.querySelectorAll('[data-i18n-title]').forEach(el => {
-    const key = el.getAttribute('data-i18n-title');
-    el.title = t(key);
-  });
-  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  // Redraw dynamic components
-  drawTreemap();
-  if (trendChartInstance) initTrendChart();
-  if (document.getElementById('compareModal').classList.contains('open')) {
-    // reopen will be handled by next openCompare
-  }
-}
-
-function toggleLang() {
-  lang = lang === 'zh' ? 'en' : 'zh';
-  localStorage.setItem('lang', lang);
-  applyLanguage();
-  // Update week label format
-  updateWeekDisplay();
-  document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN/中' : '中/EN';
-}
-
-// ============================================
-// THEME
-// ============================================
-let isDark = localStorage.getItem('theme') === 'dark' ||
-  (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-if (isDark) document.documentElement.setAttribute('data-theme','dark');
-
-function toggleTheme() {
-  isDark = !isDark;
-  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
-  updateChartTheme();
-}
-document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
-document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN/中' : '中/EN';
-
-// ============================================
-// TOAST
-// ============================================
-let toastTimer;
-function showToast(msg) {
-  const tEl = document.getElementById('toast');
-  tEl.textContent = msg; tEl.className = 'toast show';
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => tEl.className = 'toast', 2000);
-}
-
-// ============================================
-// WEEK NAV
-// ============================================
-let currentWeek = 27;
-function updateWeekDisplay() {
-  document.getElementById('weekLabel').textContent = lang === 'zh'
-    ? `2026 年第 ${currentWeek} 周`
-    : `Week ${currentWeek}, 2026`;
-  const end = new Date(2026, 0, 1 + currentWeek * 7);
-  const start = new Date(end);
-  start.setDate(end.getDate() - 6);
-  document.getElementById('dateRange').textContent =
-    `${start.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US',{month:'short',day:'numeric'})} – ${end.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US',{month:'short',day:'numeric',year:'numeric'})}`;
-}
-function changeWeek(delta) {
-  currentWeek += delta;
-  if (currentWeek < 1) currentWeek = 1;
-  if (currentWeek > 52) currentWeek = 52;
-  updateWeekDisplay();
-  showToast(`${t('sw_week')} ${currentWeek}`);
-}
-
-// ============================================
-// FILTER TABLE
-// ============================================
-function filterTable(tableId, query) {
-  const table = document.getElementById(tableId);
-  const rows = table.querySelectorAll('tbody tr');
-  const q = query.toLowerCase();
-  rows.forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-  });
-}
-function switchFilter(btn, tableId, filter) {
-  btn.parentElement.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  const rows = document.getElementById(tableId).querySelectorAll('tbody tr');
-  rows.forEach(row => {
-    row.style.display = (filter === 'all' || row.dataset.filter === filter) ? '' : 'none';
-  });
-}
-
-// ============================================
-// SORT TABLE
-// ============================================
-function sortTable(tableId, colIdx) {
-  const table = document.getElementById(tableId);
-  const tbody = table.querySelector('tbody');
-  const rows = Array.from(tbody.querySelectorAll('tr'));
-  const isAsc = table.dataset.sortCol == colIdx && table.dataset.sortDir !== 'asc';
-  table.dataset.sortCol = colIdx;
-  table.dataset.sortDir = isAsc ? 'asc' : 'desc';
-  rows.sort((a, b) => {
-    const va = a.children[colIdx]?.textContent.trim() || '';
-    const vb = b.children[colIdx]?.textContent.trim() || '';
-    const na = parseFloat(va), nb = parseFloat(vb);
-    if (!isNaN(na) && !isNaN(nb)) return isAsc ? na - nb : nb - na;
-    return isAsc ? va.localeCompare(vb) : vb.localeCompare(va);
-  });
-  rows.forEach(r => tbody.appendChild(r));
-  table.querySelectorAll('thead th .sort-icon').forEach(el => el.textContent = '↕');
-  const ths = table.querySelectorAll('thead th');
-  if (ths[colIdx]) ths[colIdx].querySelector('.sort-icon').textContent = isAsc ? '↑' : '↓';
-}
-
-function toggleAllCheckbox(master, tableId) {
-  document.getElementById(tableId).querySelectorAll('tbody input[type="checkbox"]').forEach(cb => cb.checked = master.checked);
-}
-
-// ============================================
-// COMPARE MODAL (Radar)
-// ============================================
-let radarChartInstance = null;
-function openCompare() {
-  const checked = document.querySelectorAll('.algo-check:checked');
-  if (checked.length < 2) { showToast(t('select_two')); return; }
-  document.getElementById('compareModal').classList.add('open');
-  const names = Array.from(checked).map(c => c.value);
-  document.getElementById('compareNames').textContent = names.join(' vs ');
-  if (radarChartInstance) radarChartInstance.destroy();
-
-  const radarLabels = [t('radar_accuracy'), t('radar_speed'), t('radar_memory'), t('radar_scalability'), t('radar_usability'), t('radar_community')];
-  const ctx = document.getElementById('radarChart').getContext('2d');
-  const colors = ['#3B82F6','#10B981','#8B5CF6','#F59E0B'];
-  const style = getComputedStyle(document.documentElement);
-  const fg = style.getPropertyValue('--fg').trim() || '#1E293B';
-
-  radarChartInstance = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: radarLabels,
-      datasets: names.map((name, i) => ({
-        label: name,
-        data: [Math.floor(Math.random()*30)+70, Math.floor(Math.random()*40)+50, Math.floor(Math.random()*40)+40, Math.floor(Math.random()*30)+60, Math.floor(Math.random()*30)+60, Math.floor(Math.random()*30)+60],
-        borderColor: colors[i % colors.length],
-        backgroundColor: colors[i % colors.length] + '20',
-        borderWidth: 2,
-        pointBackgroundColor: colors[i % colors.length],
-      }))
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      scales: {
-        r: {
-          beginAtZero: true, max: 100,
-          grid: { color: style.getPropertyValue('--chart-grid').trim() || '#E2E8F0' },
-          pointLabels: { color: style.getPropertyValue('--chart-text').trim() || '#64748B', font: { size: 11 } },
-          ticks: { display: false }
-        }
-      },
-      plugins: {
-        legend: { position: 'bottom', labels: { font: { size: 12 }, color: fg } }
-      }
-    }
-  });
-}
-function closeCompare() { document.getElementById('compareModal').classList.remove('open'); }
-
-// ============================================
-// TREEMAP (D3.js)
-// ============================================
-function drawTreemap() {
-  const container = document.getElementById('treemap');
-  const w = container.clientWidth || 400;
-  const h = container.clientHeight || 360;
-  d3.select('#treemap svg').remove();
-
-  const data = { name: "root", children: treemapData[lang] };
-
-  const svg = d3.select('#treemap').append('svg').attr('width', w).attr('height', h);
-  const root = d3.hierarchy(data).sum(d => d.value);
-  d3.treemap().size([w, h]).padding(3)(root);
-
-  const cell = svg.selectAll('g').data(root.leaves()).join('g')
-    .attr('transform', d => `translate(${d.x0},${d.y0})`);
-
-  cell.append('rect')
-    .attr('class', 'treemap-tile')
-    .attr('width', d => Math.max(0, d.x1 - d.x0))
-    .attr('height', d => Math.max(0, d.y1 - d.y0))
-    .attr('fill', d => d.data.color).attr('rx', 4)
-    .on('click', (e, d) => showToast(`${t('filter_treemap')}: ${d.data.name} (${d.data.sub})`));
-
-  cell.append('text').attr('class', 'treemap-label').attr('x', 8).attr('y', 20)
-    .text(d => d.data.name).attr('display', d => (d.x1 - d.x0) < 80 ? 'none' : null);
-  cell.append('text').attr('class', 'treemap-sub').attr('x', 8).attr('y', 36)
-    .text(d => d.data.value + (lang === 'zh' ? ' 项' : ' items'))
-    .attr('display', d => (d.x1 - d.x0) < 100 ? 'none' : null);
-}
-
-// ============================================
-// NETWORK GRAPH (D3.js)
-// ============================================
-function drawNetwork() {
-  const container = document.getElementById('network');
-  const w = container.clientWidth || 700;
-  const h = container.clientHeight || 400;
-  d3.select('#network svg').remove();
-
-  const labels = {
-    nodes: [
-      { id: "scVI", group: "tool", label: "scVI", val: 20, color: "#8B5CF6" },
-      { id: "CellRank", group: "tool", label: "CellRank", val: 16, color: "#8B5CF6" },
-      { id: "DeepVariant", group: "tool", label: "DeepVariant", val: 14, color: "#3B82F6" },
-      { id: "STARsolo", group: "tool", label: "STARsolo", val: 12, color: "#3B82F6" },
-      { id: "Salmon", group: "tool", label: "Salmon", val: 10, color: "#3B82F6" },
-      { id: "paper-scVI", group: "paper", label: "Nature 2023", val: 10, color: "#10B981" },
-      { id: "paper-DeepV", group: "paper", label: "Nat. Biotech 2024", val: 8, color: "#10B981" },
-      { id: "paper-Spatial", group: "paper", label: "Nature 2026", val: 18, color: "#10B981" },
-      { id: "paper-LR", group: "paper", label: "Bioinfo 2025", val: 6, color: "#10B981" },
-      { id: "algo-NMF", group: "algo", label: "NMF", val: 8, color: "#F59E0B" },
-      { id: "algo-VAE", group: "algo", label: "VAE", val: 12, color: "#F59E0B" },
-      { id: "algo-DP", group: "algo", label: "Dirichlet", val: 6, color: "#F59E0B" },
-    ],
-    links: [
-      { source: "scVI", target: "paper-scVI", value: 3 },
-      { source: "scVI", target: "algo-VAE", value: 5 },
-      { source: "CellRank", target: "paper-scVI", value: 2 },
-      { source: "DeepVariant", target: "paper-DeepV", value: 3 },
-      { source: "DeepVariant", target: "algo-DP", value: 2 },
-      { source: "STARsolo", target: "Salmon", value: 2 },
-      { source: "Salmon", target: "paper-LR", value: 2 },
-      { source: "scVI", target: "CellRank", value: 3 },
-      { source: "paper-Spatial", target: "scVI", value: 2 },
-      { source: "paper-Spatial", target: "algo-NMF", value: 3 },
-      { source: "paper-DeepV", target: "algo-VAE", value: 2 },
-      { source: "algo-NMF", target: "algo-VAE", value: 1 },
-    ]
-  };
-
-  const svg = d3.select('#network').append('svg').attr('width', w).attr('height', h);
-  const g = svg.append('g');
-
-  svg.call(d3.zoom().scaleExtent([0.3, 3]).on('zoom', (event) => g.attr('transform', event.transform)));
-
-  const simulation = d3.forceSimulation(labels.nodes)
-    .force('link', d3.forceLink(labels.links).id(d => d.id).distance(80))
-    .force('charge', d3.forceManyBody().strength(-180))
-    .force('center', d3.forceCenter(w/2, h/2))
-    .force('collision', d3.forceCollide().radius(d => Math.sqrt(d.val)*3 + 5));
-
-  const link = g.append('g').selectAll('line').data(labels.links).join('line')
-    .attr('class', 'link')
-    .attr('stroke', getComputedStyle(document.documentElement).getPropertyValue('--fg-muted').trim() || '#94A3B8')
-    .attr('stroke-width', d => Math.sqrt(d.value));
-
-  const node = g.append('g').selectAll('g').data(labels.nodes).join('g').attr('class', 'node')
-    .call(d3.drag()
-      .on('start', (event, d) => { if (!event.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-      .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
-      .on('end', (event, d) => { if (!event.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
-    );
-
-  node.append('circle').attr('r', d => Math.sqrt(d.val) * 3).attr('fill', d => d.color)
-    .attr('opacity', 0.85).attr('stroke', 'white').attr('stroke-width', 2)
-    .on('mouseenter', function(e, d) { d3.select(this).attr('r', Math.sqrt(d.val) * 4); showToast(`🔗 ${d.label} (${d.group})`); })
-    .on('mouseleave', function(e, d) { d3.select(this).attr('r', Math.sqrt(d.val) * 3); });
-
-  node.append('text').attr('class', 'node-label').attr('dx', d => Math.sqrt(d.val) * 3 + 6).attr('dy', 4).text(d => d.label);
-
-  simulation.on('tick', () => {
-    link.attr('x1', d => d.source.x).attr('y1', d => d.source.y).attr('x2', d => d.target.x).attr('y2', d => d.target.y);
-    node.attr('transform', d => `translate(${d.x},${d.y})`);
-  });
-}
-
-// ============================================
-// TREND CHART (Chart.js)
-// ============================================
-let trendChartInstance = null;
-function getChartColors() {
-  const style = getComputedStyle(document.documentElement);
+// ===== DATA =====
+const DATA = (() => {
+  // Embed W27 data (extracted)
   return {
-    grid: style.getPropertyValue('--chart-grid').trim() || '#E2E8F0',
-    text: style.getPropertyValue('--chart-text').trim() || '#64748B',
+  "week":"2026-W27","label":{"en":"Week 27, 2026","zh":"2026 年第 27 周"},
+  "dateRange":{"start":"2026-06-29","end":"2026-07-05"},
+  "totalItems":46,
+  "stats":{"tools":{"count":12,"change":3},"papers":{"count":28,"change":8},"algorithms":{"count":6,"change":1},
+    "hotTopic":{"key":"single_cell","name":{"en":"Single Cell","zh":"单细胞"},"count":12}},
+  "trends":[
+    {"domain":"Genomics","domainKey":"genomics","color":"#3B82F6","weeklyCounts":[18,22,20,25,24,28,26,32]},
+    {"domain":"Transcriptomics","domainKey":"transcriptomics","color":"#10B981","weeklyCounts":[12,15,14,18,20,19,22,24]},
+    {"domain":"Single Cell","domainKey":"single-cell","color":"#8B5CF6","weeklyCounts":[8,10,12,14,16,18,20,28]},
+    {"domain":"Epigenomics","domainKey":"epigenomics","color":"#F59E0B","weeklyCounts":[6,7,5,8,9,8,10,11]}],
+  "treemap":{"en":[
+    {"name":"Genomics","value":28,"color":"#3B82F6","sub":"7 tools · 4 papers"},
+    {"name":"Single Cell","value":25,"color":"#8B5CF6","sub":"7 tools · 12 papers"},
+    {"name":"Transcriptomics","value":22,"color":"#10B981","sub":"5 tools · 9 papers"},
+    {"name":"Epigenomics","value":19,"color":"#F59E0B","sub":"6 tools · 5 papers"},
+    {"name":"Metagenomics","value":16,"color":"#EC4899","sub":"6 tools · 6 papers"},
+    {"name":"Proteomics","value":13,"color":"#EF4444","sub":"3 tools · 5 papers"},
+    {"name":"Structural Bio.","value":10,"color":"#14B8A6","sub":"7 tools · 3 papers"},
+    {"name":"GWAS","value":7,"color":"#F97316","sub":"7 tools · 3 papers"}],
+  "zh":[
+    {"name":"基因组学","value":28,"color":"#3B82F6","sub":"7 工具 · 4 论文"},
+    {"name":"单细胞","value":25,"color":"#8B5CF6","sub":"7 工具 · 12 论文"},
+    {"name":"转录组学","value":22,"color":"#10B981","sub":"5 工具 · 9 论文"},
+    {"name":"表观基因组学","value":19,"color":"#F59E0B","sub":"6 工具 · 5 论文"},
+    {"name":"宏基因组学","value":16,"color":"#EC4899","sub":"6 工具 · 6 论文"},
+    {"name":"蛋白质组学","value":13,"color":"#EF4444","sub":"3 工具 · 5 论文"},
+    {"name":"结构生物学","value":10,"color":"#14B8A6","sub":"7 工具 · 3 论文"},
+    {"name":"GWAS","value":7,"color":"#F97316","sub":"7 工具 · 3 论文"}]},
+  "network":{"nodes":[
+    {"id":"scVI","group":"tool","label":"scVI","val":20,"color":"#8B5CF6"},
+    {"id":"CellRank","group":"tool","label":"CellRank","val":16,"color":"#8B5CF6"},
+    {"id":"DeepVariant","group":"tool","label":"DeepVariant","val":14,"color":"#3B82F6"},
+    {"id":"STARsolo","group":"tool","label":"STARsolo","val":12,"color":"#3B82F6"},
+    {"id":"Salmon","group":"tool","label":"Salmon","val":10,"color":"#3B82F6"},
+    {"id":"cell2location","group":"tool","label":"cell2location","val":11,"color":"#8B5CF6"},
+    {"id":"scANVI","group":"tool","label":"scANVI","val":9,"color":"#8B5CF6"},
+    {"id":"paper-scVI","group":"paper","label":"Nature 2023","val":10,"color":"#10B981"},
+    {"id":"paper-DeepV","group":"paper","label":"Nat Biotech 2018","val":9,"color":"#10B981"},
+    {"id":"paper-CC","group":"paper","label":"Genome Biol 2022","val":7,"color":"#10B981"},
+    {"id":"algo-VAE","group":"algo","label":"scVI (VAE)","val":12,"color":"#F59E0B"},
+    {"id":"algo-NMF","group":"algo","label":"NMF","val":8,"color":"#F59E0B"},
+    {"id":"algo-DP","group":"algo","label":"Dirichlet Process","val":6,"color":"#F59E0B"},
+    {"id":"algo-GNN","group":"algo","label":"GNN","val":7,"color":"#F59E0B"}],
+  "links":[
+    {"source":"scVI","target":"paper-scVI","value":3},
+    {"source":"scVI","target":"algo-VAE","value":5},
+    {"source":"scVI","target":"scANVI","value":2},
+    {"source":"CellRank","target":"paper-scVI","value":2},
+    {"source":"CellRank","target":"algo-NMF","value":3},
+    {"source":"DeepVariant","target":"paper-DeepV","value":3},
+    {"source":"DeepVariant","target":"algo-DP","value":2},
+    {"source":"DeepVariant","target":"algo-GNN","value":1},
+    {"source":"STARsolo","target":"paper-CC","value":2},
+    {"source":"Salmon","target":"paper-CC","value":1},
+    {"source":"cell2location","target":"paper-scVI","value":1},
+    {"source":"scANVI","target":"algo-VAE","value":2},
+    {"source":"paper-DeepV","target":"algo-DP","value":1}]},
+  "tools":[
+    {"id":"starsolo","name":"STARsolo","version":"2.9.0","description":{"en":"Ultra-fast single-cell RNA-seq quantification from STAR aligner","zh":"基于STAR比对器的超快单细胞RNA-seq定量"},"domain":"rna-seq","language":"C++","platform":"CLI","stars":2218,"installCmd":"conda install -c bioconda starsolo","githubUrl":"https://github.com/alexdobin/STAR","paperUrl":"https://doi.org/10.1038/s41587-019-0072-4","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["rna-seq","single-cell","quantification"]},
+    {"id":"cellbender","name":"CellBender","version":"0.4.0","description":{"en":"Deep learning-based removal of background RNA from single-cell datasets","zh":"基于深度学习去除单细胞数据背景RNA"},"domain":"single-cell","language":"Python","platform":"CLI","stars":404,"installCmd":"pip install cellbender","githubUrl":"https://github.com/broadinstitute/CellBender","paperUrl":"https://doi.org/10.1101/791699","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["single-cell","denoising","deep-learning"]},
+    {"id":"alevin-fry","name":"alevin-fry","version":"0.12.0","description":{"en":"Fast, accurate single-cell quantification from raw sequencing data","zh":"快速准确的原始测序数据单细胞定量"},"domain":"rna-seq","language":"Rust","platform":"CLI","stars":509,"installCmd":"conda install -c bioconda alevin-fry","githubUrl":"https://github.com/COMBINE-lab/alevin-fry","paperUrl":"https://doi.org/10.1038/s41587-022-01256-8","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["rna-seq","single-cell","quantification"]},
+    {"id":"scrublet","name":"Scrublet","version":"0.2.3","description":{"en":"Doublet detection for single-cell RNA-seq data","zh":"单细胞RNA-seq数据双细胞检测"},"domain":"single-cell","language":"Python","platform":"CLI","stars":1079,"installCmd":"pip install scrublet","githubUrl":"https://github.com/AllonKleinLab/scrublet","paperUrl":"https://doi.org/10.1016/j.cels.2018.11.005","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["single-cell","quality-control","doublet-detection"]},
+    {"id":"multiome-tool","name":"Multiome","version":"2.1.0","description":{"en":"Single-cell multi-omics integration toolkit","zh":"单细胞多组学整合工具包"},"domain":"single-cell","language":"Python","platform":"CLI","stars":876,"installCmd":"pip install multiome","githubUrl":"https://github.com/multiome","paperUrl":"#","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["multi-omics","single-cell","integration"]},
+    {"id":"epig-tool","name":"EpiProfile","version":"3.0.0","description":{"en":"Comprehensive epigenomic profiling and analysis platform","zh":"全面表观基因组分析平台"},"domain":"epigenomics","language":"Python","platform":"Web","stars":234,"installCmd":"pip install epiprofile","githubUrl":"#","paperUrl":"#","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["epigenomics","chip-seq","atac-seq"]},
+    {"id":"metag-tool","name":"MetaBin","version":"1.5.0","description":{"en":"Metagenomic binning with deep learning","zh":"基于深度学习的宏基因组分箱"},"domain":"metagenomics","language":"Python","platform":"CLI","stars":567,"installCmd":"pip install metabin","githubUrl":"https://github.com/metabin","paperUrl":"https://doi.org/10.1038/s41587-023-01767-y","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["metagenomics","binning","deep-learning"]},
+    {"id":"proteo-tool","name":"ProteoDiscover","version":"1.0.0","description":{"en":"Mass spectrometry-based proteomics data analysis","zh":"基于质谱的蛋白质组学数据分析"},"domain":"proteomics","language":"Python","platform":"CLI","stars":345,"installCmd":"pip install proteodiscover","githubUrl":"#","paperUrl":"#","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["proteomics","mass-spectrometry"]},
+    {"id":"struct-tool","name":"FoldDock","version":"2.0.0","description":{"en":"Protein complex structure prediction using AlphaFold","zh":"使用AlphaFold预测蛋白质复合物结构"},"domain":"structural-biology","language":"Python","platform":"CLI","stars":1234,"installCmd":"pip install folddock","githubUrl":"https://github.com/folddock","paperUrl":"https://doi.org/10.1038/s41586-021-03819-2","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["alphafold","protein-structure","deep-learning"]},
+    {"id":"gwas-tool","name":"PRS-CS","version":"2.0.0","description":{"en":"Polygenic risk score calculation with continuous shrinkage priors","zh":"基于连续收缩先验的多基因风险评分计算"},"domain":"gwas","language":"Python","platform":"CLI","stars":890,"installCmd":"pip install prscs","githubUrl":"#","paperUrl":"https://doi.org/10.1038/s41588-024-01792-w","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["gwas","polygenic-scores","bayesian"]},
+    {"id":"rna-tool","name":"IsoQuant","version":"3.0.0","description":{"en":"Isoform quantification and discovery from long-read RNA-seq","zh":"长读长RNA-seq异构体定量和发现"},"domain":"rna-seq","language":"Python","platform":"CLI","stars":678,"installCmd":"conda install -c bioconda isoquant","githubUrl":"#","paperUrl":"#","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["rna-seq","long-read","isoform"]},
+    {"id":"sv-tool","name":"Sniffles2","version":"2.4.0","description":{"en":"Structural variant calling from long-read sequencing","zh":"长读长测序结构变异检测"},"domain":"genomics","language":"C","platform":"CLI","stars":1102,"installCmd":"conda install -c bioconda sniffles","githubUrl":"https://github.com/fritzsedlazeck/Sniffles","paperUrl":"https://doi.org/10.1093/bioinformatics/btaf136","weekAdded":"2026-W27","dateAdded":"2026-06-29","tags":["long-read","structural-variant","genomics"]}],
+  "papers":[
+    {"id":"alphafold-4-2026-f18","title":{"en":"AlphaFold for antibody structure prediction and design","zh":"AlphaFold在抗体结构预测和设计中的应用"},"authors":["Jumper J.","Evans R.","Pritzel A.","Green T.","Hassabis D."],"journal":"Nature","impactFactor":64.8,"citations":18542,"doi":"10.1038/s41586-021-03819-2","url":"https://doi.org/10.1038/s41586-021-03819-2","domains":["protein-structure","deep-learning"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"alphafold-4-2026-f8-4","title":{"en":"AlphaFold for membrane protein structure prediction","zh":"AlphaFold在膜蛋白结构预测中的应用"},"authors":["Jumper J.","Evans R.","Pritzel A.","Green T.","Hassabis D."],"journal":"Nature","impactFactor":64.8,"citations":18542,"doi":"10.1038/s41586-021-03819-2","url":"https://doi.org/10.1038/s41586-021-03819-2","domains":["protein-structure","deep-learning"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"deeplearning-variant-calling-f1-5","title":{"en":"Deep learning for copy number variant detection","zh":"用于拷贝数变异检测的深度学习"},"authors":["Poplin R.","Chang P.C.","Alexander D.","Schwartz S.","Colthurst T."],"journal":"Nature Biotechnology","impactFactor":46.9,"citations":4250,"doi":"10.1038/nbt.4235","url":"https://doi.org/10.1038/nbt.4235","domains":["deep-learning","genomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"deeplearning-variant-calling-f11-3","title":{"en":"Variant calling in repetitive genomic regions","zh":"重复基因组区域的变异检测"},"authors":["Poplin R.","Chang P.C.","Alexander D.","Schwartz S.","Colthurst T."],"journal":"Nature Biotechnology","impactFactor":46.9,"citations":4250,"doi":"10.1038/nbt.4235","url":"https://doi.org/10.1038/nbt.4235","domains":["deep-learning","genomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"deeplearning-variant-calling-v21","title":{"en":"Recurrent neural networks for indel variant calling","zh":"用于插入缺失变异检测的循环神经网络"},"authors":["Poplin R.","Chang P.C.","Alexander D.","Schwartz S.","Colthurst T."],"journal":"Nature Biotechnology","impactFactor":46.9,"citations":4250,"doi":"10.1038/nbt.4235","url":"https://doi.org/10.1038/nbt.4235","domains":["deep-learning","genomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"epigenomic-landscape-2026-f14-1","title":{"en":"Single-cell epigenomic profiling of tissue aging","zh":"组织衰老的单细胞表观基因组分析"},"authors":["Yang J.H.","Hayano M.","Griffin P.T.","Amorim J.A.","Bonkowski M.S."],"journal":"Cell","impactFactor":45.5,"citations":2340,"doi":"10.1016/j.cell.2022.12.027","url":"https://doi.org/10.1016/j.cell.2022.12.027","domains":["epigenomics","aging"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"epigenomic-landscape-2026-f4-5","title":{"en":"Epigenomic reprogramming during cellular senescence","zh":"细胞衰老过程中的表观基因组重编程"},"authors":["Yang J.H.","Hayano M.","Griffin P.T.","Amorim J.A.","Bonkowski M.S."],"journal":"Cell","impactFactor":45.5,"citations":2340,"doi":"10.1016/j.cell.2022.12.027","url":"https://doi.org/10.1016/j.cell.2022.12.027","domains":["epigenomics","aging"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"epigenomic-landscape-2026-v24","title":{"en":"Histone modification landscapes in development and aging (2)","zh":"发育和衰老中的组蛋白修饰图谱（2）"},"authors":["Yang J.H.","Hayano M.","Griffin P.T.","Amorim J.A.","Bonkowski M.S."],"journal":"Cell","impactFactor":45.5,"citations":2340,"doi":"10.1016/j.cell.2022.12.027","url":"https://doi.org/10.1016/j.cell.2022.12.027","domains":["epigenomics","aging"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"gwas-polygenic-2026-f18-0","title":{"en":"GWAS of gene expression identifies regulatory variants","zh":"基因表达GWAS识别调控变异"},"authors":["Hou K.","Xu Z.","Ding Y.","Mandla R.","Pasaniuc B."],"journal":"Nature Genetics","impactFactor":31.7,"citations":1890,"doi":"10.1038/s41588-024-01792-w","url":"https://doi.org/10.1038/s41588-024-01792-w","domains":["gwas","statistical-genetics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"gwas-polygenic-2026-f8-2","title":{"en":"Bayesian methods for polygenic risk prediction","zh":"用于多基因风险预测的贝叶斯方法"},"authors":["Hou K.","Xu Z.","Ding Y.","Mandla R.","Pasaniuc B."],"journal":"Nature Genetics","impactFactor":31.7,"citations":1890,"doi":"10.1038/s41588-024-01792-w","url":"https://doi.org/10.1038/s41588-024-01792-w","domains":["gwas","statistical-genetics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"gwas-polygenic-2026-v27","title":{"en":"Polygenic scores for disease risk stratification","zh":"用于疾病风险分层的多基因评分"},"authors":["Hou K.","Xu Z.","Ding Y.","Mandla R.","Pasaniuc B."],"journal":"Nature Genetics","impactFactor":31.7,"citations":1890,"doi":"10.1038/s41588-024-01792-w","url":"https://doi.org/10.1038/s41588-024-01792-w","domains":["gwas","statistical-genetics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"long-read-sv-f13-2","title":{"en":"Long-read sequencing for repeat expansion detection","zh":"长读长测序在重复扩增检测中的应用"},"authors":["Saunders C.T.","Holt J.M.","Baker D.N.","Lake J.A.","Belyeu J.R."],"journal":"Bioinformatics","impactFactor":5.8,"citations":456,"doi":"10.1093/bioinformatics/btaf136","url":"https://doi.org/10.1093/bioinformatics/btaf136","domains":["long-read","genomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"long-read-sv-f3-5","title":{"en":"Population-scale structural variant detection with long reads","zh":"利用长读长进行人群规模结构变异检测"},"authors":["Saunders C.T.","Holt J.M.","Baker D.N.","Lake J.A.","Belyeu J.R."],"journal":"Bioinformatics","impactFactor":5.8,"citations":456,"doi":"10.1093/bioinformatics/btaf136","url":"https://doi.org/10.1093/bioinformatics/btaf136","domains":["long-read","genomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"long-read-sv-v23","title":{"en":"Comprehensive long-read sequencing for structural variant discovery (2)","zh":"用于结构变异发现的全面长读长测序（2）"},"authors":["Saunders C.T.","Holt J.M.","Baker D.N.","Lake J.A.","Belyeu J.R."],"journal":"Bioinformatics","impactFactor":5.8,"citations":456,"doi":"10.1093/bioinformatics/btaf136","url":"https://doi.org/10.1093/bioinformatics/btaf136","domains":["long-read","genomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"metagenomic-ont-2026-f15-0","title":{"en":"Real-time nanopore metagenomics for pathogen surveillance","zh":"用于病原体监测的实时纳米孔宏基因组学"},"authors":["Campos-Madueno E.I.","Aldeia C.","Endimiani A."],"journal":"Nature Communications","impactFactor":16.6,"citations":892,"doi":"10.1038/s41467-024-51929-y","url":"https://doi.org/10.1038/s41467-024-51929-y","domains":["metagenomics","clinical"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"metagenomic-ont-2026-f5-3","title":{"en":"Long-read metagenomics for viral genome discovery","zh":"用于病毒基因组发现的长读长宏基因组学"},"authors":["Campos-Madueno E.I.","Aldeia C.","Endimiani A."],"journal":"Nature Communications","impactFactor":16.6,"citations":892,"doi":"10.1038/s41467-024-51929-y","url":"https://doi.org/10.1038/s41467-024-51929-y","domains":["metagenomics","clinical"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"metagenomic-ont-2026-v25","title":{"en":"Metagenomic characterization of the human gut microbiome","zh":"人类肠道微生物组的宏基因组特征分析"},"authors":["Campos-Madueno E.I.","Aldeia C.","Endimiani A."],"journal":"Nature Communications","impactFactor":16.6,"citations":892,"doi":"10.1038/s41467-024-51929-y","url":"https://doi.org/10.1038/s41467-024-51929-y","domains":["metagenomics","clinical"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"proteomic-atlas-2026-f16-0","title":{"en":"A comprehensive proteomic atlas of human tissues","zh":"人类组织的全面蛋白质组图谱"},"authors":["Rosenberger F.A.","Thielert M.","Strauss M.T.","Schweizer L.","Mann M."],"journal":"Nature Methods","impactFactor":36.1,"citations":1678,"doi":"10.1038/s41592-022-01509-5","url":"https://doi.org/10.1038/s41592-022-01509-5","domains":["proteomics","spatial"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"proteomic-atlas-2026-f6-1","title":{"en":"Proteomic profiling of post-translational modifications","zh":"翻译后修饰的蛋白质组学分析"},"authors":["Rosenberger F.A.","Thielert M.","Strauss M.T.","Schweizer L.","Mann M."],"journal":"Nature Methods","impactFactor":36.1,"citations":1678,"doi":"10.1038/s41592-022-01509-5","url":"https://doi.org/10.1038/s41592-022-01509-5","domains":["proteomics","spatial"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"proteomic-atlas-2026-v26","title":{"en":"Integrating proteomics and transcriptomics across tissues","zh":"跨组织整合蛋白质组学和转录组学"},"authors":["Rosenberger F.A.","Thielert M.","Strauss M.T.","Schweizer L.","Mann M."],"journal":"Nature Methods","impactFactor":36.1,"citations":1678,"doi":"10.1038/s41592-022-01509-5","url":"https://doi.org/10.1038/s41592-022-01509-5","domains":["proteomics","spatial"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"scalable-scrna-python-f17-1","title":{"en":"Cell-cell communication analysis in Python","zh":"Python中的细胞间通讯分析"},"authors":["Wolf F.A.","Angerer P.","Theis F.J."],"journal":"Genome Biology","impactFactor":12.3,"citations":5678,"doi":"10.1186/s13059-017-1382-0","url":"https://doi.org/10.1186/s13059-017-1382-0","domains":["single-cell","bioinformatics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"scalable-scrna-python-f1-2","title":{"en":"Python frameworks for integrating multi-batch single-cell data","zh":"用于整合多批次单细胞数据的Python框架"},"authors":["Wolf F.A.","Angerer P.","Theis F.J."],"journal":"Genome Biology","impactFactor":12.3,"citations":5678,"doi":"10.1186/s13059-017-1382-0","url":"https://doi.org/10.1186/s13059-017-1382-0","domains":["single-cell","bioinformatics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"scalable-scrna-python-v22","title":{"en":"Cloud-native single-cell analysis pipelines in Python (dup1)","zh":"基于Python的云原生单细胞分析流程（重复1）"},"authors":["Wolf F.A.","Angerer P.","Theis F.J."],"journal":"Genome Biology","impactFactor":12.3,"citations":5678,"doi":"10.1186/s13059-017-1382-0","url":"https://doi.org/10.1186/s13059-017-1382-0","domains":["single-cell","bioinformatics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"spatial-transcriptomics-2026-v20","title":{"en":"Spatial transcriptomic profiling of the developing human brain","zh":"发育中人类大脑的空间转录组分析"},"authors":["Sun E.D.","Zhou O.Y.","Hauptschein M.","Rappoport N.","Brunet A."],"journal":"Nature","impactFactor":64.8,"citations":3450,"doi":"10.1038/s41586-024-08334-8","url":"https://doi.org/10.1038/s41586-024-08334-8","domains":["spatial","transcriptomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"spatial-transcriptomics-f0-5","title":{"en":"Spatial transcriptomic profiling of the developing human brain (2)","zh":"发育中人类大脑的空间转录组分析（2）"},"authors":["Sun E.D.","Zhou O.Y.","Hauptschein M.","Rappoport N.","Brunet A."],"journal":"Nature","impactFactor":64.8,"citations":3450,"doi":"10.1038/s41586-024-08334-8","url":"https://doi.org/10.1038/s41586-024-08334-8","domains":["spatial","transcriptomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"},
+    {"id":"spatial-transcriptomics-f1-3","title":{"en":"Integrating spatial and single-cell transcriptomics in cancer","zh":"整合空间与单细胞转录组学在癌症中的应用"},"authors":["Sun E.D.","Zhou O.Y.","Hauptschein M.","Rappoport N.","Brunet A."],"journal":"Nature","impactFactor":64.8,"citations":3450,"doi":"10.1038/s41586-024-08334-8","url":"https://doi.org/10.1038/s41586-024-08334-8","domains":["spatial","transcriptomics"],"weekAdded":"2026-W27","dateAdded":"2026-06-29"}],
+  "algorithms":[
+    {"id":"scvi","name":"scVI","version":"3.0.0","task":{"en":"Single Cell Integration","zh":"单细胞整合"},"complexity":{"time":"O(n)","space":"O(n)","color":"green"},
+      "description":{"en":"Deep generative model for single-cell data integration and analysis","zh":"单细胞数据整合和分析的深度生成模型"},
+      "metrics":{"accuracy":92,"speed":85,"scalability":90,"robustness":88,"interpretability":70,"memory":82},"weekAdded":"2026-W27"},
+    {"id":"cellrank","name":"CellRank","version":"2.0.0","task":{"en":"Trajectory Inference","zh":"轨迹推断"},"complexity":{"time":"O(n)","space":"O(n log n)","color":"green"},
+      "description":{"en":"Probabilistic framework for single-cell fate mapping","zh":"单细胞命运图谱的概率框架"},
+      "metrics":{"accuracy":88,"speed":78,"scalability":85,"robustness":82,"interpretability":75,"memory":80},"weekAdded":"2026-W27"},
+    {"id":"deepvar","name":"DeepVariant","version":"2.0.0","task":{"en":"Variant Calling","zh":"变异检测"},"complexity":{"time":"O(n)","space":"O(n)","color":"green"},
+      "description":{"en":"Deep neural network for genomic variant calling","zh":"基因组变异检测的深度神经网络"},
+      "metrics":{"accuracy":95,"speed":72,"scalability":88,"robustness":90,"interpretability":60,"memory":75},"weekAdded":"2026-W27"},
+    {"id":"scanvi","name":"scANVI","version":"1.0.0","task":{"en":"Cell Annotation","zh":"细胞注释"},"complexity":{"time":"O(n)","space":"O(n)","color":"green"},
+      "description":{"en":"Semi-supervised single-cell annotation with generative models","zh":"基于生成模型的半监督单细胞注释"},
+      "metrics":{"accuracy":90,"speed":82,"scalability":88,"robustness":85,"interpretability":72,"memory":80},"weekAdded":"2026-W27"},
+    {"id":"signac","name":"Signac","version":"2.0.0","task":{"en":"Epigenomic Analysis","zh":"表观基因组分析"},"complexity":{"time":"O(n)","space":"O(n)","color":"green"},
+      "description":{"en":"Single-cell chromatin accessibility analysis toolkit","zh":"单细胞染色质可及性分析工具包"},
+      "metrics":{"accuracy":85,"speed":76,"scalability":82,"robustness":80,"interpretability":78,"memory":74},"weekAdded":"2026-W27"},
+    {"id":"sawfish","name":"Sawfish","version":"1.0.0","task":{"en":"SV Detection","zh":"结构变异检测"},"complexity":{"time":"O(n log n)","space":"O(n)","color":"green"},
+      "description":{"en":"Long-read structural variant discovery with local haplotype modeling","zh":"基于局部单倍型建模的长读长结构变异发现"},
+      "metrics":{"accuracy":91,"speed":68,"scalability":78,"robustness":86,"interpretability":65,"memory":70},"weekAdded":"2026-W27"}]
   };
-}
+})();
 
-const trendLabels = {
-  en: ['W20','W21','W22','W23','W24','W25','W26','W27'],
-  zh: ['第20周','第21周','第22周','第23周','第24周','第25周','第26周','第27周']
+// ===== I18n =====
+const dict = {
+  'site.title': { en: 'BioinfoHub — Weekly Bioinformatics Intelligence', zh: 'BioinfoHub — 每周生物信息前沿技术汇总' },
+  'site.desc': { en: 'Weekly frontier bioinformatics intelligence, bringing you the latest tools, papers, and algorithms.', zh: '每周汇聚生物信息学前沿动态，提供最新工具、论文和算法信息。' },
+  'stat.tools': { en: 'Tools', zh: '工具' },
+  'stat.papers': { en: 'Papers', zh: '论文' },
+  'stat.algorithms': { en: 'Algorithms', zh: '算法' },
+  'stat.hot': { en: 'Hot Topic', zh: '热门领域' },
+  'sect.trends': { en: 'Domain Trends', zh: '领域趋势' },
+  'sect.tools': { en: 'Tools', zh: '工具' },
+  'sect.papers': { en: 'Papers', zh: '论文' },
+  'sect.algos': { en: 'Algorithms', zh: '算法' },
+  'sect.network': { en: 'Relation Network', zh: '关联网络' },
+  'compare': { en: 'Compare (2-4)', zh: '对比 (2-4)' },
+  'modal.title': { en: 'Algorithm Comparison', zh: '算法对比' },
+  'search': { en: 'Search...', zh: '搜索...' },
+  'all': { en: 'All Domains', zh: '全部领域' },
+  'foot.nav': { en: 'Navigation', zh: '导航' },
+  'foot.tech': { en: 'Tech Stack', zh: '技术栈' },
+  'foot.about': { en: 'About', zh: '关于' },
+  'foot.home': { en: 'Home', zh: '首页' },
+  'foot.arch': { en: 'Archive', zh: '往期回顾' },
+  'foot.aboutpg': { en: 'About', zh: '关于我们' },
+  'week': { en: 'Week', zh: '周' },
 };
 
-function initTrendChart() {
-  if (trendChartInstance) trendChartInstance.destroy();
-  const ctx = document.getElementById('trendChart').getContext('2d');
-  const colors = getChartColors();
+let lang = 'zh';
+function t(key) { return dict[key]?.[lang] || key; }
+function updateLang() {
+  document.getElementById('btnLang').textContent = lang === 'zh' ? 'EN' : '中';
+  document.getElementById('heroTitle').textContent = t('site.title');
+  document.getElementById('heroSub').textContent =
+    (lang === 'zh' ? DATA.dateRange.start + ' ~ ' + DATA.dateRange.end + ' · 本周共收录 ' + DATA.totalItems + ' 条动态'
+     : DATA.dateRange.start + ' ~ ' + DATA.dateRange.end + ' · ' + DATA.totalItems + ' items this week');
+  document.getElementById('weekLabel').textContent = t(DATA.label) || DATA.label.en;
+  document.getElementById('sectTrend').textContent = t('sect.trends');
+  document.getElementById('sectTools').textContent = t('sect.tools');
+  document.getElementById('sectPapers').textContent = t('sect.papers');
+  document.getElementById('sectAlgos').textContent = t('sect.algos');
+  document.getElementById('sectNetwork').textContent = t('sect.network');
+  document.getElementById('modalTitle').textContent = t('modal.title');
+  document.getElementById('compareBtn').textContent = '📊 ' + t('compare');
+  document.getElementById('toolsSearch').placeholder = t('search');
+  document.getElementById('papersSearch').placeholder = t('search');
+  document.getElementById('footNav').textContent = t('foot.nav');
+  document.getElementById('footTech').textContent = t('foot.tech');
+  document.getElementById('footContact').textContent = t('foot.about');
+  document.getElementById('footHome').textContent = t('foot.home');
+  document.getElementById('footArch').textContent = t('foot.arch');
+  document.getElementById('footAbout').textContent = t('foot.aboutpg');
+  document.getElementById('toolsCount').textContent = '(' + DATA.tools.length + ')';
+  document.getElementById('papersCount').textContent = '(' + DATA.papers.length + ')';
+  document.getElementById('algosCount').textContent = '(' + DATA.algorithms.length + ')';
+  renderStats();
+  renderTools();
+  renderPapers();
+  renderAlgos();
+}
+document.getElementById('btnLang').onclick = () => { lang = lang === 'zh' ? 'en' : 'zh'; updateLang(); };
 
-  trendChartInstance = new Chart(ctx, {
+// ===== Theme =====
+let dark = document.documentElement.getAttribute('data-theme') === 'dark';
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('btnTheme').textContent = dark ? '☀️' : '🌙';
+}
+document.getElementById('btnTheme').onclick = toggleTheme;
+
+// ===== Stats =====
+function renderStats() {
+  const s = DATA.stats;
+  document.getElementById('stats').innerHTML = [
+    { icon: '🔧', label: t('stat.tools'), count: s.tools.count, change: s.tools.change, color: '#3B82F6' },
+    { icon: '📄', label: t('stat.papers'), count: s.papers.count, change: s.papers.change, color: '#10B981' },
+    { icon: '⚙️', label: t('stat.algorithms'), count: s.algorithms.count, change: s.algorithms.change, color: '#F59E0B' },
+    { icon: '🔥', label: t('stat.hot'), count: s.hotTopic.count, change: 0, color: '#EF4444', extra: t(s.hotTopic.name) },
+  ].map(c => `<div class="stat-card" style="border-top:3px solid ${c.color}">
+    <div><span class="icon">${c.icon}</span>
+      <span class="change ${c.change >= 0 ? 'up' : 'down'}">${c.change > 0 ? '+' : ''}${c.change}</span>
+    </div>
+    <div class="count">${c.count}</div>
+    <div class="label">${c.label}</div>
+    ${c.extra ? `<div class="extra">${c.extra}</div>` : ''}
+  </div>`).join('');
+}
+
+// ===== Trend Chart =====
+let trendChart;
+function renderTrend() {
+  const weeks = ['W20', 'W21', 'W22', 'W23', 'W24', 'W25', 'W26', 'W27'];
+  if (trendChart) trendChart.destroy();
+  trendChart = new Chart(document.getElementById('trendChart'), {
     type: 'line',
     data: {
-      labels: trendLabels[lang],
-      datasets: [
-        {
-          label: lang === 'zh' ? '基因组学' : 'Genomics',
-          data: [18,22,20,25,24,28,26,32],
-          borderColor: '#3B82F6', backgroundColor: '#3B82F620',
-          fill: true, tension: 0.4, pointRadius: 4, pointHoverRadius: 7,
-        },
-        {
-          label: lang === 'zh' ? '转录组学' : 'Transcriptomics',
-          data: [12,15,14,18,20,19,22,24],
-          borderColor: '#10B981', backgroundColor: '#10B98120',
-          fill: true, tension: 0.4, pointRadius: 4, pointHoverRadius: 7,
-        },
-        {
-          label: lang === 'zh' ? '单细胞' : 'Single Cell',
-          data: [8,10,12,14,16,18,20,28],
-          borderColor: '#8B5CF6', backgroundColor: '#8B5CF620',
-          fill: true, tension: 0.4, pointRadius: 4, pointHoverRadius: 7,
-        },
-        {
-          label: lang === 'zh' ? '表观基因组学' : 'Epigenomics',
-          data: [6,7,5,8,9,8,10,11],
-          borderColor: '#F59E0B', backgroundColor: '#F59E0B20',
-          fill: true, tension: 0.4, pointRadius: 4, pointHoverRadius: 7,
-        }
-      ]
+      labels: weeks,
+      datasets: DATA.trends.map(d => ({
+        label: lang === 'zh' ? d.domain : d.domain,
+        data: d.weeklyCounts,
+        borderColor: d.color, backgroundColor: d.color + '20',
+        fill: true, tension: 0.3, pointRadius: 3,
+      })),
     },
     options: {
       responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: colors.text,
-          titleFont: { family: "'Atkinson Hyperlegible', sans-serif", size: 12 },
-          bodyFont: { size: 12 }, padding: 12, cornerRadius: 8,
-        }
-      },
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12 } } },
       scales: {
-        x: { grid: { color: colors.grid }, ticks: { color: colors.text, font: { size: 11 } } },
-        y: { grid: { color: colors.grid }, ticks: { color: colors.text, font: { size: 11 } }, beginAtZero: true }
-      }
-    }
+        x: { grid: { display: false } },
+        y: { beginAtZero: true, grid: { color: 'var(--border)' } },
+      },
+    },
   });
 }
 
-function updateChartTheme() {
-  initTrendChart();
-  if (radarChartInstance) {
-    const style = getComputedStyle(document.documentElement);
-    const gridColor = style.getPropertyValue('--chart-grid').trim() || '#E2E8F0';
-    const textColor = style.getPropertyValue('--chart-text').trim() || '#64748B';
-    const fg = style.getPropertyValue('--fg').trim() || '#1E293B';
-    radarChartInstance.options.scales.r.grid.color = gridColor;
-    radarChartInstance.options.scales.r.pointLabels.color = textColor;
-    if (radarChartInstance.options.plugins?.legend?.labels)
-      radarChartInstance.options.plugins.legend.labels.color = fg;
-    radarChartInstance.update();
-  }
+// ===== Circle Packing =====
+function renderCircle() {
+  const el = document.getElementById('circlePacking');
+  el.innerHTML = '';
+  const w = el.clientWidth || 400, h = el.clientHeight || 300;
+  const data = DATA.treemap[lang] || DATA.treemap.en;
+  const root = d3.pack().size([w - 20, h - 20]).padding(4)(
+    d3.hierarchy({ children: data }).sum(d => d.value)
+  );
+  const svg = d3.select(el).append('svg')
+    .append('g').attr('transform', 'translate(10,10)');
+  const leaves = root.leaves();
+  const color = d3.scaleOrdinal(data.map(d => d.color));
+  svg.selectAll('circle').data(leaves).enter().append('circle')
+    .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r)
+    .attr('fill', (d, i) => color(i)).attr('opacity', 0.8)
+    .attr('stroke', '#fff').attr('stroke-width', 1.5)
+    .on('mouseenter', function() { d3.select(this).attr('opacity', 1).attr('stroke', '#000'); })
+    .on('mouseleave', function() { d3.select(this).attr('opacity', 0.8).attr('stroke', '#fff'); });
+  svg.selectAll('text').data(leaves.filter(d => d.r > 20)).enter().append('text')
+    .attr('x', d => d.x).attr('y', d => d.y - 3)
+    .attr('text-anchor', 'middle').attr('fill', '#fff').attr('font-size', '10px')
+    .attr('font-weight', '600').text(d => d.data.name);
+  svg.selectAll('text.sub').data(leaves.filter(d => d.r > 30)).enter().append('text')
+    .attr('x', d => d.x).attr('y', d => d.y + 10)
+    .attr('text-anchor', 'middle').attr('fill', '#fff').attr('font-size', '8px')
+    .attr('opacity', 0.8).text(d => d.data.sub);
 }
 
-// ============================================
-// INIT
-// ============================================
-window.addEventListener('resize', () => { drawTreemap(); });
+// ===== Tools Table =====
+let toolsFiltered = [...DATA.tools];
+function renderTools() {
+  const domains = [...new Set(DATA.tools.map(t => t.domain))].sort();
+  const sel = document.getElementById('toolsDomain');
+  const curVal = sel.value;
+  sel.innerHTML = '<option value="">' + t('all') + '</option>' +
+    domains.map(d => `<option value="${d}">${d}</option>`).join('');
+  sel.value = curVal;
 
-// Init language first
-applyLanguage();
-updateWeekDisplay();
+  const q = document.getElementById('toolsSearch').value.toLowerCase();
+  const dom = sel.value;
+  toolsFiltered = DATA.tools.filter(t =>
+    (!q || t.name.toLowerCase().includes(q) || t.description.en.toLowerCase().includes(q)) &&
+    (!dom || t.domain === dom)
+  );
+  const tbody = document.querySelector('#toolsTable tbody');
+  tbody.innerHTML = toolsFiltered.map(t => `<tr>
+    <td><strong>${t.name}</strong> <span style="color:var(--muted);font-size:11px">v${t.version}</span></td>
+    <td><span class="badge" style="background:${t.domain === 'single-cell' ? '#8B5CF6' : t.domain === 'rna-seq' ? '#10B981' : t.domain === 'genomics' ? '#3B82F6' : t.domain === 'epigenomics' ? '#F59E0B' : t.domain === 'metagenomics' ? '#EC4899' : t.domain === 'proteomics' ? '#EF4444' : t.domain === 'structural-biology' ? '#14B8A6' : '#F97316'}20;color:${t.domain === 'single-cell' ? '#8B5CF6' : t.domain === 'rna-seq' ? '#10B981' : t.domain === 'genomics' ? '#3B82F6' : t.domain === 'epigenomics' ? '#F59E0B' : t.domain === 'metagenomics' ? '#EC4899' : t.domain === 'proteomics' ? '#EF4444' : t.domain === 'structural-biology' ? '#14B8A6' : '#F97316'}">${t.domain}</span></td>
+    <td>${(t.stars/1000).toFixed(1)}k</td>
+    <td>${t.language}</td>
+    <td>${t.platform}</td>
+  </tr>`).join('');
+  document.getElementById('toolsCount').textContent = '(' + toolsFiltered.length + '/' + DATA.tools.length + ')';
+}
+document.getElementById('toolsSearch').oninput = renderTools;
+document.getElementById('toolsDomain').onchange = renderTools;
 
-setTimeout(() => {
-  initTrendChart();
-  drawTreemap();
-  drawNetwork();
-}, 100);
+// ===== Papers Table =====
+let papersFiltered = [...DATA.papers];
+function renderPapers() {
+  const domains = [...new Set(DATA.papers.flatMap(p => p.domains || []))].sort();
+  const sel = document.getElementById('papersDomain');
+  const curVal = sel.value;
+  sel.innerHTML = '<option value="">' + t('all') + '</option>' +
+    domains.map(d => `<option value="${d}">${d}</option>`).join('');
+  sel.value = curVal;
 
-const origToggle = toggleTheme;
-toggleTheme = function() {
-  origToggle();
-  drawNetwork();
+  const q = document.getElementById('papersSearch').value.toLowerCase();
+  const dom = sel.value;
+  papersFiltered = DATA.papers.filter(p =>
+    (!q || p.title.en.toLowerCase().includes(q) || p.title.zh.includes(q) || p.authors.some(a => a.toLowerCase().includes(q))) &&
+    (!dom || (p.domains || []).includes(dom))
+  );
+  const tbody = document.querySelector('#papersTable tbody');
+  tbody.innerHTML = papersFiltered.map(p => `<tr>
+    <td><a href="${p.url}" target="_blank" rel="noopener" style="font-weight:500">${p.title[lang] || p.title.en}</a>
+      <div style="font-size:11px;color:var(--muted)">${p.authors.slice(0,3).join(', ')}${p.authors.length > 3 ? ' et al.' : ''}</div></td>
+    <td>${p.journal}</td>
+    <td><span style="background:${p.impactFactor > 40 ? '#fef3c7' : p.impactFactor > 20 ? '#dbeafe' : '#f3f4f6'};padding:1px 6px;border-radius:4px;font-size:11px">${p.impactFactor}</span></td>
+    <td>${p.citations > 999 ? (p.citations/1000).toFixed(1) + 'k' : p.citations}</td>
+    <td><a href="${p.url}" target="_blank" rel="noopener" style="font-size:11px">DOI</a></td>
+  </tr>`).join('');
+  document.getElementById('papersCount').textContent = '(' + papersFiltered.length + '/' + DATA.papers.length + ')';
+}
+document.getElementById('papersSearch').oninput = renderPapers;
+document.getElementById('papersDomain').onchange = renderPapers;
+
+// ===== Algorithms Table =====
+function renderAlgos() {
+  const tbody = document.querySelector('#algosTable tbody');
+  tbody.innerHTML = DATA.algorithms.map(a => `<tr>
+    <td><input type="checkbox" class="algo-cb" value="${a.id}"></td>
+    <td><strong>${a.name}</strong> <span style="color:var(--muted);font-size:11px">v${a.version}</span></td>
+    <td>${a.task[lang] || a.task.en}</td>
+    <td><span style="color:${a.complexity.color === 'green' ? '#16a34a' : a.complexity.color === 'yellow' ? '#ca8a04' : '#dc2626'}">${a.complexity.time}</span></td>
+    <td>${a.metrics.accuracy}%</td>
+    <td>${a.metrics.speed}%</td>
+    <td>${a.metrics.scalability}%</td>
+  </tr>`).join('');
+}
+document.getElementById('algoSelectAll').onchange = function() {
+  document.querySelectorAll('.algo-cb').forEach(cb => cb.checked = this.checked);
 };
-</script>
 
+// ===== Radar Compare =====
+let radarChart;
+document.getElementById('compareBtn').onclick = () => {
+  const checked = [...document.querySelectorAll('.algo-cb:checked')].map(cb => cb.value);
+  if (checked.length < 2 || checked.length > 4) return alert(lang === 'zh' ? '请选择 2-4 个算法' : 'Select 2-4 algorithms');
+  const algos = checked.map(id => DATA.algorithms.find(a => a.id === id)).filter(Boolean);
+  const labels = Object.keys(algos[0].metrics);
+  document.getElementById('compareModal').style.display = 'flex';
+  if (radarChart) radarChart.destroy();
+  radarChart = new Chart(document.getElementById('radarChart'), {
+    type: 'radar',
+    data: {
+      labels: labels.map(l => l.charAt(0).toUpperCase() + l.slice(1)),
+      datasets: algos.map((a, i) => ({
+        label: a.name,
+        data: labels.map(l => a.metrics[l]),
+        borderColor: ['#3B82F6','#10B981','#F59E0B','#EC4899'][i],
+        backgroundColor: ['#3B82F6','#10B981','#F59E0B','#EC4899'][i] + '20',
+      })),
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { r: { min: 0, max: 100, ticks: { stepSize: 20 } } },
+      plugins: { legend: { position: 'bottom' } },
+    },
+  });
+};
+document.getElementById('modalClose').onclick = () => {
+  document.getElementById('compareModal').style.display = 'none';
+};
+document.getElementById('compareModal').onclick = function(e) {
+  if (e.target === this) this.style.display = 'none';
+};
+
+// ===== Network Graph =====
+function renderNetwork() {
+  const el = document.getElementById('networkGraph');
+  el.innerHTML = '';
+  const w = el.clientWidth || 600, h = el.clientHeight || 350;
+  const svg = d3.select(el).append('svg').attr('width', w).attr('height', h);
+  const g = svg.append('g');
+
+  const zoom = d3.zoom().scaleExtent([0.3, 3]).on('zoom', (e) => g.attr('transform', e.transform));
+  svg.call(zoom);
+
+  const sim = d3.forceSimulation(DATA.network.nodes)
+    .force('link', d3.forceLink(DATA.network.links).id(d => d.id).distance(80))
+    .force('charge', d3.forceManyBody().strength(-120))
+    .force('center', d3.forceCenter(w / 2, h / 2))
+    .force('collision', d3.forceCollide(d => Math.sqrt(d.val) + 4));
+
+  const link = g.append('g').selectAll('line').data(DATA.network.links).enter().append('line')
+    .attr('stroke', 'var(--border)').attr('stroke-width', d => Math.sqrt(d.value));
+
+  const node = g.append('g').selectAll('circle').data(DATA.network.nodes).enter().append('circle')
+    .attr('r', d => Math.sqrt(d.val) * 2).attr('fill', d => d.color).attr('opacity', 0.85)
+    .attr('stroke', '#fff').attr('stroke-width', 1.5)
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+  const label = g.append('g').selectAll('text').data(DATA.network.nodes).enter().append('text')
+    .text(d => d.label).attr('font-size', '9px').attr('text-anchor', 'middle')
+    .attr('dy', d => Math.sqrt(d.val) * 2 + 12)
+    .attr('fill', 'var(--fg)').attr('pointer-events', 'none');
+
+  sim.on('tick', () => {
+    link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('cx', d => d.x).attr('cy', d => d.y);
+    label.attr('x', d => d.x).attr('y', d => d.y);
+  });
+}
+
+// ===== Resize Observer =====
+function onResize() {
+  renderCircle();
+  renderTrend();
+}
+
+// ===== Init =====
+renderStats();
+renderTrend();
+renderCircle();
+renderTools();
+renderPapers();
+renderAlgos();
+renderNetwork();
+updateLang();
+
+window.addEventListener('resize', onResize);
+</script>
 </body>
 </html>
