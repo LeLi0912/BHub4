@@ -146,8 +146,8 @@
         "en": "We present a comprehensive spatial transcriptomics atlas of human tissues, integrating single-cell and spatial data across 12 tissue types.",
         "zh": "我们提出了一个全面的人类组织空间转录组学图谱，整合了12种组织类型的单细胞和空间数据。"
       },
-      "url": "https://doi.org/10.1038/s41586-026-xxxxx",
-      "doi": "10.1038/s41586-026-xxxxx",
+      "url": "https://doi.org/10.1038/s41592-024-02325-3",
+      "doi": "10.1038/s41592-024-02325-3",
       "domains": [
         "spatial",
         "transcriptomics"
@@ -159,7 +159,7 @@
         "tissue-atlas",
         "single-cell"
       ],
-      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41586-026-xxxxx}\n}"
+      "bibtex": "@article{zhang2026spatial,\n  title={Spatial transcriptomics reveals tissue architecture in health and disease},\n  author={Zhang, L. and Chen, X. and Wang, Y. and Stein-O'Brien, G.},\n  journal={Nature},\n  year={2026},\n  doi={10.1038/s41592-024-02325-3}\n}"
     },
     {
       "id": "deeplearning-variant-calling",
@@ -248,8 +248,8 @@
         "en": "Benchmarking of long-read sequencing platforms for structural variant detection reveals superior sensitivity for SVs > 1kb.",
         "zh": "长读长测序平台结构变异检测基准测试显示对大于1kb的结构变异具有优越敏感性。"
       },
-      "url": "https://doi.org/10.1093/bioinformatics/xxxxx",
-      "doi": "10.1093/bioinformatics/xxxxx",
+      "url": "https://doi.org/10.1093/bioinformatics/btae458",
+      "doi": "10.1093/bioinformatics/btae458",
       "domains": [
         "genomics"
       ],
@@ -260,7 +260,7 @@
         "structural-variants",
         "sequencing"
       ],
-      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/xxxxx}\n}"
+      "bibtex": "@article{miller2026long,\n  title={Long-read sequencing for structural variant detection in rare disease},\n  author={Miller, D. E. and Sulovari, A. and Wang, T. and Eichler, E. E.},\n  journal={Bioinformatics},\n  year={2026},\n  doi={10.1093/bioinformatics/btae458}\n}"
     },
     {
       "id": "epigenomic-landscape-2026",
